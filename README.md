@@ -24,13 +24,19 @@ $ go get github.com/KeisukeYamashita/biko
 
 ### Go to your target directly
 
-Open provider.
+#### Exaple1. Open GCP Cloud Spanner to specified project
 
 ```
 $ biko gcp --project my-spanner-project --product spanner
 ```
 
 If you don't specify the project, it will use the value configured by `gcloud` SDK config.
+
+#### Example2. Open Datadog Dashboad 
+
+```
+$ biko dd --dashboard DASHBOARD_ID
+```
 
 ## Support
 
