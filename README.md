@@ -1,6 +1,7 @@
 # Biko
 
 ![CircleCI](https://circleci.com/gh/KeisukeYamashita/biko.svg?style=svg&circle-token=e4b3002b1fb96c423ed5f75332c3455d88d56b0f)
+![License](https://img.shields.io/badge/license-Apache%202.0-%23E93424)
 
 <br />
 <p align="center"><a href="#" target="_blank" rel="noopener noreferrer"><img width="320"src="_image/logo.png"></a></p>
@@ -82,7 +83,7 @@ TODO:
 You can execute the cli with docker image.
 
 ```
-$ docker run biko
+$ docker run biko help
 ```
 
 ## Contribute
