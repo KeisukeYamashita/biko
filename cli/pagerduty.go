@@ -36,6 +36,7 @@ func newPagerDutyCmd() cli.Command {
 		},
 		Subcommands: []cli.Command{
 			newPagerDudyIncidentCmd(),
+			newPagerDudyAlertCmd(),
 		},
 	}
 }
@@ -45,6 +46,20 @@ func newPagerDudyIncidentCmd() cli.Command {
 		Name:    "incident",
 		Aliases: []string{"i"},
 		Usage:   "Open incident page",
+		Flags:   []cli.Flag{},
+		Action: func(c *cli.Context) error {
+			gcp := &pd.Provider{}
+			return browser.Open(c, gcp)
+		},
+	}
+
+}
+
+func newPagerDudyAlertCmd() cli.Command {
+	return cli.Command{
+		Name:    "alert",
+		Aliases: []string{"a"},
+		Usage:   "Open alert page",
 		Flags:   []cli.Flag{},
 		Action: func(c *cli.Context) error {
 			gcp := &pd.Provider{}

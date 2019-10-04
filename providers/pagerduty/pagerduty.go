@@ -38,6 +38,8 @@ func (p *Provider) addProductPath(product string) {
 	switch product {
 	case "incidents":
 		p.join("incidents")
+	case "alerts":
+		p.join("alerts")
 	default:
 		p.join("incidents")
 	}
