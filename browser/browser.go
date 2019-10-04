@@ -18,7 +18,6 @@ func Open(c *cli.Context, provider providers.Provider) error {
 	if err != nil {
 		return err
 	}
-	fmt.Print(url)
 	return openbrowser(url)
 }
 
