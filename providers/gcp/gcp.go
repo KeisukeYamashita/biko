@@ -1,6 +1,7 @@
 package gcp
 
 import (
+	"fmt"
 	"net/url"
 	"os"
 	"path"
@@ -19,6 +20,7 @@ type Provider struct {
 	URL       *url.URL
 	SDKConfig *SDKConfig
 	Product   string
+	Ctx       *cli.Context
 }
 
 // SDKConfig ...
@@ -56,6 +58,7 @@ func (p *Provider) Init(c *cli.Context) error {
 		p.SDKConfig.Core.Project = c.String("project")
 	}
 
+	p.Ctx = c
 	return nil
 }
 
@@ -67,7 +70,7 @@ func (p *Provider) GetTargetURL() (string, error) {
 		return "", err
 	}
 
-	p.addProductPath(p.Product)
+	p.addProductPath(p.Ctx.Command.Name)
 	p.addProjectParam()
 	return p.URL.String(), nil
 }
@@ -96,19 +99,59 @@ func getSDKConfig() (*SDKConfig, error) {
 }
 
 func (p *Provider) addProductPath(product string) {
+	p.join(product)
 	switch product {
-	case "gae", "appengine":
-		p.join("appengine")
-	case "bq", "bigquery":
-		p.join("bigquery")
-	case "gke", "kubernetes":
-		p.join("kubernetes")
+	case "appengine":
+	case "bigquery":
+		var db, table string
+		if db = p.Ctx.String("database"); db != "" {
+			param := url.Values{}
+			param.Add("d", db)
+			if table = p.Ctx.String("table"); table != "" {
+				param.Add("t", table)
+			}
+			p.URL.RawQuery = param.Encode()
+		}
+	case "kubernetes":
+		var region, name string
+		if region = p.Ctx.String("region"); region != "" {
+			p.join(fmt.Sprintf("details/%s", region))
+			if name = p.Ctx.String("name"); name != "" {
+				p.join(name)
+			}
+		}
 	case "spanner":
-		p.join("spanner")
+		var instance, db, scheme string
+		if instance = p.Ctx.String("instance"); instance != "" {
+			p.join(fmt.Sprintf("instances/%s", instance))
+			if db = p.Ctx.String("database"); db != "" {
+				p.join(fmt.Sprintf("databases/%s", db))
+				if scheme = p.Ctx.String("table"); scheme != "" {
+					p.join(fmt.Sprintf("schema/%s", scheme))
+				}
+			}
+		}
 	case "gcr":
-		p.join("gcr")
-	case "cloudfunctions", "functions":
-		p.join("functions")
+		var name string
+		p.join(fmt.Sprintf("images/%s/", p.SDKConfig.Core.Project))
+		if name = p.Ctx.String("name"); name != "" {
+			p.join(fmt.Sprintf("GLOBAL/%s", name))
+		}
+	case "run", "functions":
+		var region, name string
+		if region = p.Ctx.String("region"); name != "" {
+			p.join(fmt.Sprintf("details/%s", region))
+
+			if name = p.Ctx.String("name"); name != "" {
+				p.join(name)
+			}
+		}
+
+		switch product {
+		case "run":
+		case "functions":
+		}
+	case "logs":
 	default:
 		p.join("home/dashboard")
 	}
