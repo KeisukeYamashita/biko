@@ -26,5 +26,6 @@ func rootSubCommands() []cli.Command {
 		newGCPCmd(),
 		newDatadaogCmd(),
 		newGoogleCmd(),
+		newYoutubeCmd(),
 	}
 }

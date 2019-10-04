@@ -2,15 +2,15 @@ package cli
 
 import (
 	"github.com/KeisukeYamashita/biko/browser"
-	"github.com/KeisukeYamashita/biko/providers/google"
+	"github.com/KeisukeYamashita/biko/providers/youtube"
 	"github.com/urfave/cli"
 )
 
-func newGoogleCmd() cli.Command {
+func newYoutubeCmd() cli.Command {
 	return cli.Command{
-		Name:    "google",
-		Aliases: []string{"g"},
-		Usage:   "Open GCP resource",
+		Name:    "youtube",
+		Aliases: []string{"yt"},
+		Usage:   "Open Youtube source",
 		Flags: []cli.Flag{
 			cli.StringFlag{
 				Name:  "project",
@@ -18,16 +18,16 @@ func newGoogleCmd() cli.Command {
 			},
 		},
 		Action: func(c *cli.Context) error {
-			gcp := &google.Provider{}
+			gcp := &youtube.Provider{}
 			return browser.Open(c, gcp)
 		},
 		Subcommands: []cli.Command{
-			newGoogleSearchCmd(),
+			newYoutubeSearchCmd(),
 		},
 	}
 }
 
-func newGoogleSearchCmd() cli.Command {
+func newYoutubeSearchCmd() cli.Command {
 	return cli.Command{
 		Name:    "search",
 		Aliases: []string{"s"},
@@ -39,7 +39,7 @@ func newGoogleSearchCmd() cli.Command {
 			},
 		},
 		Action: func(c *cli.Context) error {
-			gcp := &google.Provider{}
+			gcp := &youtube.Provider{}
 			return browser.Open(c, gcp)
 		},
 	}
