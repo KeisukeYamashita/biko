@@ -48,12 +48,17 @@ The supported provider are here.
 
 * GoogleCloudPlatform(GCP)
 * Datadog
+* Google
 
 ### GCP
 
 TODO:
 
 ### Datadog
+
+TODO:
+
+### Google
 
 TODO:
 
