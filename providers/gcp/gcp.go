@@ -105,16 +105,31 @@ func (p *Provider) addProductPath(product string) {
 	case "bigquery":
 	case "kubernetes":
 	case "spanner":
-		var instance, db string
+		var instance, db, scheme string
 		if instance = p.Ctx.String("instance"); instance != "" {
 			p.join(fmt.Sprintf("instances/%s", instance))
 			if db = p.Ctx.String("database"); db != "" {
 				p.join(fmt.Sprintf("databases/%s", db))
+				if scheme = p.Ctx.String("table"); scheme != "" {
+					p.join(fmt.Sprintf("schema/%s", scheme))
+				}
 			}
 		}
 	case "gcr":
-	case "run":
-	case "functions":
+	case "run", "functions":
+		var region, name string
+		if region = p.Ctx.String("region"); name != "" {
+			p.join(fmt.Sprintf("details/%s", region))
+
+			if name = p.Ctx.String("name"); name != "" {
+				p.join(name)
+			}
+		}
+
+		switch product {
+		case "run":
+		case "functions":
+		}
 	default:
 		p.join("home/dashboard")
 	}

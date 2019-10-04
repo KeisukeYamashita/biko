@@ -89,6 +89,10 @@ func newGCPSpannerCmd() cli.Command {
 				Name:  "database",
 				Usage: "Database name",
 			},
+			cli.StringFlag{
+				Name:  "table",
+				Usage: "Table name",
+			},
 		},
 		Action: func(c *cli.Context) error {
 			gcp := &gcp.Provider{}
@@ -113,7 +117,16 @@ func newGCPFunctionsCmd() cli.Command {
 	return cli.Command{
 		Name:  "functions",
 		Usage: "Open Cloud Functions page",
-		Flags: []cli.Flag{},
+		Flags: []cli.Flag{
+			cli.StringFlag{
+				Name:  "name",
+				Usage: "Name of the function",
+			},
+			cli.StringFlag{
+				Name:  "region",
+				Usage: "Region of the function",
+			},
+		},
 		Action: func(c *cli.Context) error {
 			gcp := &gcp.Provider{}
 			return browser.Open(c, gcp)
@@ -125,7 +138,16 @@ func newGCPCloudRunCmd() cli.Command {
 	return cli.Command{
 		Name:  "run",
 		Usage: "Open Cloud Run page",
-		Flags: []cli.Flag{},
+		Flags: []cli.Flag{
+			cli.StringFlag{
+				Name:  "name",
+				Usage: "Name of the function",
+			},
+			cli.StringFlag{
+				Name:  "region",
+				Usage: "Region of the function",
+			},
+		},
 		Action: func(c *cli.Context) error {
 			gcp := &gcp.Provider{}
 			return browser.Open(c, gcp)
