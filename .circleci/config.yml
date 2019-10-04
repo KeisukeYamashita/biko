@@ -1,0 +1,32 @@
+version: 2.1
+
+executors:
+  default:
+    working_directory: /go/src/github.com/KeisukeYamashita/biko
+    docker:
+      - image: circleci/golang:1.12
+
+jobs:
+  build:
+    executor: default
+    steps:
+      - checkout
+      - run:
+          name: Build
+          command: |
+            make build
+  test:
+      executor: default
+      steps:
+        - checkout
+        - run:
+            name: Run Test
+            command: |
+              go test ./...
+
+workflow:
+  version: 2
+  build-and-test:
+    jobs:
+      - build
+      - test
