@@ -39,7 +39,6 @@ func (p *Provider) addProductPath(product string) {
 	case "events":
 		p.join("events/stream")
 	case "metrics":
-		p.join("metrics")
 	case "integrations":
 		p.join("account/settings")
 	case "apm":
