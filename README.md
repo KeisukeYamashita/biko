@@ -108,6 +108,11 @@ type Provider interface {
 * See `docs/ROADMAP.md` for the project's roadmap.
     * Proposal are welcome.
 
+## License
+
+Copyright 2019 The Biko Authors.
+Biko is released under the Apache License 2.0.
+
 ## Author
 
 * [KeisukeYamashita](https://github.com/KeisukeYamashita)
