@@ -52,7 +52,16 @@ func newGCPBQCmd() cli.Command {
 		Name:    "biqquery",
 		Aliases: []string{"bq"},
 		Usage:   "Open Bigquery page",
-		Flags:   []cli.Flag{},
+		Flags: []cli.Flag{
+			cli.StringFlag{
+				Name:  "database",
+				Usage: "Database to show",
+			},
+			cli.StringFlag{
+				Name:  "table",
+				Usage: "Table to show",
+			},
+		},
 		Action: func(c *cli.Context) error {
 			gcp := &gcp.Provider{}
 			return browser.Open(c, gcp)
@@ -65,7 +74,16 @@ func newGCPGKECmd() cli.Command {
 		Name:    "kubernetes",
 		Aliases: []string{"gke"},
 		Usage:   "Open GKE page",
-		Flags:   []cli.Flag{},
+		Flags: []cli.Flag{
+			cli.StringFlag{
+				Name:  "region",
+				Usage: "Region of the cluster",
+			},
+			cli.StringFlag{
+				Name:  "name",
+				Usage: "Name of the cluter",
+			},
+		},
 		Action: func(c *cli.Context) error {
 			gcp := &gcp.Provider{}
 			return browser.Open(c, gcp)

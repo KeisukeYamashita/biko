@@ -103,7 +103,23 @@ func (p *Provider) addProductPath(product string) {
 	switch product {
 	case "appengine":
 	case "bigquery":
+		var db, table string
+		if db = p.Ctx.String("database"); db != "" {
+			param := url.Values{}
+			param.Add("d", db)
+			if table = p.Ctx.String("table"); table != "" {
+				param.Add("t", table)
+			}
+			p.URL.RawQuery = param.Encode()
+		}
 	case "kubernetes":
+		var region, name string
+		if region = p.Ctx.String("region"); region != "" {
+			p.join(fmt.Sprintf("details/%s", region))
+			if name = p.Ctx.String("name"); name != "" {
+				p.join(name)
+			}
+		}
 	case "spanner":
 		var instance, db, scheme string
 		if instance = p.Ctx.String("instance"); instance != "" {
