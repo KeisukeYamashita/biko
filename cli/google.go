@@ -8,8 +8,9 @@ import (
 
 func newGoogleCmd() cli.Command {
 	return cli.Command{
-		Name:  "google",
-		Usage: "Open GCP resource",
+		Name:    "google",
+		Aliases: []string{"g"},
+		Usage:   "Open GCP resource",
 		Flags: []cli.Flag{
 			cli.StringFlag{
 				Name:  "project",
@@ -28,8 +29,9 @@ func newGoogleCmd() cli.Command {
 
 func newSearchCmd() cli.Command {
 	return cli.Command{
-		Name:  "search",
-		Usage: "Search a page",
+		Name:    "search",
+		Aliases: []string{"s"},
+		Usage:   "Search a page",
 		Flags: []cli.Flag{
 			cli.StringFlag{
 				Name:  "query",
