@@ -25,5 +25,6 @@ func rootSubCommands() []cli.Command {
 		newVersionCmd(),
 		newGCPCmd(),
 		newDatadaogCmd(),
+		newGoogleCmd(),
 	}
 }
