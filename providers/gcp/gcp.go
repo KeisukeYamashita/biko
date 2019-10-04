@@ -1,6 +1,7 @@
 package gcp
 
 import (
+	"fmt"
 	"net/url"
 	"os"
 	"path"
@@ -19,6 +20,7 @@ type Provider struct {
 	URL       *url.URL
 	SDKConfig *SDKConfig
 	Product   string
+	Ctx       *cli.Context
 }
 
 // SDKConfig ...
@@ -56,6 +58,7 @@ func (p *Provider) Init(c *cli.Context) error {
 		p.SDKConfig.Core.Project = c.String("project")
 	}
 
+	p.Ctx = c
 	return nil
 }
 
@@ -105,6 +108,13 @@ func (p *Provider) addProductPath(product string) {
 		p.join("kubernetes")
 	case "spanner":
 		p.join("spanner")
+		var instance, db string
+		if instance = p.Ctx.String("instance"); instance != "" {
+			p.join(fmt.Sprintf("instances/%s", instance))
+			if db = p.Ctx.String("database"); db != "" {
+				p.join(fmt.Sprintf("databases/%s", db))
+			}
+		}
 	case "gcr":
 		p.join("gcr")
 	case "cloudfunctions", "functions":
