@@ -1,5 +1,7 @@
 # Biko
 
+![CircleCI](https://circleci.com/gh/KeisukeYamashita/biko.svg?style=svg&circle-token=e4b3002b1fb96c423ed5f75332c3455d88d56b0f)
+
 ## Install
 
 ### By Homebrew
