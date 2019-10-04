@@ -130,6 +130,7 @@ func (p *Provider) addProductPath(product string) {
 		case "run":
 		case "functions":
 		}
+	case "logs":
 	default:
 		p.join("home/dashboard")
 	}

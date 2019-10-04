@@ -29,6 +29,7 @@ func newGCPCmd() cli.Command {
 			newGCPFunctionsCmd(),
 			newGCPCloudRunCmd(),
 			newGCPGCECmd(),
+			newGCPLogsCmd(),
 		},
 	}
 }
@@ -160,6 +161,19 @@ func newGCPGCECmd() cli.Command {
 		Name:    "compute",
 		Aliases: []string{"gce"},
 		Usage:   "Open Compute Engine page",
+		Flags:   []cli.Flag{},
+		Action: func(c *cli.Context) error {
+			gcp := &gcp.Provider{}
+			return browser.Open(c, gcp)
+		},
+	}
+}
+
+func newGCPLogsCmd() cli.Command {
+	return cli.Command{
+		Name:    "logs",
+		Aliases: []string{"l"},
+		Usage:   "Open Stackdriver log page",
 		Flags:   []cli.Flag{},
 		Action: func(c *cli.Context) error {
 			gcp := &gcp.Provider{}
