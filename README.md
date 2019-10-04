@@ -77,6 +77,14 @@ TODO:
 
 TODO: 
 
+## (Advanced): Docker image
+
+You can execute the cli with docker image.
+
+```
+$ docker run biko
+```
+
 ## Contribute
 
 ### Add a provider
