@@ -70,7 +70,7 @@ func (p *Provider) GetTargetURL() (string, error) {
 		return "", err
 	}
 
-	p.addProductPath(p.Product)
+	p.addProductPath(p.Ctx.Command.Name)
 	p.addProjectParam()
 	return p.URL.String(), nil
 }
@@ -99,15 +99,12 @@ func getSDKConfig() (*SDKConfig, error) {
 }
 
 func (p *Provider) addProductPath(product string) {
+	p.join(product)
 	switch product {
-	case "gae", "appengine":
-		p.join("appengine")
-	case "bq", "bigquery":
-		p.join("bigquery")
-	case "gke", "kubernetes":
-		p.join("kubernetes")
+	case "appengine":
+	case "bigquery":
+	case "kubernetes":
 	case "spanner":
-		p.join("spanner")
 		var instance, db string
 		if instance = p.Ctx.String("instance"); instance != "" {
 			p.join(fmt.Sprintf("instances/%s", instance))
@@ -116,9 +113,8 @@ func (p *Provider) addProductPath(product string) {
 			}
 		}
 	case "gcr":
-		p.join("gcr")
-	case "cloudfunctions", "functions":
-		p.join("functions")
+	case "run":
+	case "functions":
 	default:
 		p.join("home/dashboard")
 	}

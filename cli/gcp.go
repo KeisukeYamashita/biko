@@ -27,19 +27,20 @@ func newGCPCmd() cli.Command {
 			newGCPSpannerCmd(),
 			newGCPGCRCmd(),
 			newGCPFunctionsCmd(),
+			newGCPCloudRunCmd(),
+			newGCPGCECmd(),
 		},
 	}
 }
 
 func newGCPGAECmd() cli.Command {
 	return cli.Command{
-		Name:  "gae",
-		Usage: "Open GAE page",
-		Flags: []cli.Flag{},
+		Name:    "appengine",
+		Aliases: []string{"gae"},
+		Usage:   "Open GAE page",
+		Flags:   []cli.Flag{},
 		Action: func(c *cli.Context) error {
-			gcp := &gcp.Provider{
-				Product: "appengine",
-			}
+			gcp := &gcp.Provider{}
 			return browser.Open(c, gcp)
 		},
 	}
@@ -47,13 +48,12 @@ func newGCPGAECmd() cli.Command {
 
 func newGCPBQCmd() cli.Command {
 	return cli.Command{
-		Name:  "bq",
-		Usage: "Open Bigquery page",
-		Flags: []cli.Flag{},
+		Name:    "biqquery",
+		Aliases: []string{"bq"},
+		Usage:   "Open Bigquery page",
+		Flags:   []cli.Flag{},
 		Action: func(c *cli.Context) error {
-			gcp := &gcp.Provider{
-				Product: "bq",
-			}
+			gcp := &gcp.Provider{}
 			return browser.Open(c, gcp)
 		},
 	}
@@ -61,13 +61,12 @@ func newGCPBQCmd() cli.Command {
 
 func newGCPGKECmd() cli.Command {
 	return cli.Command{
-		Name:  "gke",
-		Usage: "Open GKE page",
-		Flags: []cli.Flag{},
+		Name:    "kubernetes",
+		Aliases: []string{"gke"},
+		Usage:   "Open GKE page",
+		Flags:   []cli.Flag{},
 		Action: func(c *cli.Context) error {
-			gcp := &gcp.Provider{
-				Product: "gke",
-			}
+			gcp := &gcp.Provider{}
 			return browser.Open(c, gcp)
 		},
 	}
@@ -92,9 +91,7 @@ func newGCPSpannerCmd() cli.Command {
 			},
 		},
 		Action: func(c *cli.Context) error {
-			gcp := &gcp.Provider{
-				Product: "spanner",
-			}
+			gcp := &gcp.Provider{}
 			return browser.Open(c, gcp)
 		},
 	}
@@ -106,9 +103,7 @@ func newGCPGCRCmd() cli.Command {
 		Usage: "Open Cloud Registry page",
 		Flags: []cli.Flag{},
 		Action: func(c *cli.Context) error {
-			gcp := &gcp.Provider{
-				Product: "gcr",
-			}
+			gcp := &gcp.Provider{}
 			return browser.Open(c, gcp)
 		},
 	}
@@ -120,9 +115,32 @@ func newGCPFunctionsCmd() cli.Command {
 		Usage: "Open Cloud Functions page",
 		Flags: []cli.Flag{},
 		Action: func(c *cli.Context) error {
-			gcp := &gcp.Provider{
-				Product: "cloudfunctions",
-			}
+			gcp := &gcp.Provider{}
+			return browser.Open(c, gcp)
+		},
+	}
+}
+
+func newGCPCloudRunCmd() cli.Command {
+	return cli.Command{
+		Name:  "run",
+		Usage: "Open Cloud Run page",
+		Flags: []cli.Flag{},
+		Action: func(c *cli.Context) error {
+			gcp := &gcp.Provider{}
+			return browser.Open(c, gcp)
+		},
+	}
+}
+
+func newGCPGCECmd() cli.Command {
+	return cli.Command{
+		Name:    "compute",
+		Aliases: []string{"gce"},
+		Usage:   "Open Compute Engine page",
+		Flags:   []cli.Flag{},
+		Action: func(c *cli.Context) error {
+			gcp := &gcp.Provider{}
 			return browser.Open(c, gcp)
 		},
 	}
