@@ -37,6 +37,7 @@ func newPagerDutyCmd() cli.Command {
 		Subcommands: []cli.Command{
 			newPagerDudyIncidentCmd(),
 			newPagerDudyAlertCmd(),
+			newPagerDudySchedulesCmd(),
 		},
 	}
 }
@@ -66,5 +67,17 @@ func newPagerDudyAlertCmd() cli.Command {
 			return browser.Open(c, gcp)
 		},
 	}
+}
 
+func newPagerDudySchedulesCmd() cli.Command {
+	return cli.Command{
+		Name:    "schedules",
+		Aliases: []string{"s"},
+		Usage:   "Open schedules page",
+		Flags:   []cli.Flag{},
+		Action: func(c *cli.Context) error {
+			gcp := &pd.Provider{}
+			return browser.Open(c, gcp)
+		},
+	}
 }
