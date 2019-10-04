@@ -12,10 +12,12 @@ type Provider struct {
 	baseURL *url.URL
 	URL     *url.URL
 	Product string
+	Ctx     *cli.Context
 }
 
 // Init ...
 func (p *Provider) Init(c *cli.Context) error {
+	p.Ctx = c
 	return nil
 }
 
@@ -27,33 +29,23 @@ func (p *Provider) GetTargetURL() (string, error) {
 		return "", err
 	}
 
-	p.addProductPath(p.Product)
+	p.addProductPath(p.Ctx.Command.Name)
 	return p.URL.String(), nil
 }
 func (p *Provider) addProductPath(product string) {
+	p.join(product)
 	switch product {
-	case "watchdogs", "wd":
-		p.join("watchdog")
+	case "watchdogs":
 	case "events":
 		p.join("events/stream")
-	case "dashboard", "dash", "d":
-		p.join("dashboard")
-	case "infrastructure", "infra":
-		p.join("infrastructure")
-	case "monitors", "monitor":
-		p.join("monitors")
 	case "metrics":
 		p.join("metrics")
-	case "integrations", "inte":
+	case "integrations":
 		p.join("account/settings")
 	case "apm":
-		p.join("apm")
-	case "notebook", "nb":
-		p.join("notebook")
-	case "logs", "log":
-		p.join("logs")
+	case "notebook":
+	case "logs":
 	case "synthetics":
-		p.join("synthetics")
 	default:
 		p.join("apm/home")
 	}

@@ -9,3 +9,5 @@ require (
 	github.com/urfave/cli v1.22.1
 	gopkg.in/ini.v1 v1.48.0 // indirect
 )
+
+go 1.13
