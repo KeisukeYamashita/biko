@@ -2,6 +2,10 @@
 
 ![CircleCI](https://circleci.com/gh/KeisukeYamashita/biko.svg?style=svg&circle-token=e4b3002b1fb96c423ed5f75332c3455d88d56b0f)
 
+<br />
+<p align="center"><a href="#" target="_blank" rel="noopener noreferrer"><img width="320"src="_image/logo.png"></a></p>
+<br />
+
 ## Install
 
 ### By Homebrew
