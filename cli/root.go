@@ -23,5 +23,6 @@ func NewCmdRoot() *cli.App {
 func rootSubCommands() []cli.Command {
 	return []cli.Command{
 		newVersionCmd(),
+		newGCPCmd(),
 	}
 }

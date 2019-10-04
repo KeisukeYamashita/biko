@@ -1,0 +1,10 @@
+[core]
+account = biko.is.nice.tool@maybe.com
+project = i-am-biko
+
+[compute]
+zone = asia-roppongi-c
+region = asia-minatoku
+
+[container]
+cluster = biko-cluster
