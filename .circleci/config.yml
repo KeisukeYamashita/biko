@@ -5,6 +5,8 @@ executors:
     working_directory: /go/src/github.com/KeisukeYamashita/biko
     docker:
       - image: circleci/golang:1.12
+        environment:
+          GO111MODULE: "on"
 
 jobs:
   build:
