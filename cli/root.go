@@ -27,5 +27,6 @@ func rootSubCommands() []cli.Command {
 		newDatadaogCmd(),
 		newGoogleCmd(),
 		newYoutubeCmd(),
+		newPagerDutyCmd(),
 	}
 }

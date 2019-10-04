@@ -50,6 +50,7 @@ The supported provider are here.
 * Datadog
 * Google
 * Youtube
+* Pagerduty
 
 ### GCP
 
@@ -66,6 +67,10 @@ TODO:
 ### Youtube
 
 TODO: 
+
+### Pagerduty
+
+TODO:
 
 ## Contribute
 
