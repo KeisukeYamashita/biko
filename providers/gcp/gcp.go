@@ -116,6 +116,11 @@ func (p *Provider) addProductPath(product string) {
 			}
 		}
 	case "gcr":
+		var name string
+		p.join(fmt.Sprintf("images/%s/", p.SDKConfig.Core.Project))
+		if name = p.Ctx.String("name"); name != "" {
+			p.join(fmt.Sprintf("GLOBAL/%s", name))
+		}
 	case "run", "functions":
 		var region, name string
 		if region = p.Ctx.String("region"); name != "" {

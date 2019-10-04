@@ -106,7 +106,16 @@ func newGCPGCRCmd() cli.Command {
 	return cli.Command{
 		Name:  "gcr",
 		Usage: "Open Cloud Registry page",
-		Flags: []cli.Flag{},
+		Flags: []cli.Flag{
+			cli.StringFlag{
+				Name:  "project",
+				Usage: "Specify the project to open",
+			},
+			cli.StringFlag{
+				Name:  "name",
+				Usage: "Name of the image",
+			},
+		},
 		Action: func(c *cli.Context) error {
 			gcp := &gcp.Provider{}
 			return browser.Open(c, gcp)
