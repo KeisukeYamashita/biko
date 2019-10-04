@@ -22,17 +22,22 @@ func newGithubCmd() cli.Command {
 			return browser.Open(c, gcp)
 		},
 		Subcommands: []cli.Command{
-			newGithubOrgCmd(),
+			newGithubDashboardCmd(),
 		},
 	}
 }
 
-func newGithubOrgCmd() cli.Command {
+func newGithubDashboardCmd() cli.Command {
 	return cli.Command{
-		Name:    "organization",
-		Aliases: []string{"org"},
-		Usage:   "Open a organization page",
-		Flags:   []cli.Flag{},
+		Name:    "dashboard",
+		Aliases: []string{"db"},
+		Usage:   "Open a dashboard page",
+		Flags: []cli.Flag{
+			cli.StringFlag{
+				Name:  "org",
+				Usage: "Organization to open",
+			},
+		},
 		Action: func(c *cli.Context) error {
 			gcp := &gh.Provider{}
 			return browser.Open(c, gcp)

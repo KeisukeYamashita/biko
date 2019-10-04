@@ -1,6 +1,7 @@
 package github
 
 import (
+	"fmt"
 	"net/url"
 	"path"
 
@@ -21,7 +22,7 @@ func (p *Provider) Init(c *cli.Context) error {
 
 // GetTargetURL ...
 func (p *Provider) GetTargetURL() (string, error) {
-	const baseURL = "https://gitub.com"
+	const baseURL = "https://github.com"
 	var err error
 	if p.baseURL, err = url.Parse(baseURL); err != nil {
 		return "", err
@@ -33,14 +34,16 @@ func (p *Provider) GetTargetURL() (string, error) {
 
 func (p *Provider) addProductPath(product string) {
 	switch product {
-	case "search":
-		p.join("search")
-		param := url.Values{}
-		var query string
-		if query = p.Ctx.String("query"); query != "" {
-			param.Add("q", query)
-			p.URL.RawQuery = param.Encode()
+	case "dashboard":
+		var org string
+		if org = p.Ctx.String("organization"); org != "" {
+			p.join(fmt.Sprintf("orgs/%s/dashboard", org))
+			return
 		}
+		p.URL = p.baseURL
+		return
+	default:
+		p.URL = p.baseURL
 	}
 }
 

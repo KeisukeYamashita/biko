@@ -28,5 +28,6 @@ func rootSubCommands() []cli.Command {
 		newGoogleCmd(),
 		newYoutubeCmd(),
 		newPagerDutyCmd(),
+		newGithubCmd(),
 	}
 }
