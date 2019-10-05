@@ -39,7 +39,7 @@ $ go get github.com/KeisukeYamashita/biko
 #### Exaple1. Open GCP Cloud Spanner to specified project
 
 ```
-$ biko gcp --project my-spanner-project --product spanner
+$ biko gcp spanner --project my-spanner-project
 ```
 
 If you don't specify the project, it will use the value configured by `gcloud` SDK config.
@@ -135,7 +135,18 @@ Blazing fast.
 
 ### Youtube
 
-TODO: 
+* Open Youtube and search from your terminal.
+
+```
+$ biko youtube [product] [flag(s)]
+# or
+$ biko yt [product] [flag(s)]
+```
+
+| Product | What | Command | Flags(Optional) | 
+|:----:|:----:|:----:|:----:|
+| Search | Search on Youtube | `search`, `s` | - |
+
 
 ### Pagerduty
 
