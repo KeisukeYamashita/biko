@@ -143,8 +143,9 @@ func newGCPGCRCmd() cli.Command {
 
 func newGCPFunctionsCmd() cli.Command {
 	return cli.Command{
-		Name:  "functions",
-		Usage: "Open Cloud Functions page",
+		Name:    "functions",
+		Aliases: []string{"f"},
+		Usage:   "Open Cloud Functions page",
 		Flags: []cli.Flag{
 			cli.StringFlag{
 				Name:  "name",

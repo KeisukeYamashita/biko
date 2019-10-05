@@ -63,7 +63,27 @@ The supported provider are here.
 
 ### GCP
 
-TODO:
+* By default, it will open the project configured by `gcloud` command.
+
+```
+$ biko gcp [product] [flags]
+```
+
+**Supported Product**
+
+| Product | What | Command | Flags(Optional) | 
+|:----:|:----:|:----:|:----:|
+| App Engine | Go to GAE Dashboard | `appengine`, `gae` | - |
+| Bigquery | Go to Bigquery top or the database, table | `bigquery`, `bq` | `--database`, `--table` |
+| Kubernetes | Go to GKE page, or the cluster detail | `kubernetes`, `gke` | `--region`, `--name` | 
+| Spanner | Go to spanner page, or the instance, database, table | `spanner` | `--instance`, `--database`, `--table` | 
+| Container Registry | Go to container registry or the container detail | `gcr` | `--name` |
+| Cloud Functions | Go to Cloud Functions page or the functions detail | `functions`, `f` |  `--region`, `--name` |
+| Cloud Run | Go to Cloud Run page or the deployments detail | `run` | `--region`, `--name` |	
+| Compute Engine | Go to GCE page | `compute` | 
+| Stackdriver Logging | Go to Stackdriver logging | `logs`, `l` | - | 
+
+Note that there is `--project` command flag for all commands.
 
 ### Datadog
 
