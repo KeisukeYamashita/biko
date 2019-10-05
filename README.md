@@ -147,14 +147,35 @@ $ biko yt [product] [flag(s)]
 |:----:|:----:|:----:|:----:|
 | Search | Search on Youtube | `search`, `s` | - |
 
-
 ### Pagerduty
 
-TODO:
+* If you are using SSO, you need to pass `--org` or configure `BIKO_PAGERDUTY`
+
+```
+$ biko pagerduty [product] [flag(s)]
+# or
+$ biko pd [product] [flag(s)]
+```
+
+| Product | What | Command | Flags(Optional) | 
+|:----:|:----:|:----:|:----:|
+| Incident | Go to incident page | `incident`, `i` | - |
+| Alert | Go to alert page | `alert`, `a` | - |
+| Schedules | Go to schedules page | `schedules`, `s` | - |
 
 ### Github
 
-TODO: 
+* Open Github from your terminal.
+
+```
+$ biko github [product] [flag(s)]
+# or
+$ biko gh [product] [flag(s)]
+```
+
+| Product | What | Command | Flags(Optional) | 
+|:----:|:----:|:----:|:----:|
+| Dashboard | Open github Dashboard | `dashboard` | `--org` |
 
 ## (Advanced): Docker image
 
