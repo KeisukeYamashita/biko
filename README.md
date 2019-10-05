@@ -1,11 +1,16 @@
 # Biko
 
-![CircleCI](https://circleci.com/gh/KeisukeYamashita/biko.svg?style=svg&circle-token=e4b3002b1fb96c423ed5f75332c3455d88d56b0f)
-![License](https://img.shields.io/badge/license-Apache%202.0-%23E93424)
-
 <br />
 <p align="center"><a href="#" target="_blank" rel="noopener noreferrer"><img width="320"src="_image/logo.png"></a></p>
 <br />
+
+[![Go][go-badge]][go]
+![CircleCI](https://circleci.com/gh/KeisukeYamashita/biko.svg?style=svg&circle-token=e4b3002b1fb96c423ed5f75332c3455d88d56b0f)
+[![GolangCI][golangci-badge]][golangci]
+[![Go Report Card][go-report-card-badge]][go-report-card]
+[![GoDoc][godoc-badge]][godoc]
+[![Dependabot][dependabot-badge]][dependabot]
+![License](https://img.shields.io/badge/license-Apache%202.0-%23E93424)
 
 ## Install
 
@@ -116,3 +121,19 @@ Biko is released under the Apache License 2.0.
 ## Author
 
 * [KeisukeYamashita](https://github.com/KeisukeYamashita)
+
+<!-- badge links -->
+[go]: https://golang.org/dl
+[go-badge]: https://img.shields.io/badge/Go-1.13-blue
+
+[godoc]: https://godoc.org/github.com/KeisukeYamashita/biko
+[godoc-badge]: https://img.shields.io/badge/godoc.org-reference-blue.svg
+
+[golangci]: https://golangci.com/r/github.com/KeisukeYamashita/biko
+[golangci-badge]: https://golangci.com/badges/github.com/KeisukeYamashita/biko.svg
+
+[go-report-card]: https://goreportcard.com/report/github.com/KeisukeYamashita/biko
+[go-report-card-badge]: https://goreportcard.com/badge/github.com/KeisukeYamashita/biko
+
+[dependabot]: https://dependabot.com 
+[dependabot-badge]: https://badgen.net/badge/icon/Dependabot?icon=dependabot&label&color=blue
