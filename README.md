@@ -66,7 +66,7 @@ The supported provider are here.
 * By default, it will open the project configured by `gcloud` command.
 
 ```
-$ biko gcp [product] [flags]
+$ biko gcp [product] [flag(s)]
 ```
 
 **Supported Product**
@@ -87,11 +87,51 @@ Note that there is `--project` command flag for all commands.
 
 ### Datadog
 
-TODO:
+* `datadog` or `dd` command is supported for Datadog.
+
+```
+$ biko datadog [product] [flag(s)]
+# or
+$ biko dd [product] [flag(s)]
+```
+
+**Supported Product**
+
+| Product | What | Command | Flags(Optional) | 
+|:----:|:----:|:----:|:----:|
+| Watchdog | Go to Watchdog Dashboard | `watchdog`, `wd` | - |
+| Events | Go to Events Dashboard | `events` | - |
+| Dashboard | Go to Dashboard page | `dashboard` | - |
+| Infrastructure | Go to Infrastructure page | `infrastructure` | - | 
+| Monitors | Go to Monitors Dashboard | `moniters` | - |
+| Integrations | Go to Integrations page | `integrations` | - |
+| APM | Go to APM page | `apm` | - |
+| Notebook | Go to Notebook page | `notebook` | - | 
+| Logs | Go to logs page | `logs` | - | 
+| Synthetics | Go to synthetics page | `synthetics` | - |
 
 ### Google
 
-TODO:
+* Open Google and search from your terminal.
+
+```
+$ biko google [product] [flag(s)]
+# or
+$ biko g [product] [flag(s)]
+```
+
+| Product | What | Command | Flags(Optional) | 
+|:----:|:----:|:----:|:----:|
+| Search | Search on Google | `search`, `s` | - |
+
+
+If you bump into something you want to lookup when you are using the terminal...
+
+```
+$ biko g s "How to configure biko"
+```
+
+Blazing fast.
 
 ### Youtube
 
