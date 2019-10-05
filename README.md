@@ -9,6 +9,7 @@
 [![GolangCI][golangci-badge]][golangci]
 [![Go Report Card][go-report-card-badge]][go-report-card]
 [![GoDoc][godoc-badge]][godoc]
+[![Dependabot][dependabot-badge]][dependabot]
 ![License](https://img.shields.io/badge/license-Apache%202.0-%23E93424)
 
 ## Install
@@ -133,3 +134,6 @@ Biko is released under the Apache License 2.0.
 
 [go-report-card]: https://goreportcard.com/report/github.com/KeisukeYamashita/biko
 [go-report-card-badge]: https://goreportcard.com/badge/github.com/KeisukeYamashita/biko
+
+[dependabot]: https://dependabot.com 
+[dependabot-badge]: https://badgen.net/badge/icon/Dependabot?icon=dependabot&label&color=blue
