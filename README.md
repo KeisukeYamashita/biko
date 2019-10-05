@@ -1,5 +1,7 @@
 # Biko
 
+> CLI tool to jump to your browser directly to improve productivity
+
 <br />
 <p align="center"><a href="#" target="_blank" rel="noopener noreferrer"><img width="320"src="_image/logo.png"></a></p>
 <br />
