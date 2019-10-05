@@ -1,5 +1,7 @@
 # Biko
 
+> CLI tool to jump to your browser directly to improve productivity
+
 <br />
 <p align="center"><a href="#" target="_blank" rel="noopener noreferrer"><img width="320"src="_image/logo.png"></a></p>
 <br />
@@ -37,7 +39,7 @@ $ go get github.com/KeisukeYamashita/biko
 #### Exaple1. Open GCP Cloud Spanner to specified project
 
 ```
-$ biko gcp --project my-spanner-project --product spanner
+$ biko gcp spanner --project my-spanner-project
 ```
 
 If you don't specify the project, it will use the value configured by `gcloud` SDK config.
@@ -61,27 +63,119 @@ The supported provider are here.
 
 ### GCP
 
-TODO:
+* By default, it will open the project configured by `gcloud` command.
+
+```
+$ biko gcp [product] [flag(s)]
+```
+
+**Supported Product**
+
+| Product | What | Command | Flags(Optional) | 
+|:----:|:----:|:----:|:----:|
+| App Engine | Go to GAE Dashboard | `appengine`, `gae` | - |
+| Bigquery | Go to Bigquery top or the database, table | `bigquery`, `bq` | `--database`, `--table` |
+| Kubernetes | Go to GKE page, or the cluster detail | `kubernetes`, `gke` | `--region`, `--name` | 
+| Spanner | Go to spanner page, or the instance, database, table | `spanner` | `--instance`, `--database`, `--table` | 
+| Container Registry | Go to container registry or the container detail | `gcr` | `--name` |
+| Cloud Functions | Go to Cloud Functions page or the functions detail | `functions`, `f` |  `--region`, `--name` |
+| Cloud Run | Go to Cloud Run page or the deployments detail | `run` | `--region`, `--name` |	
+| Compute Engine | Go to GCE page | `compute` | 
+| Stackdriver Logging | Go to Stackdriver logging | `logs`, `l` | - | 
+
+Note that there is `--project` command flag for all commands.
 
 ### Datadog
 
-TODO:
+* `datadog` or `dd` command is supported for Datadog.
+
+```
+$ biko datadog [product] [flag(s)]
+# or
+$ biko dd [product] [flag(s)]
+```
+
+**Supported Product**
+
+| Product | What | Command | Flags(Optional) | 
+|:----:|:----:|:----:|:----:|
+| Watchdog | Go to Watchdog Dashboard | `watchdog`, `wd` | - |
+| Events | Go to Events Dashboard | `events` | - |
+| Dashboard | Go to Dashboard page | `dashboard` | - |
+| Infrastructure | Go to Infrastructure page | `infrastructure` | - | 
+| Monitors | Go to Monitors Dashboard | `moniters` | - |
+| Integrations | Go to Integrations page | `integrations` | - |
+| APM | Go to APM page | `apm` | - |
+| Notebook | Go to Notebook page | `notebook` | - | 
+| Logs | Go to logs page | `logs` | - | 
+| Synthetics | Go to synthetics page | `synthetics` | - |
 
 ### Google
 
-TODO:
+* Open Google and search from your terminal.
+
+```
+$ biko google [product] [flag(s)]
+# or
+$ biko g [product] [flag(s)]
+```
+
+| Product | What | Command | Flags(Optional) | 
+|:----:|:----:|:----:|:----:|
+| Search | Search on Google | `search`, `s` | - |
+
+
+If you bump into something you want to lookup when you are using the terminal...
+
+```
+$ biko g s "How to configure biko"
+```
+
+Blazing fast.
 
 ### Youtube
 
-TODO: 
+* Open Youtube and search from your terminal.
+
+```
+$ biko youtube [product] [flag(s)]
+# or
+$ biko yt [product] [flag(s)]
+```
+
+| Product | What | Command | Flags(Optional) | 
+|:----:|:----:|:----:|:----:|
+| Search | Search on Youtube | `search`, `s` | - |
 
 ### Pagerduty
 
-TODO:
+* If you are using SSO, you need to pass `--org` or configure `BIKO_PAGERDUTY`
+
+```
+$ biko pagerduty [product] [flag(s)]
+# or
+$ biko pd [product] [flag(s)]
+```
+
+| Product | What | Command | Flags(Optional) | 
+|:----:|:----:|:----:|:----:|
+| Incident | Go to incident page | `incident`, `i` | - |
+| Alert | Go to alert page | `alert`, `a` | - |
+| Schedules | Go to schedules page | `schedules`, `s` | - |
 
 ### Github
 
-TODO: 
+* Open Github from your terminal.
+
+```
+$ biko github [product] [flag(s)]
+# or
+$ biko gh [product] [flag(s)]
+```
+
+| Product | What | Command | Flags(Optional) | 
+|:----:|:----:|:----:|:----:|
+| Dashboard | Open github Dashboard | `dashboard` | `--org` |
 
 ## (Advanced): Docker image
 
