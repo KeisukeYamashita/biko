@@ -21,6 +21,7 @@
 Install by homebrew.
 
 ```
+$ brew tap KeisukeYamashita/biko
 $ brew install biko
 ```
 
@@ -80,7 +81,7 @@ $ biko gcp [product] [flag(s)]
 | Container Registry | Go to container registry or the container detail | `gcr` | `--name` |
 | Cloud Functions | Go to Cloud Functions page or the functions detail | `functions`, `f` |  `--region`, `--name` |
 | Cloud Run | Go to Cloud Run page or the deployments detail | `run` | `--region`, `--name` |	
-| Compute Engine | Go to GCE page | `compute` | 
+| Compute Engine | Go to GCE page | `compute` | -  |
 | Stackdriver Logging | Go to Stackdriver logging | `logs`, `l` | - | 
 
 Note that there is `--project` command flag for all commands.
