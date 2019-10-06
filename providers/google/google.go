@@ -4,13 +4,28 @@ import (
 	"net/url"
 	"path"
 
+	"github.com/KeisukeYamashita/biko/alias"
 	"github.com/urfave/cli"
 )
 
+// Provider ...
 type Provider struct {
 	baseURL *url.URL
 	URL     *url.URL
 	Ctx     *cli.Context
+	Aliases map[string]interface{}
+}
+
+// GetProvider ...
+func GetProvider() (*Provider, error) {
+	conf, err := alias.GetConfig()
+	if err != nil {
+		return nil, err
+	}
+
+	return &Provider{
+		Aliases: conf.Github["alias"].(map[string]interface{}),
+	}, nil
 }
 
 // Init ...
@@ -37,7 +52,7 @@ func (p *Provider) addProductPath(product string) {
 		p.join("search")
 		param := url.Values{}
 		var query string
-		if query = p.Ctx.String("query"); query != "" {
+		if query = p.GetCtxString("query"); query != "" {
 			param.Add("q", query)
 			p.URL.RawQuery = param.Encode()
 		}
@@ -49,4 +64,20 @@ func (p *Provider) join(additionPath string) {
 		p.URL = p.baseURL
 	}
 	p.URL.Path = path.Join(p.URL.Path, additionPath)
+}
+
+// GetCtxString ...
+func (p *Provider) GetCtxString(str string) string {
+	key := p.GetCtxString(str)
+	if key == "" {
+		return ""
+	}
+	value, ok := p.Aliases[key].(string)
+	if !ok {
+		return key
+	}
+	if value == "" {
+		return key
+	}
+	return value
 }
