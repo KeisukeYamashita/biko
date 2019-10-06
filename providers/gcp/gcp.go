@@ -6,6 +6,7 @@ import (
 	"os"
 	"path"
 
+	"github.com/KeisukeYamashita/biko/alias"
 	"github.com/go-ini/ini"
 	"github.com/urfave/cli"
 )
@@ -21,6 +22,7 @@ type Provider struct {
 	SDKConfig *SDKConfig
 	Product   string
 	Ctx       *cli.Context
+	Aliases   map[string]interface{}
 }
 
 // SDKConfig ...
@@ -45,6 +47,18 @@ type Compute struct {
 // Container ...
 type Container struct {
 	Cluster string
+}
+
+// GetProvider ...
+func GetProvider() (*Provider, error) {
+	conf, err := alias.GetConfig()
+	if err != nil {
+		return nil, err
+	}
+
+	return &Provider{
+		Aliases: conf.GCP["alias"].(map[string]interface{}),
+	}, nil
 }
 
 // Init ...
@@ -106,18 +120,18 @@ func (p *Provider) addProductPath(product string) {
 		var db, table string
 		if db = p.Ctx.String("database"); db != "" {
 			param := url.Values{}
-			param.Add("d", db)
+			param.Add("d", p.getAlias(db))
 			if table = p.Ctx.String("table"); table != "" {
-				param.Add("t", table)
+				param.Add("t", p.getAlias(table))
 			}
 			p.URL.RawQuery = param.Encode()
 		}
 	case "kubernetes":
 		var region, name string
 		if region = p.Ctx.String("region"); region != "" {
-			p.join(fmt.Sprintf("details/%s", region))
+			p.join(fmt.Sprintf("details/%s", p.getAlias(region)))
 			if name = p.Ctx.String("name"); name != "" {
-				p.join(name)
+				p.join(p.getAlias(name))
 			}
 		}
 	case "spanner":
@@ -135,15 +149,15 @@ func (p *Provider) addProductPath(product string) {
 		var name string
 		p.join(fmt.Sprintf("images/%s/", p.SDKConfig.Core.Project))
 		if name = p.Ctx.String("name"); name != "" {
-			p.join(fmt.Sprintf("GLOBAL/%s", name))
+			p.join(fmt.Sprintf("GLOBAL/%s", p.getAlias(name)))
 		}
 	case "run", "functions":
 		var region, name string
-		if region = p.Ctx.String("region"); name != "" {
-			p.join(fmt.Sprintf("details/%s", region))
+		if region = p.Ctx.String("region"); region != "" {
+			p.join(fmt.Sprintf("details/%s", p.getAlias(region)))
 
 			if name = p.Ctx.String("name"); name != "" {
-				p.join(name)
+				p.join(p.getAlias(name))
 			}
 		}
 
@@ -164,6 +178,17 @@ func (p *Provider) addProjectParam() {
 	params.Add("project", p.SDKConfig.Core.Project)
 	p.URL.RawQuery = params.Encode()
 	return
+}
+
+func (p *Provider) getAlias(key string) string {
+	value, ok := p.Aliases[key].(string)
+	if !ok {
+		return key
+	}
+	if value == "" {
+		return key
+	}
+	return value
 }
 
 func (p *Provider) join(additionPath string) {

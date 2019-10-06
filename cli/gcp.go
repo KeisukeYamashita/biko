@@ -41,7 +41,10 @@ func newGCPGAECmd() cli.Command {
 		Usage:   "Open GAE page",
 		Flags:   []cli.Flag{},
 		Action: func(c *cli.Context) error {
-			gcp := &gcp.Provider{}
+			gcp, err := gcp.GetProvider()
+			if err != nil {
+				return err
+			}
 			return browser.Open(c, gcp)
 		},
 	}
@@ -63,7 +66,10 @@ func newGCPBQCmd() cli.Command {
 			},
 		},
 		Action: func(c *cli.Context) error {
-			gcp := &gcp.Provider{}
+			gcp, err := gcp.GetProvider()
+			if err != nil {
+				return err
+			}
 			return browser.Open(c, gcp)
 		},
 	}
@@ -85,7 +91,10 @@ func newGCPGKECmd() cli.Command {
 			},
 		},
 		Action: func(c *cli.Context) error {
-			gcp := &gcp.Provider{}
+			gcp, err := gcp.GetProvider()
+			if err != nil {
+				return err
+			}
 			return browser.Open(c, gcp)
 		},
 	}
@@ -114,7 +123,10 @@ func newGCPSpannerCmd() cli.Command {
 			},
 		},
 		Action: func(c *cli.Context) error {
-			gcp := &gcp.Provider{}
+			gcp, err := gcp.GetProvider()
+			if err != nil {
+				return err
+			}
 			return browser.Open(c, gcp)
 		},
 	}
@@ -135,7 +147,10 @@ func newGCPGCRCmd() cli.Command {
 			},
 		},
 		Action: func(c *cli.Context) error {
-			gcp := &gcp.Provider{}
+			gcp, err := gcp.GetProvider()
+			if err != nil {
+				return err
+			}
 			return browser.Open(c, gcp)
 		},
 	}
@@ -157,7 +172,10 @@ func newGCPFunctionsCmd() cli.Command {
 			},
 		},
 		Action: func(c *cli.Context) error {
-			gcp := &gcp.Provider{}
+			gcp, err := gcp.GetProvider()
+			if err != nil {
+				return err
+			}
 			return browser.Open(c, gcp)
 		},
 	}
@@ -178,7 +196,10 @@ func newGCPCloudRunCmd() cli.Command {
 			},
 		},
 		Action: func(c *cli.Context) error {
-			gcp := &gcp.Provider{}
+			gcp, err := gcp.GetProvider()
+			if err != nil {
+				return err
+			}
 			return browser.Open(c, gcp)
 		},
 	}
@@ -191,7 +212,10 @@ func newGCPGCECmd() cli.Command {
 		Usage:   "Open Compute Engine page",
 		Flags:   []cli.Flag{},
 		Action: func(c *cli.Context) error {
-			gcp := &gcp.Provider{}
+			gcp, err := gcp.GetProvider()
+			if err != nil {
+				return err
+			}
 			return browser.Open(c, gcp)
 		},
 	}
@@ -204,7 +228,10 @@ func newGCPLogsCmd() cli.Command {
 		Usage:   "Open Stackdriver log page",
 		Flags:   []cli.Flag{},
 		Action: func(c *cli.Context) error {
-			gcp := &gcp.Provider{}
+			gcp, err := gcp.GetProvider()
+			if err != nil {
+				return err
+			}
 			return browser.Open(c, gcp)
 		},
 	}
