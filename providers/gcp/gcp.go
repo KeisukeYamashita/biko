@@ -118,29 +118,29 @@ func (p *Provider) addProductPath(product string) {
 	case "appengine":
 	case "bigquery":
 		var db, table string
-		if db = p.Ctx.String("database"); db != "" {
+		if db = p.GetCtxString("database"); db != "" {
 			param := url.Values{}
-			param.Add("d", p.getAlias(db))
-			if table = p.Ctx.String("table"); table != "" {
-				param.Add("t", p.getAlias(table))
+			param.Add("d", db)
+			if table = p.GetCtxString("table"); table != "" {
+				param.Add("t", table)
 			}
 			p.URL.RawQuery = param.Encode()
 		}
 	case "kubernetes":
 		var region, name string
-		if region = p.Ctx.String("region"); region != "" {
-			p.join(fmt.Sprintf("details/%s", p.getAlias(region)))
-			if name = p.Ctx.String("name"); name != "" {
-				p.join(p.getAlias(name))
+		if region = p.GetCtxString("region"); region != "" {
+			p.join(fmt.Sprintf("details/%s", region))
+			if name = p.GetCtxString("name"); name != "" {
+				p.join(name)
 			}
 		}
 	case "spanner":
 		var instance, db, scheme string
-		if instance = p.Ctx.String("instance"); instance != "" {
+		if instance = p.GetCtxString("instance"); instance != "" {
 			p.join(fmt.Sprintf("instances/%s", instance))
-			if db = p.Ctx.String("database"); db != "" {
+			if db = p.GetCtxString("database"); db != "" {
 				p.join(fmt.Sprintf("databases/%s", db))
-				if scheme = p.Ctx.String("table"); scheme != "" {
+				if scheme = p.GetCtxString("table"); scheme != "" {
 					p.join(fmt.Sprintf("schema/%s", scheme))
 				}
 			}
@@ -148,16 +148,16 @@ func (p *Provider) addProductPath(product string) {
 	case "gcr":
 		var name string
 		p.join(fmt.Sprintf("images/%s/", p.SDKConfig.Core.Project))
-		if name = p.Ctx.String("name"); name != "" {
-			p.join(fmt.Sprintf("GLOBAL/%s", p.getAlias(name)))
+		if name = p.GetCtxString("name"); name != "" {
+			p.join(fmt.Sprintf("GLOBAL/%s", name))
 		}
 	case "run", "functions":
 		var region, name string
-		if region = p.Ctx.String("region"); region != "" {
-			p.join(fmt.Sprintf("details/%s", p.getAlias(region)))
+		if region = p.GetCtxString("region"); region != "" {
+			p.join(fmt.Sprintf("details/%s", region))
 
-			if name = p.Ctx.String("name"); name != "" {
-				p.join(p.getAlias(name))
+			if name = p.GetCtxString("name"); name != "" {
+				p.join(name)
 			}
 		}
 
@@ -180,7 +180,12 @@ func (p *Provider) addProjectParam() {
 	return
 }
 
-func (p *Provider) getAlias(key string) string {
+// GetCtxString ...
+func (p *Provider) GetCtxString(str string) string {
+	key := p.GetCtxString(str)
+	if key == "" {
+		return ""
+	}
 	value, ok := p.Aliases[key].(string)
 	if !ok {
 		return key
