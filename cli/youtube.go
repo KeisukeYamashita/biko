@@ -18,8 +18,11 @@ func newYoutubeCmd() cli.Command {
 			},
 		},
 		Action: func(c *cli.Context) error {
-			gcp := &youtube.Provider{}
-			return browser.Open(c, gcp)
+			yt, err := youtube.GetProvider()
+			if err != nil {
+				return err
+			}
+			return browser.Open(c, yt)
 		},
 		Subcommands: []cli.Command{
 			newYoutubeSearchCmd(),
@@ -39,8 +42,11 @@ func newYoutubeSearchCmd() cli.Command {
 			},
 		},
 		Action: func(c *cli.Context) error {
-			gcp := &youtube.Provider{}
-			return browser.Open(c, gcp)
+			yt, err := youtube.GetProvider()
+			if err != nil {
+				return err
+			}
+			return browser.Open(c, yt)
 		},
 	}
 

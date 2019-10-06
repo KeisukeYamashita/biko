@@ -4,13 +4,28 @@ import (
 	"net/url"
 	"path"
 
+	"github.com/KeisukeYamashita/biko/alias"
 	"github.com/urfave/cli"
 )
 
+// Provider ...
 type Provider struct {
 	baseURL *url.URL
 	URL     *url.URL
 	Ctx     *cli.Context
+	Aliases map[string]interface{}
+}
+
+// GetProvider ...
+func GetProvider() (*Provider, error) {
+	conf, err := alias.GetConfig()
+	if err != nil {
+		return nil, err
+	}
+
+	return &Provider{
+		Aliases: conf.Youtube["alias"].(map[string]interface{}),
+	}, nil
 }
 
 // Init ...
