@@ -14,6 +14,36 @@
 [![Dependabot][dependabot-badge]][dependabot]
 ![License](https://img.shields.io/badge/license-Apache%202.0-%23E93424)
 
+
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+
+
+- [Install](#install)
+  - [By Homebrew](#by-homebrew)
+  - [By source code](#by-source-code)
+- [Usage](#usage)
+  - [Go to your target directly](#go-to-your-target-directly)
+    - [Exaple1. Open GCP Cloud Spanner to specified project](#exaple1-open-gcp-cloud-spanner-to-specified-project)
+    - [Example2. Open Datadog Dashboad](#example2-open-datadog-dashboad)
+- [Support](#support)
+- [Alias](#alias)
+  - [GCP](#gcp)
+  - [Datadog](#datadog)
+  - [Google](#google)
+  - [Youtube](#youtube)
+  - [Pagerduty](#pagerduty)
+  - [Github](#github)
+- [(Advanced): Docker image](#advanced-docker-image)
+- [Contribute](#contribute)
+  - [Add a provider](#add-a-provider)
+- [Roadmap](#roadmap)
+- [Author](#author)
+- [License](#license)
+
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
+
+
 ## Install
 
 ### By Homebrew
@@ -95,12 +125,12 @@ $ biko gcp [product] [flag(s)]
 | Product | What | Command | Flags(Optional) | 
 |:----:|:----:|:----:|:----:|
 | App Engine | Go to GAE Dashboard | `appengine`, `gae` | - |
-| Bigquery | Go to Bigquery top or the database, table | `bigquery`, `bq` | `--database`, `--table` |
-| Kubernetes | Go to GKE page, or the cluster detail | `kubernetes`, `gke` | `--region`, `--name` | 
-| Spanner | Go to spanner page, or the instance, database, table | `spanner` | `--instance`, `--database`, `--table` | 
-| Container Registry | Go to container registry or the container detail | `gcr` | `--name` |
-| Cloud Functions | Go to Cloud Functions page or the functions detail | `functions`, `f` |  `--region`, `--name` |
-| Cloud Run | Go to Cloud Run page or the deployments detail | `run` | `--region`, `--name` |	
+| Bigquery | Go to Bigquery top or the database, table | `bigquery`, `bq` | `--database, -db`, `--table, -tb` |
+| Kubernetes | Go to GKE page, or the cluster detail | `kubernetes`, `gke` | `--region, -r`, `--name, -n` | 
+| Spanner | Go to spanner page, or the instance, database, table | `spanner` | `--instance, -i`, `--database, -db`, `--table, -t` | 
+| Container Registry | Go to container registry or the container detail | `gcr` | `--name, -n` |
+| Cloud Functions | Go to Cloud Functions page or the functions detail | `functions`, `f` |  `--region, -r`, `--name, -n` |
+| Cloud Run | Go to Cloud Run page or the deployments detail | `run` | `--region, -r`, `--name, -n` |	
 | Compute Engine | Go to GCE page | `compute` | -  |
 | Stackdriver Logging | Go to Stackdriver logging | `logs`, `l` | - | 
 
@@ -143,7 +173,7 @@ $ biko g [product] [flag(s)]
 
 | Product | What | Command | Flags(Optional) | 
 |:----:|:----:|:----:|:----:|
-| Search | Search on Google | `search`, `s` | - |
+| Search | Search on Google | `search`, `s` | `--query, -q` |
 
 
 If you bump into something you want to lookup when you are using the terminal...
@@ -166,7 +196,7 @@ $ biko yt [product] [flag(s)]
 
 | Product | What | Command | Flags(Optional) | 
 |:----:|:----:|:----:|:----:|
-| Search | Search on Youtube | `search`, `s` | - |
+| Search | Search on Youtube | `search`, `s` | `--query, -q` |
 
 ### Pagerduty
 
