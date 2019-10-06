@@ -3,7 +3,6 @@ package cli
 import (
 	"github.com/KeisukeYamashita/biko/browser"
 	dd "github.com/KeisukeYamashita/biko/providers/datadog"
-	"github.com/KeisukeYamashita/biko/providers/gcp"
 	"github.com/urfave/cli"
 )
 
@@ -35,7 +34,10 @@ func newDDWatchDogCmd() cli.Command {
 		Usage:   "Open Watchdog page",
 		Flags:   []cli.Flag{},
 		Action: func(c *cli.Context) error {
-			dd := &dd.Provider{}
+			dd, err := dd.GetProvider()
+			if err != nil {
+				return err
+			}
 			return browser.Open(c, dd)
 		},
 	}
@@ -47,7 +49,10 @@ func newDDEventCmd() cli.Command {
 		Usage: "Open Events page",
 		Flags: []cli.Flag{},
 		Action: func(c *cli.Context) error {
-			dd := &dd.Provider{}
+			dd, err := dd.GetProvider()
+			if err != nil {
+				return err
+			}
 			return browser.Open(c, dd)
 		},
 	}
@@ -59,8 +64,11 @@ func newDDDashboardCmd() cli.Command {
 		Usage: "Open Dashboard page",
 		Flags: []cli.Flag{},
 		Action: func(c *cli.Context) error {
-			gcp := &gcp.Provider{}
-			return browser.Open(c, gcp)
+			dd, err := dd.GetProvider()
+			if err != nil {
+				return err
+			}
+			return browser.Open(c, dd)
 		},
 	}
 }
@@ -71,8 +79,11 @@ func newDDInfrastructureCmd() cli.Command {
 		Usage: "Open Infrastructure page",
 		Flags: []cli.Flag{},
 		Action: func(c *cli.Context) error {
-			gcp := &gcp.Provider{}
-			return browser.Open(c, gcp)
+			dd, err := dd.GetProvider()
+			if err != nil {
+				return err
+			}
+			return browser.Open(c, dd)
 		},
 	}
 }
@@ -83,8 +94,11 @@ func newDDMonitorsCmd() cli.Command {
 		Usage: "Open Monitors page",
 		Flags: []cli.Flag{},
 		Action: func(c *cli.Context) error {
-			gcp := &gcp.Provider{}
-			return browser.Open(c, gcp)
+			dd, err := dd.GetProvider()
+			if err != nil {
+				return err
+			}
+			return browser.Open(c, dd)
 		},
 	}
 }
@@ -95,8 +109,11 @@ func newDDIntegrationsCmd() cli.Command {
 		Usage: "Open Integrations page",
 		Flags: []cli.Flag{},
 		Action: func(c *cli.Context) error {
-			gcp := &gcp.Provider{}
-			return browser.Open(c, gcp)
+			dd, err := dd.GetProvider()
+			if err != nil {
+				return err
+			}
+			return browser.Open(c, dd)
 		},
 	}
 }
@@ -107,8 +124,11 @@ func newDDApmCmd() cli.Command {
 		Usage: "Open APM page",
 		Flags: []cli.Flag{},
 		Action: func(c *cli.Context) error {
-			gcp := &gcp.Provider{}
-			return browser.Open(c, gcp)
+			dd, err := dd.GetProvider()
+			if err != nil {
+				return err
+			}
+			return browser.Open(c, dd)
 		},
 	}
 }
@@ -119,8 +139,11 @@ func newDDNotebookCmd() cli.Command {
 		Usage: "Open Notebook page",
 		Flags: []cli.Flag{},
 		Action: func(c *cli.Context) error {
-			gcp := &gcp.Provider{}
-			return browser.Open(c, gcp)
+			dd, err := dd.GetProvider()
+			if err != nil {
+				return err
+			}
+			return browser.Open(c, dd)
 		},
 	}
 }
@@ -131,8 +154,11 @@ func newDDLogsCmd() cli.Command {
 		Usage: "Open Logs page",
 		Flags: []cli.Flag{},
 		Action: func(c *cli.Context) error {
-			gcp := &gcp.Provider{}
-			return browser.Open(c, gcp)
+			dd, err := dd.GetProvider()
+			if err != nil {
+				return err
+			}
+			return browser.Open(c, dd)
 		},
 	}
 }
@@ -143,8 +169,11 @@ func newDDSyntheticsCmd() cli.Command {
 		Usage: "Open Synthetics page",
 		Flags: []cli.Flag{},
 		Action: func(c *cli.Context) error {
-			gcp := &gcp.Provider{}
-			return browser.Open(c, gcp)
+			dd, err := dd.GetProvider()
+			if err != nil {
+				return err
+			}
+			return browser.Open(c, dd)
 		},
 	}
 }

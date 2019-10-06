@@ -39,9 +39,17 @@ func newGCPGAECmd() cli.Command {
 		Name:    "appengine",
 		Aliases: []string{"gae"},
 		Usage:   "Open GAE page",
-		Flags:   []cli.Flag{},
+		Flags: []cli.Flag{
+			cli.StringFlag{
+				Name:  "project",
+				Usage: "Specify the project to open",
+			},
+		},
 		Action: func(c *cli.Context) error {
-			gcp := &gcp.Provider{}
+			gcp, err := gcp.GetProvider()
+			if err != nil {
+				return err
+			}
 			return browser.Open(c, gcp)
 		},
 	}
@@ -54,16 +62,23 @@ func newGCPBQCmd() cli.Command {
 		Usage:   "Open Bigquery page",
 		Flags: []cli.Flag{
 			cli.StringFlag{
-				Name:  "database",
+				Name:  "project",
+				Usage: "Specify the project to open",
+			},
+			cli.StringFlag{
+				Name:  "database, db",
 				Usage: "Database to show",
 			},
 			cli.StringFlag{
-				Name:  "table",
+				Name:  "table, t",
 				Usage: "Table to show",
 			},
 		},
 		Action: func(c *cli.Context) error {
-			gcp := &gcp.Provider{}
+			gcp, err := gcp.GetProvider()
+			if err != nil {
+				return err
+			}
 			return browser.Open(c, gcp)
 		},
 	}
@@ -76,16 +91,23 @@ func newGCPGKECmd() cli.Command {
 		Usage:   "Open GKE page",
 		Flags: []cli.Flag{
 			cli.StringFlag{
-				Name:  "region",
+				Name:  "project",
+				Usage: "Specify the project to open",
+			},
+			cli.StringFlag{
+				Name:  "region, r",
 				Usage: "Region of the cluster",
 			},
 			cli.StringFlag{
-				Name:  "name",
+				Name:  "name, n",
 				Usage: "Name of the cluter",
 			},
 		},
 		Action: func(c *cli.Context) error {
-			gcp := &gcp.Provider{}
+			gcp, err := gcp.GetProvider()
+			if err != nil {
+				return err
+			}
 			return browser.Open(c, gcp)
 		},
 	}
@@ -101,20 +123,23 @@ func newGCPSpannerCmd() cli.Command {
 				Usage: "Specify the project to open",
 			},
 			cli.StringFlag{
-				Name:  "instance",
+				Name:  "instance, i",
 				Usage: "Instance name",
 			},
 			cli.StringFlag{
-				Name:  "database",
+				Name:  "database, db",
 				Usage: "Database name",
 			},
 			cli.StringFlag{
-				Name:  "table",
+				Name:  "table, tb",
 				Usage: "Table name",
 			},
 		},
 		Action: func(c *cli.Context) error {
-			gcp := &gcp.Provider{}
+			gcp, err := gcp.GetProvider()
+			if err != nil {
+				return err
+			}
 			return browser.Open(c, gcp)
 		},
 	}
@@ -130,12 +155,15 @@ func newGCPGCRCmd() cli.Command {
 				Usage: "Specify the project to open",
 			},
 			cli.StringFlag{
-				Name:  "name",
+				Name:  "name, n",
 				Usage: "Name of the image",
 			},
 		},
 		Action: func(c *cli.Context) error {
-			gcp := &gcp.Provider{}
+			gcp, err := gcp.GetProvider()
+			if err != nil {
+				return err
+			}
 			return browser.Open(c, gcp)
 		},
 	}
@@ -148,16 +176,23 @@ func newGCPFunctionsCmd() cli.Command {
 		Usage:   "Open Cloud Functions page",
 		Flags: []cli.Flag{
 			cli.StringFlag{
-				Name:  "name",
+				Name:  "project",
+				Usage: "Specify the project to open",
+			},
+			cli.StringFlag{
+				Name:  "name, n",
 				Usage: "Name of the function",
 			},
 			cli.StringFlag{
-				Name:  "region",
+				Name:  "region, r",
 				Usage: "Region of the function",
 			},
 		},
 		Action: func(c *cli.Context) error {
-			gcp := &gcp.Provider{}
+			gcp, err := gcp.GetProvider()
+			if err != nil {
+				return err
+			}
 			return browser.Open(c, gcp)
 		},
 	}
@@ -169,16 +204,23 @@ func newGCPCloudRunCmd() cli.Command {
 		Usage: "Open Cloud Run page",
 		Flags: []cli.Flag{
 			cli.StringFlag{
-				Name:  "name",
+				Name:  "project",
+				Usage: "Specify the project to open",
+			},
+			cli.StringFlag{
+				Name:  "name, n",
 				Usage: "Name of the function",
 			},
 			cli.StringFlag{
-				Name:  "region",
+				Name:  "region, r",
 				Usage: "Region of the function",
 			},
 		},
 		Action: func(c *cli.Context) error {
-			gcp := &gcp.Provider{}
+			gcp, err := gcp.GetProvider()
+			if err != nil {
+				return err
+			}
 			return browser.Open(c, gcp)
 		},
 	}
@@ -189,9 +231,17 @@ func newGCPGCECmd() cli.Command {
 		Name:    "compute",
 		Aliases: []string{"gce"},
 		Usage:   "Open Compute Engine page",
-		Flags:   []cli.Flag{},
+		Flags: []cli.Flag{
+			cli.StringFlag{
+				Name:  "project",
+				Usage: "Specify the project to open",
+			},
+		},
 		Action: func(c *cli.Context) error {
-			gcp := &gcp.Provider{}
+			gcp, err := gcp.GetProvider()
+			if err != nil {
+				return err
+			}
 			return browser.Open(c, gcp)
 		},
 	}
@@ -202,9 +252,17 @@ func newGCPLogsCmd() cli.Command {
 		Name:    "logs",
 		Aliases: []string{"l"},
 		Usage:   "Open Stackdriver log page",
-		Flags:   []cli.Flag{},
+		Flags: []cli.Flag{
+			cli.StringFlag{
+				Name:  "project",
+				Usage: "Specify the project to open",
+			},
+		},
 		Action: func(c *cli.Context) error {
-			gcp := &gcp.Provider{}
+			gcp, err := gcp.GetProvider()
+			if err != nil {
+				return err
+			}
 			return browser.Open(c, gcp)
 		},
 	}

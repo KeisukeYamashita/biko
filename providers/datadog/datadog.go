@@ -4,6 +4,7 @@ import (
 	"net/url"
 	"path"
 
+	"github.com/KeisukeYamashita/biko/alias"
 	"github.com/urfave/cli"
 )
 
@@ -13,6 +14,19 @@ type Provider struct {
 	URL     *url.URL
 	Product string
 	Ctx     *cli.Context
+	Aliases map[string]interface{}
+}
+
+// GetProvider ...
+func GetProvider() (*Provider, error) {
+	conf, err := alias.GetConfig()
+	if err != nil {
+		return nil, err
+	}
+
+	return &Provider{
+		Aliases: conf.Datadog["alias"].(map[string]interface{}),
+	}, nil
 }
 
 // Init ...
@@ -56,4 +70,20 @@ func (p *Provider) join(additionPath string) {
 		p.URL = p.baseURL
 	}
 	p.URL.Path = path.Join(p.URL.Path, additionPath)
+}
+
+// GetCtxString ...
+func (p *Provider) GetCtxString(str string) string {
+	key := p.GetCtxString(str)
+	if key == "" {
+		return ""
+	}
+	value, ok := p.Aliases[key].(string)
+	if !ok {
+		return key
+	}
+	if value == "" {
+		return key
+	}
+	return value
 }

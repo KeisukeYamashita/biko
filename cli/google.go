@@ -18,7 +18,10 @@ func newGoogleCmd() cli.Command {
 			},
 		},
 		Action: func(c *cli.Context) error {
-			gcp := &google.Provider{}
+			gcp, err := google.GetProvider()
+			if err != nil {
+				return err
+			}
 			return browser.Open(c, gcp)
 		},
 		Subcommands: []cli.Command{
@@ -34,12 +37,15 @@ func newGoogleSearchCmd() cli.Command {
 		Usage:   "Search a page",
 		Flags: []cli.Flag{
 			cli.StringFlag{
-				Name:  "query",
+				Name:  "query, q",
 				Usage: "Query a page",
 			},
 		},
 		Action: func(c *cli.Context) error {
-			gcp := &google.Provider{}
+			gcp, err := google.GetProvider()
+			if err != nil {
+				return err
+			}
 			return browser.Open(c, gcp)
 		},
 	}

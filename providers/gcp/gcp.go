@@ -6,6 +6,7 @@ import (
 	"os"
 	"path"
 
+	"github.com/KeisukeYamashita/biko/alias"
 	"github.com/go-ini/ini"
 	"github.com/urfave/cli"
 )
@@ -21,6 +22,7 @@ type Provider struct {
 	SDKConfig *SDKConfig
 	Product   string
 	Ctx       *cli.Context
+	Aliases   map[string]interface{}
 }
 
 // SDKConfig ...
@@ -45,6 +47,18 @@ type Compute struct {
 // Container ...
 type Container struct {
 	Cluster string
+}
+
+// GetProvider ...
+func GetProvider() (*Provider, error) {
+	conf, err := alias.GetConfig()
+	if err != nil {
+		return nil, err
+	}
+
+	return &Provider{
+		Aliases: conf.GCP["alias"].(map[string]interface{}),
+	}, nil
 }
 
 // Init ...
@@ -104,29 +118,29 @@ func (p *Provider) addProductPath(product string) {
 	case "appengine":
 	case "bigquery":
 		var db, table string
-		if db = p.Ctx.String("database"); db != "" {
+		if db = p.GetCtxString("database"); db != "" {
 			param := url.Values{}
 			param.Add("d", db)
-			if table = p.Ctx.String("table"); table != "" {
+			if table = p.GetCtxString("table"); table != "" {
 				param.Add("t", table)
 			}
 			p.URL.RawQuery = param.Encode()
 		}
 	case "kubernetes":
 		var region, name string
-		if region = p.Ctx.String("region"); region != "" {
+		if region = p.GetCtxString("region"); region != "" {
 			p.join(fmt.Sprintf("details/%s", region))
-			if name = p.Ctx.String("name"); name != "" {
+			if name = p.GetCtxString("name"); name != "" {
 				p.join(name)
 			}
 		}
 	case "spanner":
 		var instance, db, scheme string
-		if instance = p.Ctx.String("instance"); instance != "" {
+		if instance = p.GetCtxString("instance"); instance != "" {
 			p.join(fmt.Sprintf("instances/%s", instance))
-			if db = p.Ctx.String("database"); db != "" {
+			if db = p.GetCtxString("database"); db != "" {
 				p.join(fmt.Sprintf("databases/%s", db))
-				if scheme = p.Ctx.String("table"); scheme != "" {
+				if scheme = p.GetCtxString("table"); scheme != "" {
 					p.join(fmt.Sprintf("schema/%s", scheme))
 				}
 			}
@@ -134,15 +148,15 @@ func (p *Provider) addProductPath(product string) {
 	case "gcr":
 		var name string
 		p.join(fmt.Sprintf("images/%s/", p.SDKConfig.Core.Project))
-		if name = p.Ctx.String("name"); name != "" {
+		if name = p.GetCtxString("name"); name != "" {
 			p.join(fmt.Sprintf("GLOBAL/%s", name))
 		}
 	case "run", "functions":
 		var region, name string
-		if region = p.Ctx.String("region"); name != "" {
+		if region = p.GetCtxString("region"); region != "" {
 			p.join(fmt.Sprintf("details/%s", region))
 
-			if name = p.Ctx.String("name"); name != "" {
+			if name = p.GetCtxString("name"); name != "" {
 				p.join(name)
 			}
 		}
@@ -164,6 +178,22 @@ func (p *Provider) addProjectParam() {
 	params.Add("project", p.SDKConfig.Core.Project)
 	p.URL.RawQuery = params.Encode()
 	return
+}
+
+// GetCtxString ...
+func (p *Provider) GetCtxString(str string) string {
+	key := p.GetCtxString(str)
+	if key == "" {
+		return ""
+	}
+	value, ok := p.Aliases[key].(string)
+	if !ok {
+		return key
+	}
+	if value == "" {
+		return key
+	}
+	return value
 }
 
 func (p *Provider) join(additionPath string) {

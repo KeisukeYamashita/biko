@@ -62,6 +62,26 @@ The supported provider are here.
 * Pagerduty
 * Github
 
+## Alias 
+
+You can configure your alias for whatever you want for frequently used projects, products, names, etc. 
+For example, if you use the Cloud Function `my-cloud-functions` in region `asia-northeast1`, you can configure it like below in `$HOME/.biko/config.toml`.
+
+```toml
+[gcp]
+	[gcp.alias]
+	mcf = "my-cloud-functions"
+	an1 = "asia-northeast1"
+```
+
+Now, you can open your page like below using the configured alias.
+
+```
+$ biko gcp functions -r as1 -n mcf
+```
+
+You can directly go to your page without waiting to load pages many times.
+
 ### GCP
 
 * By default, it will open the project configured by `gcloud` command.
