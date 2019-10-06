@@ -166,6 +166,8 @@ func (p *Provider) addProductPath(product string) {
 		case "functions":
 		}
 	case "logs":
+	case "iam":
+		p.join("iam-admin")
 	default:
 		p.join("home/dashboard")
 	}
