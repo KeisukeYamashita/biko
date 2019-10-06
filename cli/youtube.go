@@ -37,7 +37,7 @@ func newYoutubeSearchCmd() cli.Command {
 		Usage:   "Search a page",
 		Flags: []cli.Flag{
 			cli.StringFlag{
-				Name:  "query",
+				Name:  "query, q",
 				Usage: "Query a page",
 			},
 		},
