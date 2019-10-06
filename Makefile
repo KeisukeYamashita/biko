@@ -11,4 +11,4 @@ dockerbuild:
 install: build
 	@cp bin/biko /usr/local/bin
 	@mkdir $HOME/.biko
-	@cp .config/config.ini $HOME/.biko/config.ini
+	@cp .config/default.toml $HOME/.biko/config.toml

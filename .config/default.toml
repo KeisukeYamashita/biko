@@ -1,0 +1,17 @@
+[gcp]
+    [gcp.alias]
+
+[datadog]
+    [datadog.alias]
+
+[google]
+    [google.alias]
+
+[youtube]
+    [youtube.alias]
+
+[pagerduty]
+    [pagerduty.alias]
+
+[github]
+    [github.alias]
