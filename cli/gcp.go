@@ -34,6 +34,7 @@ func newGCPCmd() cli.Command {
 			newGCPSQLCmd(),
 			newGCPPubSubCmd(),
 			newGCPStorageCmd(),
+			newGCPDataflowCmd(),
 		},
 	}
 }
@@ -336,6 +337,26 @@ func newGCPStorageCmd() cli.Command {
 	return cli.Command{
 		Name:  "storage",
 		Usage: "Open Cloud Storage page",
+		Flags: []cli.Flag{
+			cli.StringFlag{
+				Name:  "project",
+				Usage: "Specify the project to open",
+			},
+		},
+		Action: func(c *cli.Context) error {
+			gcp, err := gcp.GetProvider()
+			if err != nil {
+				return err
+			}
+			return browser.Open(c, gcp)
+		},
+	}
+}
+
+func newGCPDataflowCmd() cli.Command {
+	return cli.Command{
+		Name:  "dataflow",
+		Usage: "Open Cloud Dataflow page",
 		Flags: []cli.Flag{
 			cli.StringFlag{
 				Name:  "project",
