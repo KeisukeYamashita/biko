@@ -49,8 +49,11 @@ func newPagerDudyIncidentCmd() cli.Command {
 		Usage:   "Open incident page",
 		Flags:   []cli.Flag{},
 		Action: func(c *cli.Context) error {
-			gcp := &pd.Provider{}
-			return browser.Open(c, gcp)
+			pd, err := pd.GetProvider()
+			if err != nil {
+				return err
+			}
+			return browser.Open(c, pd)
 		},
 	}
 
@@ -63,8 +66,11 @@ func newPagerDudyAlertCmd() cli.Command {
 		Usage:   "Open alert page",
 		Flags:   []cli.Flag{},
 		Action: func(c *cli.Context) error {
-			gcp := &pd.Provider{}
-			return browser.Open(c, gcp)
+			pd, err := pd.GetProvider()
+			if err != nil {
+				return err
+			}
+			return browser.Open(c, pd)
 		},
 	}
 }
@@ -76,8 +82,11 @@ func newPagerDudySchedulesCmd() cli.Command {
 		Usage:   "Open schedules page",
 		Flags:   []cli.Flag{},
 		Action: func(c *cli.Context) error {
-			gcp := &pd.Provider{}
-			return browser.Open(c, gcp)
+			pd, err := pd.GetProvider()
+			if err != nil {
+				return err
+			}
+			return browser.Open(c, pd)
 		},
 	}
 }
