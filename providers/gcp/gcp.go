@@ -113,10 +113,11 @@ func getSDKConfig() (*SDKConfig, error) {
 }
 
 func (p *Provider) addProductPath(product string) {
-	p.join(product)
 	switch product {
 	case "appengine":
+		p.join(product)
 	case "bigquery":
+		p.join(product)
 		var db, table string
 		if db = p.GetCtxString("database"); db != "" {
 			param := url.Values{}
@@ -127,6 +128,7 @@ func (p *Provider) addProductPath(product string) {
 			p.URL.RawQuery = param.Encode()
 		}
 	case "kubernetes":
+		p.join(product)
 		var region, name string
 		if region = p.GetCtxString("region"); region != "" {
 			p.join(fmt.Sprintf("details/%s", region))
@@ -135,6 +137,7 @@ func (p *Provider) addProductPath(product string) {
 			}
 		}
 	case "spanner":
+		p.join(product)
 		var instance, db, scheme string
 		if instance = p.GetCtxString("instance"); instance != "" {
 			p.join(fmt.Sprintf("instances/%s", instance))
@@ -146,12 +149,14 @@ func (p *Provider) addProductPath(product string) {
 			}
 		}
 	case "gcr":
+		p.join(product)
 		var name string
 		p.join(fmt.Sprintf("images/%s/", p.SDKConfig.Core.Project))
 		if name = p.GetCtxString("name"); name != "" {
 			p.join(fmt.Sprintf("GLOBAL/%s", name))
 		}
 	case "run", "functions":
+		p.join(product)
 		var region, name string
 		if region = p.GetCtxString("region"); region != "" {
 			p.join(fmt.Sprintf("details/%s", region))
@@ -166,8 +171,17 @@ func (p *Provider) addProductPath(product string) {
 		case "functions":
 		}
 	case "logs":
+		p.join(product)
 	case "iam":
 		p.join("iam-admin")
+	case "sql":
+		p.join(product)
+	case "pubsub":
+		p.join("cloudpubsub")
+	case "storage":
+		p.join(product)
+	case "dataflow":
+		p.join(product)
 	default:
 		p.join("home/dashboard")
 	}

@@ -133,6 +133,11 @@ $ biko gcp [product] [flag(s)]
 | Cloud Run | Go to Cloud Run page or the deployments detail | `run` | `--region, -r`, `--name, -n` |	
 | Compute Engine | Go to GCE page | `compute` | -  |
 | Stackdriver Logging | Go to Stackdriver logging | `logs`, `l` | - | 
+| IAM & admin | Go to IAM & admin logging | `iam` | - |
+| Cloud SQL | Go to Cloud SQL | `sql` | - |
+| Cloud PubSub | Go to Cloud PubSub | `pubsub` | - |
+| Cloud Storage | Go to Cloud Storage `storage` | - |
+| Cloud Dataflow | Go to Cloud Dataflow | `dataflow` | - |
 
 Note that there is `--project` command flag for all commands.
 

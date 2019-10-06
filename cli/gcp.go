@@ -30,6 +30,10 @@ func newGCPCmd() cli.Command {
 			newGCPCloudRunCmd(),
 			newGCPGCECmd(),
 			newGCPLogsCmd(),
+			newGCPIAMCmd(),
+			newGCPSQLCmd(),
+			newGCPPubSubCmd(),
+			newGCPStorageCmd(),
 		},
 	}
 }
@@ -272,6 +276,66 @@ func newGCPIAMCmd() cli.Command {
 	return cli.Command{
 		Name:  "iam",
 		Usage: "Open IAM & admin page",
+		Flags: []cli.Flag{
+			cli.StringFlag{
+				Name:  "project",
+				Usage: "Specify the project to open",
+			},
+		},
+		Action: func(c *cli.Context) error {
+			gcp, err := gcp.GetProvider()
+			if err != nil {
+				return err
+			}
+			return browser.Open(c, gcp)
+		},
+	}
+}
+
+func newGCPSQLCmd() cli.Command {
+	return cli.Command{
+		Name:  "sql",
+		Usage: "Open Cloud SQL page",
+		Flags: []cli.Flag{
+			cli.StringFlag{
+				Name:  "project",
+				Usage: "Specify the project to open",
+			},
+		},
+		Action: func(c *cli.Context) error {
+			gcp, err := gcp.GetProvider()
+			if err != nil {
+				return err
+			}
+			return browser.Open(c, gcp)
+		},
+	}
+}
+
+func newGCPPubSubCmd() cli.Command {
+	return cli.Command{
+		Name:  "pubsub",
+		Usage: "Open Cloud PubSub page",
+		Flags: []cli.Flag{
+			cli.StringFlag{
+				Name:  "project",
+				Usage: "Specify the project to open",
+			},
+		},
+		Action: func(c *cli.Context) error {
+			gcp, err := gcp.GetProvider()
+			if err != nil {
+				return err
+			}
+			return browser.Open(c, gcp)
+		},
+	}
+}
+
+func newGCPStorageCmd() cli.Command {
+	return cli.Command{
+		Name:  "storage",
+		Usage: "Open Cloud Storage page",
 		Flags: []cli.Flag{
 			cli.StringFlag{
 				Name:  "project",
