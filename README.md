@@ -129,21 +129,50 @@ $ biko gcp [product] [flag(s)]
 
 **Supported Product**
 
+**Common**
+
+| Product | What | Command | Flags(Optional) | 
+|:----:|:----:|:----:|:----:|
+| IAM & admin | Go to IAM & admin logging | `iam` | - |
+
+**Compute**
+
 | Product | What | Command | Flags(Optional) | 
 |:----:|:----:|:----:|:----:|
 | App Engine | Go to GAE Dashboard | `appengine`, `gae` | - |
-| Bigquery | Go to Bigquery top or the database, table | `bigquery`, `bq` | `--database, -db`, `--table, -tb` |
+| Compute Engine | Go to GCE page | `compute` | -  |
 | Kubernetes | Go to GKE page, or the cluster detail | `kubernetes`, `gke` | `--region, -r`, `--name, -n` | 
-| Spanner | Go to spanner page, or the instance, database, table | `spanner` | `--instance, -i`, `--database, -db`, `--table, -t` | 
-| Container Registry | Go to container registry or the container detail | `gcr` | `--name, -n` |
 | Cloud Functions | Go to Cloud Functions page or the functions detail | `functions`, `f` |  `--region, -r`, `--name, -n` |
 | Cloud Run | Go to Cloud Run page or the deployments detail | `run` | `--region, -r`, `--name, -n` |	
-| Compute Engine | Go to GCE page | `compute` | -  |
-| Stackdriver Logging | Go to Stackdriver logging | `logs`, `l` | - | 
-| IAM & admin | Go to IAM & admin logging | `iam` | - |
+
+**Storage**
+| Product | What | Command | Flags(Optional) | 
+|:----:|:----:|:----:|:----:|
 | Cloud SQL | Go to Cloud SQL | `sql` | - |
-| Cloud PubSub | Go to Cloud PubSub | `pubsub` | - |
 | Cloud Storage | Go to Cloud Storage `storage` | - |
+| Spanner | Go to spanner page, or the instance, database, table | `spanner` | `--instance, -i`, `--database, -db`, `--table, -t` | 
+
+**Networking**
+| Product | What | Command | Flags(Optional) | 
+|:----:|:----:|:----:|:----:|
+
+**Stackdriver**
+| Product | What | Command | Flags(Optional) | 
+|:----:|:----:|:----:|:----:|
+| Stackdriver Logging | Go to Stackdriver logging | `logs`, `l` | - | 
+
+**Tools**
+| Product | What | Command | Flags(Optional) | 
+|:----:|:----:|:----:|:----:|
+| Container Registry | Go to container registry or the container detail | `gcr` | `--name, -n` |
+
+
+**Big Data**
+
+| Product | What | Command | Flags(Optional) | 
+|:----:|:----:|:----:|:----:|
+| Bigquery | Go to Bigquery top or the database, table | `bigquery`, `bq` | `--database, -db`, `--table, -tb` |
+| Cloud PubSub | Go to Cloud PubSub | `pubsub` | - |
 | Cloud Dataflow | Go to Cloud Dataflow | `dataflow` | - |
 
 Note that there is `--project` command flag for all commands.
