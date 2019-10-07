@@ -41,7 +41,7 @@ func newCircleCIJobsCmd() cli.Command {
 	return cli.Command{
 		Name:    "jobs",
 		Aliases: []string{"j"},
-		Usage:   "Open incident page",
+		Usage:   "Open jobs page",
 		Flags: []cli.Flag{
 			cli.StringFlag{
 				Name:  "project, p",
