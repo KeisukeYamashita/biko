@@ -34,11 +34,13 @@
   - [Youtube](#youtube)
   - [Pagerduty](#pagerduty)
   - [Github](#github)
+  - [CircleCI](#circleci)
 - [(Advanced): Docker image](#advanced-docker-image)
 - [Contribute](#contribute)
   - [Add a provider](#add-a-provider)
+- [Maintainers](#maintainers)
+- [Contributers](#contributers)
 - [Roadmap](#roadmap)
-- [Author](#author)
 - [License](#license)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
