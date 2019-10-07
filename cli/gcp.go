@@ -6,6 +6,16 @@ import (
 	"github.com/urfave/cli"
 )
 
+const (
+	categoryCommon      = "Common"
+	categoryCompute     = "Compute"
+	categoryStorage     = "Storage"
+	categoryNetworking  = "Networking"
+	categoryStackdriver = "Stackdriver"
+	categoryTools       = "Tools"
+	categoryBigData     = "Big Data"
+)
+
 func newGCPCmd() cli.Command {
 	return cli.Command{
 		Name:  "gcp",
@@ -41,9 +51,10 @@ func newGCPCmd() cli.Command {
 
 func newGCPGAECmd() cli.Command {
 	return cli.Command{
-		Name:    "appengine",
-		Aliases: []string{"gae"},
-		Usage:   "Open GAE page",
+		Name:     "appengine",
+		Aliases:  []string{"gae"},
+		Category: categoryCompute,
+		Usage:    "Open GAE page",
 		Flags: []cli.Flag{
 			cli.StringFlag{
 				Name:  "project",
@@ -62,9 +73,10 @@ func newGCPGAECmd() cli.Command {
 
 func newGCPBQCmd() cli.Command {
 	return cli.Command{
-		Name:    "biqquery",
-		Aliases: []string{"bq"},
-		Usage:   "Open Bigquery page",
+		Name:     "biqquery",
+		Aliases:  []string{"bq"},
+		Category: categoryBigData,
+		Usage:    "Open Bigquery page",
 		Flags: []cli.Flag{
 			cli.StringFlag{
 				Name:  "project",
@@ -91,9 +103,10 @@ func newGCPBQCmd() cli.Command {
 
 func newGCPGKECmd() cli.Command {
 	return cli.Command{
-		Name:    "kubernetes",
-		Aliases: []string{"gke"},
-		Usage:   "Open GKE page",
+		Name:     "kubernetes",
+		Aliases:  []string{"gke"},
+		Category: categoryCompute,
+		Usage:    "Open GKE page",
 		Flags: []cli.Flag{
 			cli.StringFlag{
 				Name:  "project",
@@ -120,8 +133,9 @@ func newGCPGKECmd() cli.Command {
 
 func newGCPSpannerCmd() cli.Command {
 	return cli.Command{
-		Name:  "spanner",
-		Usage: "Open Cloud Spanner page",
+		Name:     "spanner",
+		Usage:    "Open Cloud Spanner page",
+		Category: categoryStorage,
 		Flags: []cli.Flag{
 			cli.StringFlag{
 				Name:  "project",
@@ -152,8 +166,9 @@ func newGCPSpannerCmd() cli.Command {
 
 func newGCPGCRCmd() cli.Command {
 	return cli.Command{
-		Name:  "gcr",
-		Usage: "Open Cloud Registry page",
+		Name:     "gcr",
+		Usage:    "Open Cloud Registry page",
+		Category: categoryTools,
 		Flags: []cli.Flag{
 			cli.StringFlag{
 				Name:  "project",
@@ -176,9 +191,10 @@ func newGCPGCRCmd() cli.Command {
 
 func newGCPFunctionsCmd() cli.Command {
 	return cli.Command{
-		Name:    "functions",
-		Aliases: []string{"f"},
-		Usage:   "Open Cloud Functions page",
+		Name:     "functions",
+		Aliases:  []string{"f"},
+		Category: categoryCompute,
+		Usage:    "Open Cloud Functions page",
 		Flags: []cli.Flag{
 			cli.StringFlag{
 				Name:  "project",
@@ -205,8 +221,9 @@ func newGCPFunctionsCmd() cli.Command {
 
 func newGCPCloudRunCmd() cli.Command {
 	return cli.Command{
-		Name:  "run",
-		Usage: "Open Cloud Run page",
+		Name:     "run",
+		Category: categoryCompute,
+		Usage:    "Open Cloud Run page",
 		Flags: []cli.Flag{
 			cli.StringFlag{
 				Name:  "project",
@@ -233,9 +250,10 @@ func newGCPCloudRunCmd() cli.Command {
 
 func newGCPGCECmd() cli.Command {
 	return cli.Command{
-		Name:    "compute",
-		Aliases: []string{"gce"},
-		Usage:   "Open Compute Engine page",
+		Name:     "compute",
+		Aliases:  []string{"gce"},
+		Category: categoryCompute,
+		Usage:    "Open Compute Engine page",
 		Flags: []cli.Flag{
 			cli.StringFlag{
 				Name:  "project",
@@ -254,9 +272,10 @@ func newGCPGCECmd() cli.Command {
 
 func newGCPLogsCmd() cli.Command {
 	return cli.Command{
-		Name:    "logs",
-		Aliases: []string{"l"},
-		Usage:   "Open Stackdriver log page",
+		Name:     "logs",
+		Aliases:  []string{"l"},
+		Category: categoryStackdriver,
+		Usage:    "Open Stackdriver log page",
 		Flags: []cli.Flag{
 			cli.StringFlag{
 				Name:  "project",
@@ -275,8 +294,9 @@ func newGCPLogsCmd() cli.Command {
 
 func newGCPIAMCmd() cli.Command {
 	return cli.Command{
-		Name:  "iam",
-		Usage: "Open IAM & admin page",
+		Name:     "iam",
+		Category: categoryCommon,
+		Usage:    "Open IAM & admin page",
 		Flags: []cli.Flag{
 			cli.StringFlag{
 				Name:  "project",
@@ -295,8 +315,9 @@ func newGCPIAMCmd() cli.Command {
 
 func newGCPSQLCmd() cli.Command {
 	return cli.Command{
-		Name:  "sql",
-		Usage: "Open Cloud SQL page",
+		Name:     "sql",
+		Category: categoryStorage,
+		Usage:    "Open Cloud SQL page",
 		Flags: []cli.Flag{
 			cli.StringFlag{
 				Name:  "project",
@@ -315,8 +336,9 @@ func newGCPSQLCmd() cli.Command {
 
 func newGCPPubSubCmd() cli.Command {
 	return cli.Command{
-		Name:  "pubsub",
-		Usage: "Open Cloud PubSub page",
+		Name:     "pubsub",
+		Category: categoryBigData,
+		Usage:    "Open Cloud PubSub page",
 		Flags: []cli.Flag{
 			cli.StringFlag{
 				Name:  "project",
@@ -335,8 +357,9 @@ func newGCPPubSubCmd() cli.Command {
 
 func newGCPStorageCmd() cli.Command {
 	return cli.Command{
-		Name:  "storage",
-		Usage: "Open Cloud Storage page",
+		Name:     "storage",
+		Category: categoryStorage,
+		Usage:    "Open Cloud Storage page",
 		Flags: []cli.Flag{
 			cli.StringFlag{
 				Name:  "project",
@@ -355,8 +378,9 @@ func newGCPStorageCmd() cli.Command {
 
 func newGCPDataflowCmd() cli.Command {
 	return cli.Command{
-		Name:  "dataflow",
-		Usage: "Open Cloud Dataflow page",
+		Name:     "dataflow",
+		Category: categoryBigData,
+		Usage:    "Open Cloud Dataflow page",
 		Flags: []cli.Flag{
 			cli.StringFlag{
 				Name:  "project",
