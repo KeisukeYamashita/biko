@@ -1,4 +1,4 @@
-package gcp
+package datadog
 
 import (
 	"net/url"
