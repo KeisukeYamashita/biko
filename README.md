@@ -170,7 +170,7 @@ $ biko dd [product] [flag(s)]
 | Integrations | Go to Integrations page | `integrations` | - |
 | APM | Go to APM page | `apm` | - |
 | Notebook | Go to Notebook page | `notebook` | - | 
-| Logs | Go to logs page | `logs` | - | 
+| Logs | Go to logs page | `logs` | `--view, -v` |
 | Synthetics | Go to synthetics page | `synthetics` | - |
 
 ### Google
@@ -281,14 +281,24 @@ type Provider interface {
 * `Init` will initialize your provider struct
 * `GetTargetURL` should return a URL which will the browser will open
 
+## Maintainers
+
+<div style="display:flex;flex-direction:row;align-items: flex-start">
+    <img href="https://github.com/KeisukeYamashita" src="./_image/maintainers/keke.png" width="100" style="margin:10px">
+    <img href="https://github.com/sapuri" src="./_image/maintainers/sapuri.png" width="100" style="margin:10px">
+</div>
+
+## Contributers
+
+<div style="display:flex;flex-direction:row;align-items: flex-start">
+    <img href="https://github.com/KeisukeYamashita" src="./_image/contributors/keke.png" width="100" style="margin:10px">
+    <img href="https://github.com/sapuri" src="./_image/contributors/sapuri.png" width="100" style="margin:10px">
+</div>
+
 ## Roadmap
 
 * See `docs/ROADMAP.md` for the project's roadmap.
     * Proposal are welcome.
-
-## Author
-
-* [KeisukeYamashita](https://github.com/KeisukeYamashita)
 
 ## License
 

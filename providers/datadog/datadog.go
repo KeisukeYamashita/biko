@@ -1,4 +1,4 @@
-package gcp
+package datadog
 
 import (
 	"net/url"
@@ -58,6 +58,12 @@ func (p *Provider) addProductPath(product string) {
 	case "apm":
 	case "notebook":
 	case "logs":
+		var view string
+		if view = p.GetCtxString("view"); view != "" {
+			param := url.Values{}
+			param.Add("saved_view", view)
+			p.URL.RawQuery = param.Encode()
+		}
 	case "synthetics":
 	default:
 		p.join("apm/home")
@@ -74,7 +80,7 @@ func (p *Provider) join(additionPath string) {
 
 // GetCtxString ...
 func (p *Provider) GetCtxString(str string) string {
-	key := p.GetCtxString(str)
+	key := p.Ctx.String(str)
 	if key == "" {
 		return ""
 	}
