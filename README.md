@@ -63,6 +63,12 @@ Install by source code.
 $ go get github.com/KeisukeYamashita/biko
 ```
 
+Then build it.
+
+```
+$ make install
+```
+
 ## Usage 
 
 ### Go to your target directly
