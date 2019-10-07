@@ -19,6 +19,7 @@ type TomlConfig struct {
 	Youtube   map[string]interface{} `toml:"youtube"`
 	PagerDuty map[string]interface{} `toml:"pagerduty"`
 	Github    map[string]interface{} `toml:"github"`
+	CircleCI  map[string]interface{} `toml:"circleci"`
 }
 
 // GetConfig ...
