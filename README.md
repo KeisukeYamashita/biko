@@ -264,14 +264,20 @@ type Provider interface {
 * `Init` will initialize your provider struct
 * `GetTargetURL` should return a URL which will the browser will open
 
+## Maintainers
+
+<img href="https://github.com/KeisukeYamashita" src="./_image/maintainers/keke.png" width="100" style="margin:10px">
+<img href="https://github.com/sapuri" src="./_image/maintainers/sapuri.png" width="100" style="margin:10px">
+
+## Contributers
+
+<img href="https://github.com/KeisukeYamashita" src="./_image/contributors/keke.png" width="100" style="margin:10px">
+<img href="https://github.com/sapuri" src="./_image/contributors/sapuri.png" width="100" style="margin:10px">
+
 ## Roadmap
 
 * See `docs/ROADMAP.md` for the project's roadmap.
     * Proposal are welcome.
-
-## Author
-
-* [KeisukeYamashita](https://github.com/KeisukeYamashita)
 
 ## License
 
