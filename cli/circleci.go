@@ -25,9 +25,8 @@ func newCircleCICmd() cli.Command {
 			if org = c.String("org"); org == "" {
 				return fmt.Errorf("Org for circleci not configured pass --org or set BIKO_CIRCLECI")
 			}
-			cc, err := cc.GetProvider()
-			if err != nil {
-				return err
+			cc := &cc.Provider{
+				Org: org,
 			}
 			return browser.Open(c, cc)
 		},
@@ -50,7 +49,7 @@ func newCircleCIJobsCmd() cli.Command {
 			cli.StringFlag{
 				Name:   "org",
 				EnvVar: "BIKO_CIRCLECI",
-				Usage:  "Specify Pagerduty Organization",
+				Usage:  "Specify CircleCI Organization",
 			},
 		},
 		Action: func(c *cli.Context) error {
@@ -62,6 +61,7 @@ func newCircleCIJobsCmd() cli.Command {
 			if err != nil {
 				return err
 			}
+			cc.Org = org
 			return browser.Open(c, cc)
 		},
 	}

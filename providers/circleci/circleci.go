@@ -14,6 +14,7 @@ type Provider struct {
 	baseURL *url.URL
 	URL     *url.URL
 	Ctx     *cli.Context
+	Org     string
 	Aliases map[string]interface{}
 }
 
@@ -37,7 +38,7 @@ func (p *Provider) Init(c *cli.Context) error {
 
 // GetTargetURL ...
 func (p *Provider) GetTargetURL() (string, error) {
-	var baseURL = fmt.Sprintf("https://circleci.com/gh/%s/", p.Ctx.String("org"))
+	var baseURL = fmt.Sprintf("https://circleci.com/gh/%s/", p.Org)
 	var err error
 	if p.baseURL, err = url.Parse(baseURL); err != nil {
 		return "", err
