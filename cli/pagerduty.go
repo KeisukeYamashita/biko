@@ -47,7 +47,13 @@ func newPagerDudyIncidentCmd() cli.Command {
 		Name:    "incident",
 		Aliases: []string{"i"},
 		Usage:   "Open incident page",
-		Flags:   []cli.Flag{},
+		Flags: []cli.Flag{
+			cli.StringFlag{
+				Name:   "org",
+				EnvVar: "BIKO_PAGERDUTY",
+				Usage:  "Specify Pagerduty Organization",
+			},
+		},
 		Action: func(c *cli.Context) error {
 			var org string
 			if org = c.String("org"); org == "" {
@@ -86,7 +92,13 @@ func newPagerDudySchedulesCmd() cli.Command {
 		Name:    "schedules",
 		Aliases: []string{"s"},
 		Usage:   "Open schedules page",
-		Flags:   []cli.Flag{},
+		Flags: []cli.Flag{
+			cli.StringFlag{
+				Name:   "org",
+				EnvVar: "BIKO_PAGERDUTY",
+				Usage:  "Specify Pagerduty Organization",
+			},
+		},
 		Action: func(c *cli.Context) error {
 			var org string
 			if org = c.String("org"); org == "" {
