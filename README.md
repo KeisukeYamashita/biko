@@ -169,7 +169,7 @@ $ biko dd [product] [flag(s)]
 | Integrations | Go to Integrations page | `integrations` | - |
 | APM | Go to APM page | `apm` | - |
 | Notebook | Go to Notebook page | `notebook` | - | 
-| Logs | Go to logs page | `logs` | - | 
+| Logs | Go to logs page | `logs` | `--view, -v` |
 | Synthetics | Go to synthetics page | `synthetics` | - |
 
 ### Google
