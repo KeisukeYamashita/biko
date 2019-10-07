@@ -8,10 +8,12 @@ import (
 	"github.com/urfave/cli"
 )
 
+// Provider ...
 type Provider struct {
 	baseURL *url.URL
 	URL     *url.URL
 	Ctx     *cli.Context
+	Aliases map[string]interface{}
 }
 
 // Init ...
@@ -45,6 +47,22 @@ func (p *Provider) addProductPath(product string) {
 	default:
 		p.URL = p.baseURL
 	}
+}
+
+// GetCtxString ...
+func (p *Provider) GetCtxString(str string) string {
+	key := p.Ctx.String(str)
+	if key == "" {
+		return ""
+	}
+	value, ok := p.Aliases[key].(string)
+	if !ok {
+		return key
+	}
+	if value == "" {
+		return key
+	}
+	return value
 }
 
 func (p *Provider) join(additionPath string) {
