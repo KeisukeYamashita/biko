@@ -152,7 +152,12 @@ func newDDLogsCmd() cli.Command {
 	return cli.Command{
 		Name:  "logs",
 		Usage: "Open Logs page",
-		Flags: []cli.Flag{},
+		Flags: []cli.Flag{
+			cli.StringFlag{
+				Name:  "view",
+				Usage: "Specify the saved view to open",
+			},
+		},
 		Action: func(c *cli.Context) error {
 			dd, err := dd.GetProvider()
 			if err != nil {
