@@ -154,7 +154,7 @@ func newDDLogsCmd() cli.Command {
 		Usage: "Open Logs page",
 		Flags: []cli.Flag{
 			cli.StringFlag{
-				Name:  "view",
+				Name:  "view, v",
 				Usage: "Specify the saved view to open",
 			},
 		},
