@@ -62,6 +62,22 @@ func (p *Provider) addProductPath(product string) {
 	}
 }
 
+// GetCtxString ...
+func (p *Provider) GetCtxString(str string) string {
+	key := p.Ctx.String(str)
+	if key == "" {
+		return ""
+	}
+	value, ok := p.Aliases[key].(string)
+	if !ok {
+		return key
+	}
+	if value == "" {
+		return key
+	}
+	return value
+}
+
 func (p *Provider) join(additionPath string) {
 	if p.URL == nil {
 		p.URL = p.baseURL
