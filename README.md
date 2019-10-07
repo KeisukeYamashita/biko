@@ -276,6 +276,7 @@ type Provider interface {
 <div style="display:flex;flex-direction:row;align-items: flex-start">
     <img href="https://github.com/KeisukeYamashita" src="./_image/contributors/keke.png" width="100" style="margin:10px">
     <img href="https://github.com/sapuri" src="./_image/contributors/sapuri.png" width="100" style="margin:10px">
+    <img href="https://github.com/shopetan" src="./_image/contributors/shopetan.png" width="100" style="margin:10px">
 </div>
 
 ## Roadmap
