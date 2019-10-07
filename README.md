@@ -60,7 +60,7 @@ $ brew install biko
 Install by source code.
 
 ```
-$ go get github.com/KeisukeYamashita/biko
+$ go get github.com/KeisukeYamashita/biko/cmd/biko
 ```
 
 Then build it.
