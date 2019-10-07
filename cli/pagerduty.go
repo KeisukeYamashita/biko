@@ -29,10 +29,10 @@ func newPagerDutyCmd() cli.Command {
 			if org = c.String("org"); org == "" {
 				return fmt.Errorf("Org for pagerduty not configured pass --org or set BIKO_PAGERDUTY")
 			}
-			gcp := &pd.Provider{
+			pd := &pd.Provider{
 				Org: org,
 			}
-			return browser.Open(c, gcp)
+			return browser.Open(c, pd)
 		},
 		Subcommands: []cli.Command{
 			newPagerDudyIncidentCmd(),
@@ -49,9 +49,12 @@ func newPagerDudyIncidentCmd() cli.Command {
 		Usage:   "Open incident page",
 		Flags:   []cli.Flag{},
 		Action: func(c *cli.Context) error {
-			pd, err := pd.GetProvider()
-			if err != nil {
-				return err
+			var org string
+			if org = c.String("org"); org == "" {
+				return fmt.Errorf("Org for pagerduty not configured pass --org or set BIKO_PAGERDUTY")
+			}
+			pd := &pd.Provider{
+				Org: org,
 			}
 			return browser.Open(c, pd)
 		},
@@ -66,9 +69,12 @@ func newPagerDudyAlertCmd() cli.Command {
 		Usage:   "Open alert page",
 		Flags:   []cli.Flag{},
 		Action: func(c *cli.Context) error {
-			pd, err := pd.GetProvider()
-			if err != nil {
-				return err
+			var org string
+			if org = c.String("org"); org == "" {
+				return fmt.Errorf("Org for pagerduty not configured pass --org or set BIKO_PAGERDUTY")
+			}
+			pd := &pd.Provider{
+				Org: org,
 			}
 			return browser.Open(c, pd)
 		},
@@ -82,9 +88,12 @@ func newPagerDudySchedulesCmd() cli.Command {
 		Usage:   "Open schedules page",
 		Flags:   []cli.Flag{},
 		Action: func(c *cli.Context) error {
-			pd, err := pd.GetProvider()
-			if err != nil {
-				return err
+			var org string
+			if org = c.String("org"); org == "" {
+				return fmt.Errorf("Org for pagerduty not configured pass --org or set BIKO_PAGERDUTY")
+			}
+			pd := &pd.Provider{
+				Org: org,
 			}
 			return browser.Open(c, pd)
 		},
