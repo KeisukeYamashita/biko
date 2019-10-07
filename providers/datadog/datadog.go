@@ -58,6 +58,12 @@ func (p *Provider) addProductPath(product string) {
 	case "apm":
 	case "notebook":
 	case "logs":
+		var view string
+		if view = p.GetCtxString("view"); view != "" {
+			param := url.Values{}
+			param.Add("saved_view", view)
+			p.URL.RawQuery = param.Encode()
+		}
 	case "synthetics":
 	default:
 		p.join("apm/home")
