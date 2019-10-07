@@ -72,7 +72,7 @@ func (p *Provider) join(additionPath string) {
 
 // GetCtxString ...
 func (p *Provider) GetCtxString(str string) string {
-	key := p.GetCtxString(str)
+	key := p.Ctx.String(str)
 	if key == "" {
 		return ""
 	}
