@@ -38,7 +38,7 @@ func (p *Provider) addProductPath(product string) {
 	switch product {
 	case "dashboard":
 		var org string
-		if org = p.Ctx.String("organization"); org != "" {
+		if org = p.Ctx.String("org"); org != "" {
 			p.join(fmt.Sprintf("orgs/%s/dashboard", org))
 			return
 		}
