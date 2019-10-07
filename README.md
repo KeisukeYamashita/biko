@@ -148,6 +148,7 @@ $ biko gcp [product] [flag(s)]
 | Cloud Run | Go to Cloud Run page or the deployments detail | `run` | `--region, -r`, `--name, -n` |	
 
 **Storage**
+
 | Product | What | Command | Flags(Optional) | 
 |:----:|:----:|:----:|:----:|
 | Cloud SQL | Go to Cloud SQL | `sql` | - |
@@ -155,15 +156,18 @@ $ biko gcp [product] [flag(s)]
 | Spanner | Go to spanner page, or the instance, database, table | `spanner` | `--instance, -i`, `--database, -db`, `--table, -t` | 
 
 **Networking**
+
 | Product | What | Command | Flags(Optional) | 
 |:----:|:----:|:----:|:----:|
 
 **Stackdriver**
+
 | Product | What | Command | Flags(Optional) | 
 |:----:|:----:|:----:|:----:|
 | Stackdriver Logging | Go to Stackdriver logging | `logs`, `l` | - | 
 
 **Tools**
+
 | Product | What | Command | Flags(Optional) | 
 |:----:|:----:|:----:|:----:|
 | Container Registry | Go to container registry or the container detail | `gcr` | `--name, -n` |
