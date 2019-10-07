@@ -29,5 +29,6 @@ func rootSubCommands() []cli.Command {
 		newYoutubeCmd(),
 		newPagerDutyCmd(),
 		newGithubCmd(),
+		newCircleCICmd(),
 	}
 }

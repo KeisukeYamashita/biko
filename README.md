@@ -97,6 +97,7 @@ The supported provider are here.
 * Youtube
 * Pagerduty
 * Github
+* CircleCI
 
 ## Alias 
 
@@ -238,6 +239,22 @@ $ biko gh [product] [flag(s)]
 | Product | What | Command | Flags(Optional) | 
 |:----:|:----:|:----:|:----:|
 | Dashboard | Open github Dashboard | `dashboard` | `--org` |
+
+### CircleCI
+
+* Open CircleCI from your terminal.
+* You need to pass `--org` or configure `BIKO_CIRCLECI`
+
+```
+$ biko circleci [product] [flag(s)]
+# or
+$ biko cc [product] [flag(s)]
+```
+
+| Product | What | Command | Flags(Optional) | 
+|:----:|:----:|:----:|:----:|
+| Jobs | Open CircleCI Jobs | `jobs` | `--project`, `-p` |
+
 
 ## (Advanced): Docker image
 
