@@ -58,6 +58,19 @@ func (p *Provider) addProductPath(product string) {
 		}
 		p.URL = p.baseURL
 		return
+	case "trending":
+		p.join("trending")
+		var since string
+		if since = p.Ctx.String("since"); since != "" {
+			param := url.Values{}
+			param.Add("since", since)
+			p.URL.RawQuery = param.Encode()
+		}
+		var language string
+		if language = p.Ctx.String("language"); language != "" {
+			p.join(language)
+			return
+		}
 	default:
 		p.URL = p.baseURL
 	}

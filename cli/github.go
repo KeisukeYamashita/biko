@@ -32,11 +32,12 @@ func newGithubCmd() cli.Command {
 			},
 		},
 		Action: func(c *cli.Context) error {
-			gcp := &gh.Provider{}
-			return browser.Open(c, gcp)
+			github := &gh.Provider{}
+			return browser.Open(c, github)
 		},
 		Subcommands: []cli.Command{
 			newGithubDashboardCmd(),
+			newGithubTrendingCmd(),
 		},
 	}
 }
@@ -53,8 +54,33 @@ func newGithubDashboardCmd() cli.Command {
 			},
 		},
 		Action: func(c *cli.Context) error {
-			gcp := &gh.Provider{}
-			return browser.Open(c, gcp)
+
+			github := &gh.Provider{}
+			return browser.Open(c, github)
+		},
+	}
+
+}
+
+func newGithubTrendingCmd() cli.Command {
+	return cli.Command{
+		Name:    "trending",
+		Aliases: []string{"t"},
+		Usage:   "Open the trending page",
+		Flags: []cli.Flag{
+			cli.StringFlag{
+				Name:  "language, l",
+				Usage: "filter trending with language",
+			},
+			cli.StringFlag{
+				Name:  "since, s",
+				Usage: "filter trending with date range(daily, weekly, monthly)",
+			},
+		},
+		Action: func(c *cli.Context) error {
+
+			github := &gh.Provider{}
+			return browser.Open(c, github)
 		},
 	}
 
