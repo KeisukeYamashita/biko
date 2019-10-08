@@ -100,6 +100,7 @@ The supported provider are here.
 * Pagerduty
 * Github
 * CircleCI
+* Firebase
 
 ## Alias 
 
@@ -292,6 +293,50 @@ $ biko cc [product] [flag(s)]
 | Jobs | Open CircleCI Jobs | `jobs, j` | `--project`, `-p` |
 | Workflows | Open CircleCI Workflows | `workflows, wf` | `--project`, `-p` |
 
+### Firebase
+
+* Open Google Firebase form your terminal.
+* Please pass `--project` to open supported products page.
+
+```
+$ biko firebase [product] [flag(s)]
+# or
+$ biko fb [product] [flag(s)]
+```
+
+**Supported Product**
+
+**Development**
+
+| Product | What | Command | Flags(Optional) | 
+|:----:|:----:|:----:|:----:|
+| Authentication | Go to auth | `authentications, auth` | - |
+| Database | Go to database | `database, db` | - | 
+| Storage | Go to storage | `storage` | - |
+| Hosting | Go to Hosting | `hosting, host, h` | - |
+| Functions | Go to functions | `funcitons, func, f` | - |
+| ML Kit | Go to ML Kit | `ml` | - |
+
+**Quality**
+
+| Product | What | Command | Flags(Optional) | 
+|:----:|:----:|:----:|:----:|
+| Crashlytics | Go to cryshlytics | `crashlytics, crash` | - |
+| Performance | Go to performance | `performance, perf` | - |
+| Test Lab | Go to Test Lab | `testlab, tl` | - |
+| App Distribution | Go to App Distribution | `appdistribution, ad` | - |
+
+**Analytics**
+
+| Product | What | Command | Flags(Optional) | 
+|:----:|:----:|:----:|:----:|
+| Dashboard | Go to dashboard | `dashboard` | - |
+
+**Grow**
+
+| Product | What | Command | Flags(Optional) | 
+|:----:|:----:|:----:|:----:|
+| Grow | Go to grow | `grow` | - |
 
 ## (Advanced): Docker image
 

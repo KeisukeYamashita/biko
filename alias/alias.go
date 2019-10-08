@@ -34,6 +34,7 @@ type TomlConfig struct {
 	PagerDuty map[string]interface{} `toml:"pagerduty"`
 	Github    map[string]interface{} `toml:"github"`
 	CircleCI  map[string]interface{} `toml:"circleci"`
+	Firebase  map[string]interface{} `toml:"firebase"`
 }
 
 // GetConfig ...

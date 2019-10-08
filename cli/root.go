@@ -44,5 +44,6 @@ func rootSubCommands() []cli.Command {
 		newPagerDutyCmd(),
 		newGithubCmd(),
 		newCircleCICmd(),
+		newFirebaseCmd(),
 	}
 }

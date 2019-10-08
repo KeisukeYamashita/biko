@@ -16,3 +16,6 @@
 
 [github]
     [github.alias]
+
+[firebase]
+    [firebase.alias]
