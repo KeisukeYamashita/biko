@@ -26,8 +26,8 @@
   - [Go to your target directly](#go-to-your-target-directly)
     - [Exaple1. Open GCP Cloud Spanner to specified project](#exaple1-open-gcp-cloud-spanner-to-specified-project)
     - [Example2. Open Datadog Dashboad](#example2-open-datadog-dashboad)
-- [Support](#support)
 - [Alias](#alias)
+- [Support](#support)
   - [CircleCI](#circleci)
   - [Datadog](#datadog)
   - [Firebase](#firebase)
@@ -90,19 +90,6 @@ If you don't specify the project, it will use the value configured by `gcloud` S
 $ biko dd --dashboard DASHBOARD_ID
 ```
 
-## Support
-
-The supported provider are here.
-
-* CircleCI
-* Datadog
-* Firebase
-* GoogleCloudPlatform(GCP)
-* Github
-* Google
-* Pagerduty
-* Youtube
-
 ## Alias 
 
 You can configure your alias for whatever you want for frequently used projects, products, names, etc. 
@@ -122,6 +109,19 @@ $ biko gcp functions -r as1 -n mcf
 ```
 
 You can directly go to your page without waiting to load pages many times.
+
+## Support
+
+The supported provider are here.
+
+* CircleCI
+* Datadog
+* Firebase
+* GoogleCloudPlatform(GCP)
+* Github
+* Google
+* Pagerduty
+* Youtube
 
 ### CircleCI
 
