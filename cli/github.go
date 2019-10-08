@@ -52,7 +52,7 @@ func newGithubTrendingCmd() cli.Command {
 	return cli.Command{
 		Name:    "trending",
 		Aliases: []string{"t"},
-		Usage:   "Open a trending page",
+		Usage:   "Open the trending page",
 		Flags: []cli.Flag{
 			cli.StringFlag{
 				Name:  "language, l",
