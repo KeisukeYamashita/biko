@@ -73,7 +73,7 @@ func newGCPGAECmd() cli.Command {
 
 func newGCPBQCmd() cli.Command {
 	return cli.Command{
-		Name:     "biqquery",
+		Name:     "bigquery",
 		Aliases:  []string{"bq"},
 		Category: categoryBigData,
 		Usage:    "Open Bigquery page",
