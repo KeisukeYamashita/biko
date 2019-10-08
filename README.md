@@ -288,7 +288,7 @@ $ biko cc [product] [flag(s)]
 
 | Product | What | Command | Flags(Optional) | 
 |:----:|:----:|:----:|:----:|
-| Jobs | Open CircleCI Jobs | `jobs` | `--project`, `-p` |
+| Jobs | Open CircleCI Jobs | `jobs, j` | `--project`, `-p` |
 
 
 ## (Advanced): Docker image

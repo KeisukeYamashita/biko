@@ -32,6 +32,7 @@ func newCircleCICmd() cli.Command {
 		},
 		Subcommands: []cli.Command{
 			newCircleCIJobsCmd(),
+			newCircleCIWorkflowsCmd(),
 		},
 	}
 }
@@ -57,11 +58,40 @@ func newCircleCIJobsCmd() cli.Command {
 			if org = c.String("org"); org == "" {
 				return fmt.Errorf("Org for circleci not configured pass --org or set BIKO_CIRCLECI")
 			}
-			cc, err := cc.GetProvider()
+			cc, err := cc.GetProvider(org)
 			if err != nil {
 				return err
 			}
-			cc.Org = org
+			return browser.Open(c, cc)
+		},
+	}
+}
+
+func newCircleCIWorkflowsCmd() cli.Command {
+	return cli.Command{
+		Name:    "workflows",
+		Aliases: []string{"wf"},
+		Usage:   "Open workflows page",
+		Flags: []cli.Flag{
+			cli.StringFlag{
+				Name:  "project, p",
+				Usage: "Specify the project to open",
+			},
+			cli.StringFlag{
+				Name:   "org",
+				EnvVar: "BIKO_CIRCLECI",
+				Usage:  "Specify CircleCI Organization",
+			},
+		},
+		Action: func(c *cli.Context) error {
+			var org string
+			if org = c.String("org"); org == "" {
+				return fmt.Errorf("Org for circleci not configured pass --org or set BIKO_CIRCLECI")
+			}
+			cc, err := cc.GetProvider(org)
+			if err != nil {
+				return err
+			}
 			return browser.Open(c, cc)
 		},
 	}
