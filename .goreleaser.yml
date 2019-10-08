@@ -1,0 +1,37 @@
+env:
+  - GO111MODULE=on
+before:
+  hooks:
+    - go mod download
+builds:
+  - env:
+      - CGO_ENABLED=0
+    goos:
+      - linux
+      - darwin
+      - windows
+    goarch:
+      - 386
+      - amd64
+      - arm
+      - arm64
+    ldflags:
+      - -X main.Version={{ .Version }}
+checksum:
+  name_template: '{{ .ProjectName }}_checksums.txt'
+changelog:
+  sort: asc
+  filters:
+    exclude:
+      - '^docs:'
+      - '^test:'
+      - Merge pull request
+      - Merge branch
+brew:
+  github:
+    owner: KeisukeYamashita
+    name: homebrew-biko
+  homepage:  https://github.com/KeisukeYamashita/biko
+  description: CLI tool to jump to your browser directly to improve productivity
+  test: |
+    system "#{bin}/biko -v"
