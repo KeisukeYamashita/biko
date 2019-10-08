@@ -36,14 +36,14 @@ func NewCmdRoot() *cli.App {
 
 func rootSubCommands() []cli.Command {
 	return []cli.Command{
-		newVersionCmd(),
-		newGCPCmd(),
-		newDatadaogCmd(),
-		newGoogleCmd(),
-		newYoutubeCmd(),
-		newPagerDutyCmd(),
-		newGithubCmd(),
 		newCircleCICmd(),
+		newDatadaogCmd(),
 		newFirebaseCmd(),
+		newGCPCmd(),
+		newGithubCmd(),
+		newGoogleCmd(),
+		newPagerDutyCmd(),
+		newVersionCmd(),
+		newYoutubeCmd(),
 	}
 }
