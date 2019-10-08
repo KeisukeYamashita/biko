@@ -330,6 +330,7 @@ type Provider interface {
     <img href="https://github.com/KeisukeYamashita" src="./_image/contributors/keke.png" width="100" style="margin:10px">
     <img href="https://github.com/sapuri" src="./_image/contributors/sapuri.png" width="100" style="margin:10px">
     <img href="https://github.com/shopetan" src="./_image/contributors/shopetan.png" width="100" style="margin:10px">
+    <img href="https://github.com/micnncim " src="./_image/contributors/micnncim.png" width="100" style="margin:10px">
 </div>
 
 ## Roadmap
