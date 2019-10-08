@@ -28,13 +28,14 @@
     - [Example2. Open Datadog Dashboad](#example2-open-datadog-dashboad)
 - [Support](#support)
 - [Alias](#alias)
-  - [GCP](#gcp)
-  - [Datadog](#datadog)
-  - [Google](#google)
-  - [Youtube](#youtube)
-  - [Pagerduty](#pagerduty)
-  - [Github](#github)
   - [CircleCI](#circleci)
+  - [Datadog](#datadog)
+  - [Firebase](#firebase)
+  - [GCP](#gcp)
+  - [Github](#github)
+  - [Google](#google)
+  - [Pagerduty](#pagerduty)
+  - [Youtube](#youtube)
 - [(Advanced): Docker image](#advanced-docker-image)
 - [Contribute](#contribute)
   - [Add a provider](#add-a-provider)
@@ -93,14 +94,14 @@ $ biko dd --dashboard DASHBOARD_ID
 
 The supported provider are here.
 
-* GoogleCloudPlatform(GCP)
-* Datadog
-* Google
-* Youtube
-* Pagerduty
-* Github
 * CircleCI
+* Datadog
 * Firebase
+* GoogleCloudPlatform(GCP)
+* Github
+* Google
+* Pagerduty
+* Youtube
 
 ## Alias 
 
@@ -121,6 +122,93 @@ $ biko gcp functions -r as1 -n mcf
 ```
 
 You can directly go to your page without waiting to load pages many times.
+
+### CircleCI
+
+* Open CircleCI from your terminal.
+* You need to pass `--org` or configure `BIKO_CIRCLECI`
+
+```
+$ biko circleci [product] [flag(s)]
+# or
+$ biko cc [product] [flag(s)]
+```
+
+| Product | What | Command | Flags(Optional) | 
+|:----:|:----:|:----:|:----:|
+| Jobs | Open CircleCI Jobs | `jobs, j` | `--project`, `-p` |
+| Workflows | Open CircleCI Workflows | `workflows, wf` | `--project`, `-p` |
+
+### Datadog
+
+* `datadog` or `dd` command is supported for Datadog.
+
+```
+$ biko datadog [product] [flag(s)]
+# or
+$ biko dd [product] [flag(s)]
+```
+
+**Supported Product**
+
+| Product | What | Command | Flags(Optional) | 
+|:----:|:----:|:----:|:----:|
+| Watchdog | Go to Watchdog Dashboard | `watchdog`, `wd` | - |
+| Events | Go to Events Dashboard | `events` | - |
+| Dashboard | Go to Dashboard page | `dashboard` | - |
+| Infrastructure | Go to Infrastructure page | `infrastructure` | - | 
+| Monitors | Go to Monitors Dashboard | `moniters` | - |
+| Integrations | Go to Integrations page | `integrations` | - |
+| APM | Go to APM page | `apm` | - |
+| Notebook | Go to Notebook page | `notebook` | - | 
+| Logs | Go to logs page | `logs` | `--view, -v` |
+| Synthetics | Go to synthetics page | `synthetics` | - |
+
+
+### Firebase
+
+* Open Google Firebase form your terminal.
+* Please pass `--project` to open supported products page.
+
+```
+$ biko firebase [product] [flag(s)]
+# or
+$ biko fb [product] [flag(s)]
+```
+
+**Supported Product**
+
+**Development**
+
+| Product | What | Command | Flags(Optional) | 
+|:----:|:----:|:----:|:----:|
+| Authentication | Go to auth | `authentications, auth` | - |
+| Database | Go to database | `database, db` | - | 
+| Storage | Go to storage | `storage` | - |
+| Hosting | Go to Hosting | `hosting, host, h` | - |
+| Functions | Go to functions | `funcitons, func, f` | - |
+| ML Kit | Go to ML Kit | `ml` | - |
+
+**Quality**
+
+| Product | What | Command | Flags(Optional) | 
+|:----:|:----:|:----:|:----:|
+| Crashlytics | Go to cryshlytics | `crashlytics, crash` | - |
+| Performance | Go to performance | `performance, perf` | - |
+| Test Lab | Go to Test Lab | `testlab, tl` | - |
+| App Distribution | Go to App Distribution | `appdistribution, ad` | - |
+
+**Analytics**
+
+| Product | What | Command | Flags(Optional) | 
+|:----:|:----:|:----:|:----:|
+| Dashboard | Go to dashboard | `dashboard` | - |
+
+**Grow**
+
+| Product | What | Command | Flags(Optional) | 
+|:----:|:----:|:----:|:----:|
+| Grow | Go to grow | `grow` | - |
 
 ### GCP
 
@@ -184,30 +272,20 @@ $ biko gcp [product] [flag(s)]
 
 Note that there is `--project` command flag for all commands.
 
-### Datadog
+### Github
 
-* `datadog` or `dd` command is supported for Datadog.
+* Open Github from your terminal.
 
 ```
-$ biko datadog [product] [flag(s)]
+$ biko github [product] [flag(s)]
 # or
-$ biko dd [product] [flag(s)]
+$ biko gh [product] [flag(s)]
 ```
 
-**Supported Product**
-
-| Product | What | Command | Flags(Optional) | 
-|:----:|:----:|:----:|:----:|
-| Watchdog | Go to Watchdog Dashboard | `watchdog`, `wd` | - |
-| Events | Go to Events Dashboard | `events` | - |
-| Dashboard | Go to Dashboard page | `dashboard` | - |
-| Infrastructure | Go to Infrastructure page | `infrastructure` | - | 
-| Monitors | Go to Monitors Dashboard | `moniters` | - |
-| Integrations | Go to Integrations page | `integrations` | - |
-| APM | Go to APM page | `apm` | - |
-| Notebook | Go to Notebook page | `notebook` | - | 
-| Logs | Go to logs page | `logs` | `--view, -v` |
-| Synthetics | Go to synthetics page | `synthetics` | - |
+| Product   | What                  | Command     | Flags(Optional) |
+| :----:    | :----:                | :----:      | :----:          |
+| Dashboard | Open github Dashboard | `dashboard`, `db` | `--org`         |
+| Trending  | Open github Treinding | `trending`, `t`   | `--language, -l`, `--since, -s` |
 
 ### Google
 
@@ -232,20 +310,6 @@ $ biko g s -q "How to configure biko"
 
 Blazing fast.
 
-### Youtube
-
-* Open Youtube and search from your terminal.
-
-```
-$ biko youtube [product] [flag(s)]
-# or
-$ biko yt [product] [flag(s)]
-```
-
-| Product | What | Command | Flags(Optional) | 
-|:----:|:----:|:----:|:----:|
-| Search | Search on Youtube | `search`, `s` | `--query, -q` |
-
 ### Pagerduty
 
 * If you are using SSO, you need to pass `--org` or configure `BIKO_PAGERDUTY`
@@ -262,81 +326,19 @@ $ biko pd [product] [flag(s)]
 | Alert | Go to alert page | `alert`, `a` | - |
 | Schedules | Go to schedules page | `schedules`, `s` | - |
 
-### Github
+### Youtube
 
-* Open Github from your terminal.
+* Open Youtube and search from your terminal.
 
 ```
-$ biko github [product] [flag(s)]
+$ biko youtube [product] [flag(s)]
 # or
-$ biko gh [product] [flag(s)]
-```
-
-| Product   | What                  | Command     | Flags(Optional) |
-| :----:    | :----:                | :----:      | :----:          |
-| Dashboard | Open github Dashboard | `dashboard`, `db` | `--org`         |
-| Trending  | Open github Treinding | `trending`, `t`   | `--language, -l`, `--since, -s` |
-
-### CircleCI
-
-* Open CircleCI from your terminal.
-* You need to pass `--org` or configure `BIKO_CIRCLECI`
-
-```
-$ biko circleci [product] [flag(s)]
-# or
-$ biko cc [product] [flag(s)]
+$ biko yt [product] [flag(s)]
 ```
 
 | Product | What | Command | Flags(Optional) | 
 |:----:|:----:|:----:|:----:|
-| Jobs | Open CircleCI Jobs | `jobs, j` | `--project`, `-p` |
-| Workflows | Open CircleCI Workflows | `workflows, wf` | `--project`, `-p` |
-
-### Firebase
-
-* Open Google Firebase form your terminal.
-* Please pass `--project` to open supported products page.
-
-```
-$ biko firebase [product] [flag(s)]
-# or
-$ biko fb [product] [flag(s)]
-```
-
-**Supported Product**
-
-**Development**
-
-| Product | What | Command | Flags(Optional) | 
-|:----:|:----:|:----:|:----:|
-| Authentication | Go to auth | `authentications, auth` | - |
-| Database | Go to database | `database, db` | - | 
-| Storage | Go to storage | `storage` | - |
-| Hosting | Go to Hosting | `hosting, host, h` | - |
-| Functions | Go to functions | `funcitons, func, f` | - |
-| ML Kit | Go to ML Kit | `ml` | - |
-
-**Quality**
-
-| Product | What | Command | Flags(Optional) | 
-|:----:|:----:|:----:|:----:|
-| Crashlytics | Go to cryshlytics | `crashlytics, crash` | - |
-| Performance | Go to performance | `performance, perf` | - |
-| Test Lab | Go to Test Lab | `testlab, tl` | - |
-| App Distribution | Go to App Distribution | `appdistribution, ad` | - |
-
-**Analytics**
-
-| Product | What | Command | Flags(Optional) | 
-|:----:|:----:|:----:|:----:|
-| Dashboard | Go to dashboard | `dashboard` | - |
-
-**Grow**
-
-| Product | What | Command | Flags(Optional) | 
-|:----:|:----:|:----:|:----:|
-| Grow | Go to grow | `grow` | - |
+| Search | Search on Youtube | `search`, `s` | `--query, -q` |
 
 ## (Advanced): Docker image
 
