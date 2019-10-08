@@ -47,16 +47,25 @@ func (p *Provider) GetTargetURL() (string, error) {
 	return p.URL.String(), nil
 }
 func (p *Provider) addProductPath(product string) {
-	p.join(product)
 	switch product {
 	case "watchdogs":
+		p.join(product)
 	case "events":
 		p.join("events/stream")
+	case "dashboard":
+		p.join(product)
+	case "infrastructure":
+		p.join(product)
+	case "monitors":
+		p.join(product)
 	case "metrics":
+		p.join(product)
 	case "integrations":
 		p.join("account/settings")
 	case "apm":
+		p.join(product)
 	case "notebook":
+		p.join(product)
 	case "logs":
 		var view string
 		if view = p.GetCtxString("view"); view != "" {
@@ -65,6 +74,7 @@ func (p *Provider) addProductPath(product string) {
 			p.URL.RawQuery = param.Encode()
 		}
 	case "synthetics":
+		p.join(product)
 	default:
 		p.join("apm/home")
 	}
