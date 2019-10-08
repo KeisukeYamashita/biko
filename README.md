@@ -226,7 +226,7 @@ $ biko g [product] [flag(s)]
 If you bump into something you want to lookup when you are using the terminal...
 
 ```
-$ biko g s "How to configure biko"
+$ biko g s -q "How to configure biko"
 ```
 
 Blazing fast.
