@@ -179,7 +179,11 @@ func (p *Provider) addProductPath(product string) {
 	case "pubsub":
 		p.join("cloudpubsub")
 	case "storage":
-		p.join(product)
+		p.join(fmt.Sprintf("%s/browser", product))
+		var bucket string
+		if bucket = p.GetCtxString("bucket"); bucket != "" {
+			p.join(bucket)
+		}
 	case "dataflow":
 		p.join(product)
 	default:

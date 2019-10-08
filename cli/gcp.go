@@ -358,12 +358,17 @@ func newGCPPubSubCmd() cli.Command {
 func newGCPStorageCmd() cli.Command {
 	return cli.Command{
 		Name:     "storage",
+		Aliases:  []string{"gcs"},
 		Category: categoryStorage,
 		Usage:    "Open Cloud Storage page",
 		Flags: []cli.Flag{
 			cli.StringFlag{
 				Name:  "project",
 				Usage: "Specify the project to open",
+			},
+			cli.StringFlag{
+				Name:  "bucket, b",
+				Usage: "Specify the bucket to open",
 			},
 		},
 		Action: func(c *cli.Context) error {
