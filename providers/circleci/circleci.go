@@ -19,7 +19,7 @@ type Provider struct {
 }
 
 // GetProvider ...
-func GetProvider() (*Provider, error) {
+func GetProvider(org string) (*Provider, error) {
 	conf, err := alias.GetConfig()
 	if err != nil {
 		return nil, err
@@ -27,6 +27,7 @@ func GetProvider() (*Provider, error) {
 
 	return &Provider{
 		Aliases: conf.CircleCI["alias"].(map[string]interface{}),
+		Org:     org,
 	}, nil
 }
 
@@ -38,28 +39,36 @@ func (p *Provider) Init(c *cli.Context) error {
 
 // GetTargetURL ...
 func (p *Provider) GetTargetURL() (string, error) {
-	var baseURL = fmt.Sprintf("https://circleci.com/gh/%s/", p.Org)
+	const baseURL = "https://circleci.com/"
 	var err error
 	if p.baseURL, err = url.Parse(baseURL); err != nil {
 		return "", err
 	}
 	p.addProductPath(p.Ctx.Command.Name)
-	fmt.Printf(p.URL.String())
 	return p.URL.String(), nil
 }
 
 func (p *Provider) addProductPath(product string) {
+	p.URL = p.baseURL
 	switch product {
 	case "jobs":
+		p.join(fmt.Sprintf("gh/%s", p.Org))
 		var project string
-		if project = p.Ctx.String("project"); project != "" {
-			p.join(fmt.Sprintf("%s/", project))
+		if project = p.GetCtxString("project"); project != "" {
+			p.join(fmt.Sprintf("gh/%s/%s/", p.Org, project))
 			return
 		}
-		p.URL = p.baseURL
+		return
+	case "workflows":
+		p.join(fmt.Sprintf("gh/%s/workflows", p.Org))
+		var project string
+		if project = p.GetCtxString("project"); project != "" {
+			p.join(project)
+			return
+		}
 		return
 	default:
-		p.URL = p.baseURL
+		return
 	}
 }
 
