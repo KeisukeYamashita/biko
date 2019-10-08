@@ -10,7 +10,7 @@ func newGoogleCmd() cli.Command {
 	return cli.Command{
 		Name:    "google",
 		Aliases: []string{"g"},
-		Usage:   "Open GCP resource",
+		Usage:   "Open Google source",
 		Flags: []cli.Flag{
 			cli.StringFlag{
 				Name:  "project",
@@ -18,11 +18,11 @@ func newGoogleCmd() cli.Command {
 			},
 		},
 		Action: func(c *cli.Context) error {
-			gcp, err := google.GetProvider()
+			g, err := google.GetProvider()
 			if err != nil {
 				return err
 			}
-			return browser.Open(c, gcp)
+			return browser.Open(c, g)
 		},
 		Subcommands: []cli.Command{
 			newGoogleSearchCmd(),
@@ -42,11 +42,11 @@ func newGoogleSearchCmd() cli.Command {
 			},
 		},
 		Action: func(c *cli.Context) error {
-			gcp, err := google.GetProvider()
+			g, err := google.GetProvider()
 			if err != nil {
 				return err
 			}
-			return browser.Open(c, gcp)
+			return browser.Open(c, g)
 		},
 	}
 
