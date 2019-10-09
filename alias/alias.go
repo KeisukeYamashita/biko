@@ -27,6 +27,7 @@ var (
 
 // TomlConfig ...
 type TomlConfig struct {
+	AWS       map[string]interface{} `toml:"aws"`
 	GCP       map[string]interface{} `toml:"gcp"`
 	Datadog   map[string]interface{} `toml:"datadog"`
 	Google    map[string]interface{} `toml:"google"`

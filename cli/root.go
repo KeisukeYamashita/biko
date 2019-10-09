@@ -36,6 +36,7 @@ func NewCmdRoot() *cli.App {
 
 func rootSubCommands() []cli.Command {
 	return []cli.Command{
+		newAWSCmd(),
 		newCircleCICmd(),
 		newDatadaogCmd(),
 		newFirebaseCmd(),
