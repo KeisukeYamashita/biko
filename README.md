@@ -114,6 +114,7 @@ You can directly go to your page without waiting to load pages many times.
 
 The supported provider are here.
 
+* Amazon Web Service(AWS)
 * CircleCI
 * Datadog
 * Firebase
@@ -122,6 +123,51 @@ The supported provider are here.
 * Google
 * Pagerduty
 * Youtube
+
+### AWS
+
+* Open AWS Console product page
+* To open region page, please pass `--region, -r` flag.
+
+```
+$ biko aws [product] [flag(s)]
+```
+
+**Supported Product**
+
+**Computing**
+
+| Product | What | Command | Flags(Optional) | 
+|:----:|:----:|:----:|:----:|
+| EC2 | Open EC2 | `ec2` | - |
+| ECR | Open ECR | `ecr` | - |
+| ECS | Open ECR | `ecs` | - |
+| EKS | Open EKR | `eks` | - |
+| Lambda | Open Lambda | `lambda, lam` | - |
+| Batch | Open Batch | `batch, b` | - |
+
+**Storage**
+
+| Product | What | Command | Flags(Optional) | 
+|:----:|:----:|:----:|:----:|
+| S3 | Open S3 page | `s3` | - |
+| EFS | Open EFS page | `efs` | - |
+
+**Database**
+
+| Product | What | Command | Flags(Optional) | 
+|:----:|:----:|:----:|:----:|
+| RDS | Open RDS | `rds` | - |
+| DynamoDB | Open DynamoDB |`dynamo, dyn` | - |
+| Neptune | Open Neptune | `neptune, nep` | - |
+| Redshift | Open Redshift | `redshift, red, rs` | - |
+
+**Networking**
+
+| Product | What | Command | Flags(Optional) | 
+|:----:|:----:|:----:|:----:|
+| VPC | Open VPC | `vpc` | - |
+| Route53 | Open Route53 |`route53, route, 53` | - |
 
 ### CircleCI
 
