@@ -186,6 +186,27 @@ $ biko cc [product] [flag(s)]
 | Jobs | Open CircleCI Jobs | `jobs, j` | `--project`, `-p` |
 | Workflows | Open CircleCI Workflows | `workflows, wf` | `--project`, `-p` |
 
+### Azure
+
+* Open Microsoft Azure console
+
+```
+$ biko azure [product] [flag(s)]
+# or
+$ biko az [product] [flag(s)]
+```
+
+**Supported Product**
+
+| Product | What | Command | Flags(Optional) | 
+|:----:|:----:|:----:|:----:|
+| Virtual Machines | Open VM | `vm` | - |
+| App Services | Open App Services | `appservices`, `as`, `sites` | - |
+| Function App | Open Function App | `functions, f` | - | 
+| Storage Accounts | Open Storage Accounts | `storage` | - | 
+| SQL Databases | Open SQL Database | `sql` | - |
+| Cosmos DB | Open Cosmos Database | `cosmos` | - |
+
 ### Datadog
 
 * `datadog` or `dd` command is supported for Datadog.

@@ -37,6 +37,105 @@ func newAzureCmd() cli.Command {
 			}
 			return browser.Open(c, aws)
 		},
-		Subcommands: []cli.Command{},
+		Subcommands: []cli.Command{
+			newAzureVMCmd(),
+			newAzureAppServicesCmd(),
+			newAzureFunctionAppCmd(),
+			newAzureSQLDatabaseCmd(),
+			newAzureCosmosDBCmd(),
+			newAzureStorageAccountsCmd(),
+		},
+	}
+}
+
+func newAzureVMCmd() cli.Command {
+	return cli.Command{
+		Name:  "vm",
+		Usage: "Open VM",
+		Flags: []cli.Flag{},
+		Action: func(c *cli.Context) error {
+			aws, err := az.GetProvider()
+			if err != nil {
+				return err
+			}
+			return browser.Open(c, aws)
+		},
+	}
+}
+
+func newAzureAppServicesCmd() cli.Command {
+	return cli.Command{
+		Name:    "appservices",
+		Aliases: []string{"as", "sites"},
+		Usage:   "Open App Services",
+		Flags:   []cli.Flag{},
+		Action: func(c *cli.Context) error {
+			aws, err := az.GetProvider()
+			if err != nil {
+				return err
+			}
+			return browser.Open(c, aws)
+		},
+	}
+}
+
+func newAzureFunctionAppCmd() cli.Command {
+	return cli.Command{
+		Name:    "function",
+		Aliases: []string{"f"},
+		Usage:   "Open Function App",
+		Flags:   []cli.Flag{},
+		Action: func(c *cli.Context) error {
+			aws, err := az.GetProvider()
+			if err != nil {
+				return err
+			}
+			return browser.Open(c, aws)
+		},
+	}
+}
+
+func newAzureSQLDatabaseCmd() cli.Command {
+	return cli.Command{
+		Name:  "sql",
+		Usage: "Open SQL Database",
+		Flags: []cli.Flag{},
+		Action: func(c *cli.Context) error {
+			aws, err := az.GetProvider()
+			if err != nil {
+				return err
+			}
+			return browser.Open(c, aws)
+		},
+	}
+}
+
+func newAzureCosmosDBCmd() cli.Command {
+	return cli.Command{
+		Name:  "cosmos",
+		Usage: "Open Cosmos Database",
+		Flags: []cli.Flag{},
+		Action: func(c *cli.Context) error {
+			aws, err := az.GetProvider()
+			if err != nil {
+				return err
+			}
+			return browser.Open(c, aws)
+		},
+	}
+}
+
+func newAzureStorageAccountsCmd() cli.Command {
+	return cli.Command{
+		Name:  "storage",
+		Usage: "Open Storage Accounts",
+		Flags: []cli.Flag{},
+		Action: func(c *cli.Context) error {
+			aws, err := az.GetProvider()
+			if err != nil {
+				return err
+			}
+			return browser.Open(c, aws)
+		},
 	}
 }

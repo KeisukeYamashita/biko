@@ -15,7 +15,7 @@
 package azure
 
 import (
-	"net/url"
+	"fmt"
 	"path"
 
 	"github.com/KeisukeYamashita/biko/alias"
@@ -23,9 +23,10 @@ import (
 )
 
 // Provider ...
+// TODO(KeisukeYamashita): Use url package for baseURL and URL
 type Provider struct {
-	baseURL *url.URL
-	URL     *url.URL
+	baseURL string
+	URL     string
 	Ctx     *cli.Context
 	Aliases map[string]interface{}
 }
@@ -50,20 +51,44 @@ func (p *Provider) Init(c *cli.Context) error {
 
 // GetTargetURL ...
 func (p *Provider) GetTargetURL() (string, error) {
-	const baseURL = "https://"
-	var err error
-	if p.baseURL, err = url.Parse(baseURL); err != nil {
-		return "", err
-	}
+	p.baseURL = "https://portal.azure.com"
 	p.addProductPath(p.Ctx.Command.Name)
-	return p.URL.String(), nil
+	return p.URL, nil
 }
 
 func (p *Provider) addProductPath(product string) {
+	p.URL = p.baseURL
+	if product == "" {
+		p.join("#home")
+		return
+	}
+
+	var productType, path string
+	suffix := "Blade"
 	switch product {
+	case "vm":
+		productType = "Compute"
+		path = "VirtualMachines"
+	case "appservices":
+		productType = "Web"
+		path = "sites"
+	case "funcion":
+		productType = "Web"
+		path = "sites/king/functionapp"
+	case "sql":
+		productType = "Sql"
+		path = "services/databases"
+	case "cosmos":
+		productType = "DocumentDB"
+		path = "databaseAccounts"
+		suffix = ""
+	case "storage":
+		productType = "Storage"
+		path = "StorageAccounts"
 	default:
 		return
 	}
+	p.join(fmt.Sprintf("#blade/HubsExtension/BrowseResource%s/resourceType/Microsoft.%s%%2F%s", suffix, productType, path))
 }
 
 // GetCtxString ...
@@ -83,8 +108,8 @@ func (p *Provider) GetCtxString(str string) string {
 }
 
 func (p *Provider) join(additionPath string) {
-	if p.URL == nil {
+	if p.URL == "" {
 		p.URL = p.baseURL
 	}
-	p.URL.Path = path.Join(p.URL.Path, additionPath)
+	p.URL = path.Join(p.URL, additionPath)
 }
