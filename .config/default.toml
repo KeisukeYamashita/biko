@@ -1,6 +1,9 @@
 [aws]
     [aws.alias]
 
+[azure]
+    [azure.alias]
+
 [gcp]
     [gcp.alias]
 
