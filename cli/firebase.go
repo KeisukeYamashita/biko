@@ -29,9 +29,10 @@ const (
 
 func newFirebaseCmd() cli.Command {
 	return cli.Command{
-		Name:    "firebase",
-		Aliases: []string{"fb"},
-		Usage:   "Open Firebase source",
+		Name:     "firebase",
+		Aliases:  []string{"fb"},
+		Usage:    "Open Firebase source",
+		Category: categoryCloudProvider,
 		Flags: []cli.Flag{
 			cli.StringFlag{
 				Name:  "project",

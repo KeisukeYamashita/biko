@@ -29,9 +29,10 @@ const (
 
 func newAWSCmd() cli.Command {
 	return cli.Command{
-		Name:  "aws",
-		Usage: "Open AWS resource",
-		Flags: []cli.Flag{},
+		Name:     "aws",
+		Usage:    "Open AWS resource",
+		Category: categoryCloudProvider,
+		Flags:    []cli.Flag{},
 		Action: func(c *cli.Context) error {
 			aws, err := aws.GetProvider()
 			if err != nil {

@@ -24,9 +24,10 @@ import (
 
 func newCircleCICmd() cli.Command {
 	return cli.Command{
-		Name:    "circleci",
-		Aliases: []string{"cc"},
-		Usage:   "Open CircleCI resource",
+		Name:     "circleci",
+		Aliases:  []string{"cc"},
+		Usage:    "Open CircleCI resource",
+		Category: categoryContinousIntegration,
 		Flags: []cli.Flag{
 			cli.StringFlag{
 				Name:   "org",

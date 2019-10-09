@@ -22,9 +22,10 @@ import (
 
 func newGithubCmd() cli.Command {
 	return cli.Command{
-		Name:    "github",
-		Aliases: []string{"gh"},
-		Usage:   "Open Github resource",
+		Name:     "github",
+		Aliases:  []string{"gh"},
+		Usage:    "Open Github resource",
+		Category: categoryVersioning,
 		Flags: []cli.Flag{
 			cli.StringFlag{
 				Name:  "project",

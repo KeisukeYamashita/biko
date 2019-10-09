@@ -32,8 +32,9 @@ const (
 
 func newGCPCmd() cli.Command {
 	return cli.Command{
-		Name:  "gcp",
-		Usage: "Open GCP resource",
+		Name:     "gcp",
+		Usage:    "Open GCP resource",
+		Category: categoryCloudProvider,
 		Flags: []cli.Flag{
 			cli.StringFlag{
 				Name:  "project",

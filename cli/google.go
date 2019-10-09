@@ -22,9 +22,10 @@ import (
 
 func newGoogleCmd() cli.Command {
 	return cli.Command{
-		Name:    "google",
-		Aliases: []string{"g"},
-		Usage:   "Open Google source",
+		Name:     "google",
+		Aliases:  []string{"g"},
+		Usage:    "Open Google source",
+		Category: categoryWebService,
 		Flags: []cli.Flag{
 			cli.StringFlag{
 				Name:  "project",

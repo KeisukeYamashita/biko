@@ -22,10 +22,11 @@ import (
 
 func newDatadaogCmd() cli.Command {
 	return cli.Command{
-		Name:    "datadog",
-		Aliases: []string{"dd"},
-		Usage:   "Open Datadog resource",
-		Flags:   []cli.Flag{},
+		Name:     "datadog",
+		Aliases:  []string{"dd"},
+		Usage:    "Open Datadog resource",
+		Category: categoryMonitor,
+		Flags:    []cli.Flag{},
 		Subcommands: []cli.Command{
 			newDDWatchDogCmd(),
 			newDDEventCmd(),

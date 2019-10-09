@@ -22,9 +22,10 @@ import (
 
 func newYoutubeCmd() cli.Command {
 	return cli.Command{
-		Name:    "youtube",
-		Aliases: []string{"yt"},
-		Usage:   "Open Youtube source",
+		Name:     "youtube",
+		Aliases:  []string{"yt"},
+		Usage:    "Open Youtube source",
+		Category: categoryWebService,
 		Flags: []cli.Flag{
 			cli.StringFlag{
 				Name:  "project",

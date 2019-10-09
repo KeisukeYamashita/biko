@@ -24,9 +24,10 @@ import (
 
 func newPagerDutyCmd() cli.Command {
 	return cli.Command{
-		Name:    "pagerduty",
-		Aliases: []string{"pd"},
-		Usage:   "Open PagerDuty resource",
+		Name:     "pagerduty",
+		Aliases:  []string{"pd"},
+		Usage:    "Open PagerDuty resource",
+		Category: categoryIncidentManagement,
 		Flags: []cli.Flag{
 			cli.StringFlag{
 				Name:  "project",

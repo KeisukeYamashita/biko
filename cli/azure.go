@@ -26,10 +26,11 @@ const (
 
 func newAzureCmd() cli.Command {
 	return cli.Command{
-		Name:    "azure",
-		Aliases: []string{"az"},
-		Usage:   "Open Microsoft Azure resource",
-		Flags:   []cli.Flag{},
+		Name:     "azure",
+		Aliases:  []string{"az"},
+		Usage:    "Open Microsoft Azure resource",
+		Category: categoryCloudProvider,
+		Flags:    []cli.Flag{},
 		Action: func(c *cli.Context) error {
 			aws, err := az.GetProvider()
 			if err != nil {
