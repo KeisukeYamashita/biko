@@ -29,6 +29,7 @@
 - [Alias](#alias)
 - [Support](#support)
   - [AWS](#aws)
+  - [Azure](#azure)
   - [CircleCI](#circleci)
   - [Datadog](#datadog)
   - [Firebase](#firebase)
@@ -116,6 +117,7 @@ You can directly go to your page without waiting to load pages many times.
 The supported provider are here.
 
 * Amazon Web Service(AWS)
+* Microsoft Azure
 * CircleCI
 * Datadog
 * Firebase
@@ -170,22 +172,6 @@ $ biko aws [product] [flag(s)]
 | VPC | Open VPC | `vpc` | - |
 | Route53 | Open Route53 |`route53, route, 53` | - |
 
-### CircleCI
-
-* Open CircleCI from your terminal.
-* You need to pass `--org` or configure `BIKO_CIRCLECI`
-
-```
-$ biko circleci [product] [flag(s)]
-# or
-$ biko cc [product] [flag(s)]
-```
-
-| Product | What | Command | Flags(Optional) | 
-|:----:|:----:|:----:|:----:|
-| Jobs | Open CircleCI Jobs | `jobs, j` | `--project`, `-p` |
-| Workflows | Open CircleCI Workflows | `workflows, wf` | `--project`, `-p` |
-
 ### Azure
 
 * Open Microsoft Azure console
@@ -206,6 +192,22 @@ $ biko az [product] [flag(s)]
 | Storage Accounts | Open Storage Accounts | `storage` | - | 
 | SQL Databases | Open SQL Database | `sql` | - |
 | Cosmos DB | Open Cosmos Database | `cosmos` | - |
+
+### CircleCI
+
+* Open CircleCI from your terminal.
+* You need to pass `--org` or configure `BIKO_CIRCLECI`
+
+```
+$ biko circleci [product] [flag(s)]
+# or
+$ biko cc [product] [flag(s)]
+```
+
+| Product | What | Command | Flags(Optional) | 
+|:----:|:----:|:----:|:----:|
+| Jobs | Open CircleCI Jobs | `jobs, j` | `--project`, `-p` |
+| Workflows | Open CircleCI Workflows | `workflows, wf` | `--project`, `-p` |
 
 ### Datadog
 
