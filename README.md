@@ -28,6 +28,7 @@
     - [Example2. Open Datadog Dashboad](#example2-open-datadog-dashboad)
 - [Alias](#alias)
 - [Support](#support)
+  - [AWS](#aws)
   - [CircleCI](#circleci)
   - [Datadog](#datadog)
   - [Firebase](#firebase)
