@@ -37,6 +37,7 @@ type TomlConfig struct {
 	Github    map[string]interface{} `toml:"github"`
 	CircleCI  map[string]interface{} `toml:"circleci"`
 	Firebase  map[string]interface{} `toml:"firebase"`
+	JIRA      map[string]interface{} `toml:"jira"`
 }
 
 // GetConfig ...
