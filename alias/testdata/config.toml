@@ -25,3 +25,6 @@
 
 [firebase]
     [firebase.alias]
+
+[jira]
+    [jira.alias]

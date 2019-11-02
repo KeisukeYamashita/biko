@@ -126,6 +126,7 @@ The supported provider are here.
 * Google
 * Pagerduty
 * Youtube
+* JIRA
 
 ### AWS
 
@@ -409,6 +410,26 @@ $ biko yt [product] [flag(s)]
 | Product | What | Command | Flags(Optional) | 
 |:----:|:----:|:----:|:----:|
 | Search | Search on Youtube | `search`, `s` | `--query, -q` |
+
+### JIRA
+
+* If you are using SSO, you need to pass `--org` or configure `BIKO_JIRA`
+* This `--project` flag can be omitted by set `BIKO_JIRA_PROJECT` to the env variable
+
+```
+$ biko jira [product] [flag(s)]
+# or
+$ biko jr [product] [flag(s)]
+```
+
+| Product | What | Command | Flags(Optional) | 
+|:----:|:----:|:----:|:----:|
+| Dashboard | Go to dashboard page | `dashboard`, `db` | - |
+| Projects | Go to projects page | `projects`, `ps` | - |
+| People | Go to people page | `people`, `pp` | - |
+| Issues | Go to issues page | `issues`, `is` | - |
+| Backlog | Go to backlog page | `backlog`, `bl` | `--project, -p` |
+| Reports | Go to reports page | `reports`, `rp` | `--project, -p` |
 
 ## (Advanced): Docker image
 

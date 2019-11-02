@@ -44,6 +44,7 @@ func rootSubCommands() []cli.Command {
 		newGCPCmd(),
 		newGithubCmd(),
 		newGoogleCmd(),
+		newJIRACmd(),
 		newPagerDutyCmd(),
 		newVersionCmd(),
 		newYoutubeCmd(),
