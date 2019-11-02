@@ -163,7 +163,7 @@ func newJIRABacklogCmd() cli.Command {
 		Usage:   "Open backlog page",
 		Flags: []cli.Flag{
 			cli.StringFlag{
-				Name:   "project",
+				Name:   "project, p",
 				EnvVar: "BIKO_JIRA_PROJECT",
 				Usage:  "Specify the project to open",
 			},
@@ -193,7 +193,7 @@ func newJIRAReportsCmd() cli.Command {
 		Usage:   "Open reports page",
 		Flags: []cli.Flag{
 			cli.StringFlag{
-				Name:   "project",
+				Name:   "project, p",
 				EnvVar: "BIKO_JIRA_PROJECT",
 				Usage:  "Specify the project to open",
 			},
