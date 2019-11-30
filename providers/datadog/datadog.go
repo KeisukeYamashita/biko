@@ -81,6 +81,7 @@ func (p *Provider) addProductPath(product string) {
 	case "notebook":
 		p.join(product)
 	case "logs":
+		p.join(product)
 		var view string
 		if view = p.GetCtxString("view"); view != "" {
 			param := url.Values{}
