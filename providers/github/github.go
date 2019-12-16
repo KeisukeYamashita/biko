@@ -71,6 +71,20 @@ func (p *Provider) addProductPath(product string) {
 			p.join(language)
 			return
 		}
+	case "repository":
+		var org string
+		if org = p.Ctx.String("org"); org != "" {
+			p.join(org)
+		}
+		var name string
+		if name = p.Ctx.String("name"); name != "" {
+			if org = p.Ctx.String("org"); org != "" {
+				p.join(name)
+			}
+			return
+		}
+		p.URL = p.baseURL
+		return
 	default:
 		p.URL = p.baseURL
 	}
