@@ -72,13 +72,20 @@ func (p *Provider) addProductPath(product string) {
 			return
 		}
 	case "repository":
-		var org string
-		if org = p.Ctx.String("org"); org != "" {
+
+		users := p.Ctx.String("users")
+		org := p.Ctx.String("org")
+		if users != "" && org != "" {
+			p.URL = p.baseURL
+			return
+		} else if users != "" {
+			p.join(users)
+		} else {
 			p.join(org)
 		}
-		var name string
-		if name = p.Ctx.String("name"); name != "" {
-			if org = p.Ctx.String("org"); org != "" {
+
+		if name := p.Ctx.String("name"); name != "" {
+			if users != "" || org != "" {
 				p.join(name)
 			}
 			return

@@ -99,6 +99,10 @@ func newGithubRepositoryCmd() cli.Command {
 				Usage: "Organization to open",
 			},
 			cli.StringFlag{
+				Name:  "users, u",
+				Usage: "User page to open",
+			},
+			cli.StringFlag{
 				Name:  "name, n",
 				Usage: "Name of repository that depend on Organization",
 			},
