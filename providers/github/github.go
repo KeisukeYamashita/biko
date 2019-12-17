@@ -75,7 +75,8 @@ func (p *Provider) addProductPath(product string) {
 		if users != "" && org != "" {
 			p.URL = p.baseURL
 			return
-		} else if users != "" {
+		}
+		if users != "" {
 			p.join(users)
 		} else {
 			p.join(org)
