@@ -51,8 +51,7 @@ func (p *Provider) GetTargetURL() (string, error) {
 func (p *Provider) addProductPath(product string) {
 	switch product {
 	case "dashboard":
-		var org string
-		if org = p.Ctx.String("org"); org != "" {
+		if org := p.Ctx.String("org"); org != "" {
 			p.join(fmt.Sprintf("orgs/%s/dashboard", org))
 			return
 		}
@@ -60,17 +59,37 @@ func (p *Provider) addProductPath(product string) {
 		return
 	case "trending":
 		p.join("trending")
-		var since string
-		if since = p.Ctx.String("since"); since != "" {
+		if since := p.Ctx.String("since"); since != "" {
 			param := url.Values{}
 			param.Add("since", since)
 			p.URL.RawQuery = param.Encode()
 		}
-		var language string
-		if language = p.Ctx.String("language"); language != "" {
+		if language := p.Ctx.String("language"); language != "" {
 			p.join(language)
 			return
 		}
+	case "repository":
+
+		users := p.Ctx.String("users")
+		org := p.Ctx.String("org")
+		if users != "" && org != "" {
+			p.URL = p.baseURL
+			return
+		}
+		if users != "" {
+			p.join(users)
+		} else {
+			p.join(org)
+		}
+
+		if name := p.Ctx.String("name"); name != "" {
+			if users != "" || org != "" {
+				p.join(name)
+			}
+			return
+		}
+		p.URL = p.baseURL
+		return
 	default:
 		p.URL = p.baseURL
 	}

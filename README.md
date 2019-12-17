@@ -353,10 +353,11 @@ $ biko github [product] [flag(s)]
 $ biko gh [product] [flag(s)]
 ```
 
-| Product   | What                  | Command     | Flags(Optional) |
-| :----:    | :----:                | :----:      | :----:          |
-| Dashboard | Open github Dashboard | `dashboard`, `db` | `--org`         |
-| Trending  | Open github Treinding | `trending`, `t`   | `--language, -l`, `--since, -s` |
+| Product    | What                   | Command     | Flags(Optional) |
+| :----:     | :----:                 | :----:      | :----:          |
+| Dashboard  | Open github Dashboard  | `dashboard`, `db` | `--org`         |
+| Trending   | Open github Treinding  | `trending`, `t`   | `--language, -l`, `--since, -s` |
+| Repository | Open github Repository | `repository`, `r` | `--org`, `--name, -n` |
 
 ### Google
 

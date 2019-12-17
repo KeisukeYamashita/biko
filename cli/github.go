@@ -39,6 +39,7 @@ func newGithubCmd() cli.Command {
 		Subcommands: []cli.Command{
 			newGithubDashboardCmd(),
 			newGithubTrendingCmd(),
+			newGithubRepositoryCmd(),
 		},
 	}
 }
@@ -76,6 +77,34 @@ func newGithubTrendingCmd() cli.Command {
 			cli.StringFlag{
 				Name:  "since, s",
 				Usage: "filter trending with date range(daily, weekly, monthly)",
+			},
+		},
+		Action: func(c *cli.Context) error {
+
+			github := &gh.Provider{}
+			return browser.Open(c, github)
+		},
+	}
+
+}
+
+func newGithubRepositoryCmd() cli.Command {
+	return cli.Command{
+		Name:    "repository",
+		Aliases: []string{"r"},
+		Usage:   "Open the repository page",
+		Flags: []cli.Flag{
+			cli.StringFlag{
+				Name:  "org",
+				Usage: "Organization to open",
+			},
+			cli.StringFlag{
+				Name:  "users, u",
+				Usage: "User page to open",
+			},
+			cli.StringFlag{
+				Name:  "name, n",
+				Usage: "Name of repository that depend on Organization",
 			},
 		},
 		Action: func(c *cli.Context) error {
