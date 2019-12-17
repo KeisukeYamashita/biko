@@ -51,8 +51,7 @@ func (p *Provider) GetTargetURL() (string, error) {
 func (p *Provider) addProductPath(product string) {
 	switch product {
 	case "dashboard":
-		var org string
-		if org = p.Ctx.String("org"); org != "" {
+		if org := p.Ctx.String("org"); org != "" {
 			p.join(fmt.Sprintf("orgs/%s/dashboard", org))
 			return
 		}
@@ -60,14 +59,12 @@ func (p *Provider) addProductPath(product string) {
 		return
 	case "trending":
 		p.join("trending")
-		var since string
-		if since = p.Ctx.String("since"); since != "" {
+		if since := p.Ctx.String("since"); since != "" {
 			param := url.Values{}
 			param.Add("since", since)
 			p.URL.RawQuery = param.Encode()
 		}
-		var language string
-		if language = p.Ctx.String("language"); language != "" {
+		if language := p.Ctx.String("language"); language != "" {
 			p.join(language)
 			return
 		}
