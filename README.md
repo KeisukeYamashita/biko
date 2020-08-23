@@ -89,7 +89,7 @@ If you don't specify the project, it will use the value configured by `gcloud` S
 #### Example2. Open Datadog Dashboad 
 
 ```
-$ biko dd --dashboard DASHBOARD_ID
+$ biko dd dashboard
 ```
 
 ## Alias 
