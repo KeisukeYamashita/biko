@@ -415,6 +415,7 @@ $ biko yt [product] [flag(s)]
 ### JIRA
 
 * If you are using SSO, you need to pass `--org` or configure `BIKO_JIRA`
+* If you are using Jira self-managed plan, you need to specify base URL by passing `--base` or setting `BIKO_JIRA_BASE`
 * This `--project` flag can be omitted by set `BIKO_JIRA_PROJECT` to the env variable
 
 ```
