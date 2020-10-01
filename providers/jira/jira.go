@@ -25,10 +25,9 @@ import (
 
 // Provider ...
 type Provider struct {
-	baseURL *url.URL
+	BaseURL *url.URL
 	URL     *url.URL
 	Ctx     *cli.Context
-	Org     string
 	Aliases map[string]interface{}
 }
 
@@ -52,12 +51,6 @@ func (p *Provider) Init(c *cli.Context) error {
 
 // GetTargetURL ...
 func (p *Provider) GetTargetURL() (string, error) {
-	var baseURL = fmt.Sprintf("https://%s.atlassian.net", p.Org)
-	var err error
-	if p.baseURL, err = url.Parse(baseURL); err != nil {
-		return "", err
-	}
-
 	p.addProductPath(p.Ctx.Command.Name)
 	return p.URL.String(), nil
 }
@@ -89,7 +82,7 @@ func (p *Provider) addProductPath(product string) {
 
 func (p *Provider) join(additionPath string) {
 	if p.URL == nil {
-		p.URL = p.baseURL
+		p.URL = p.BaseURL
 	}
 	p.URL.Path = path.Join(p.URL.Path, additionPath)
 }
