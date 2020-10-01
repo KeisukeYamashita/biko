@@ -16,6 +16,7 @@ package cli
 
 import (
 	"fmt"
+	"net/url"
 
 	"github.com/KeisukeYamashita/biko/browser"
 	jr "github.com/KeisukeYamashita/biko/providers/jira"
@@ -34,14 +35,20 @@ func newJIRACmd() cli.Command {
 				EnvVar: "BIKO_JIRA",
 				Usage:  "Specify JIRA Organization",
 			},
+			cli.StringFlag{
+				Name:   "base",
+				EnvVar: "BIKO_JIRA_BASE",
+				Usage:  "Specify JIRA Base URL (for self-managed plan)",
+			},
 		},
 		Action: func(c *cli.Context) error {
-			var org string
-			if org = c.String("org"); org == "" {
-				return fmt.Errorf("Org for jira not configured pass --org or set BIKO_JIRA")
+			baseURL, err := getBaseURL(c)
+			if err != nil {
+				return err
 			}
-			jr := &jr.Provider{
-				Org: org,
+			jr := &jr.Provider{}
+			if jr.BaseURL, err = url.Parse(baseURL); err != nil {
+				return err
 			}
 			return browser.Open(c, jr)
 		},
@@ -67,14 +74,20 @@ func newJIRADashboardCmd() cli.Command {
 				EnvVar: "BIKO_JIRA",
 				Usage:  "Specify JIRA Organization",
 			},
+			cli.StringFlag{
+				Name:   "base",
+				EnvVar: "BIKO_JIRA_BASE",
+				Usage:  "Specify JIRA Base URL (for self-managed plan)",
+			},
 		},
 		Action: func(c *cli.Context) error {
-			var org string
-			if org = c.String("org"); org == "" {
-				return fmt.Errorf("Org for jira not configured pass --org or set BIKO_JIRA")
+			baseURL, err := getBaseURL(c)
+			if err != nil {
+				return err
 			}
-			jr := &jr.Provider{
-				Org: org,
+			jr := &jr.Provider{}
+			if jr.BaseURL, err = url.Parse(baseURL); err != nil {
+				return err
 			}
 			return browser.Open(c, jr)
 		},
@@ -92,14 +105,20 @@ func newJIRAProjectsCmd() cli.Command {
 				EnvVar: "BIKO_JIRA",
 				Usage:  "Specify JIRA Organization",
 			},
+			cli.StringFlag{
+				Name:   "base",
+				EnvVar: "BIKO_JIRA_BASE",
+				Usage:  "Specify JIRA Base URL (for self-managed plan)",
+			},
 		},
 		Action: func(c *cli.Context) error {
-			var org string
-			if org = c.String("org"); org == "" {
-				return fmt.Errorf("Org for jira not configured pass --org or set BIKO_JIRA")
+			baseURL, err := getBaseURL(c)
+			if err != nil {
+				return err
 			}
-			jr := &jr.Provider{
-				Org: org,
+			jr := &jr.Provider{}
+			if jr.BaseURL, err = url.Parse(baseURL); err != nil {
+				return err
 			}
 			return browser.Open(c, jr)
 		},
@@ -117,14 +136,20 @@ func newJIRAPeopleCmd() cli.Command {
 				EnvVar: "BIKO_JIRA",
 				Usage:  "Specify JIRA Organization",
 			},
+			cli.StringFlag{
+				Name:   "base",
+				EnvVar: "BIKO_JIRA_BASE",
+				Usage:  "Specify JIRA Base URL (for self-managed plan)",
+			},
 		},
 		Action: func(c *cli.Context) error {
-			var org string
-			if org = c.String("org"); org == "" {
-				return fmt.Errorf("Org for jira not configured pass --org or set BIKO_JIRA")
+			baseURL, err := getBaseURL(c)
+			if err != nil {
+				return err
 			}
-			jr := &jr.Provider{
-				Org: org,
+			jr := &jr.Provider{}
+			if jr.BaseURL, err = url.Parse(baseURL); err != nil {
+				return err
 			}
 			return browser.Open(c, jr)
 		},
@@ -142,14 +167,20 @@ func newJIRAIssuesCmd() cli.Command {
 				EnvVar: "BIKO_JIRA",
 				Usage:  "Specify JIRA Organization",
 			},
+			cli.StringFlag{
+				Name:   "base",
+				EnvVar: "BIKO_JIRA_BASE",
+				Usage:  "Specify JIRA Base URL (for self-managed plan)",
+			},
 		},
 		Action: func(c *cli.Context) error {
-			var org string
-			if org = c.String("org"); org == "" {
-				return fmt.Errorf("Org for jira not configured pass --org or set BIKO_JIRA")
+			baseURL, err := getBaseURL(c)
+			if err != nil {
+				return err
 			}
-			jr := &jr.Provider{
-				Org: org,
+			jr := &jr.Provider{}
+			if jr.BaseURL, err = url.Parse(baseURL); err != nil {
+				return err
 			}
 			return browser.Open(c, jr)
 		},
@@ -172,14 +203,20 @@ func newJIRABacklogCmd() cli.Command {
 				EnvVar: "BIKO_JIRA",
 				Usage:  "Specify JIRA Organization",
 			},
+			cli.StringFlag{
+				Name:   "base",
+				EnvVar: "BIKO_JIRA_BASE",
+				Usage:  "Specify JIRA Base URL (for self-managed plan)",
+			},
 		},
 		Action: func(c *cli.Context) error {
-			var org string
-			if org = c.String("org"); org == "" {
-				return fmt.Errorf("Org for jira not configured pass --org or set BIKO_JIRA")
+			baseURL, err := getBaseURL(c)
+			if err != nil {
+				return err
 			}
-			jr := &jr.Provider{
-				Org: org,
+			jr := &jr.Provider{}
+			if jr.BaseURL, err = url.Parse(baseURL); err != nil {
+				return err
 			}
 			return browser.Open(c, jr)
 		},
@@ -202,19 +239,39 @@ func newJIRAReportsCmd() cli.Command {
 				EnvVar: "BIKO_JIRA",
 				Usage:  "Specify JIRA Organization",
 			},
+			cli.StringFlag{
+				Name:   "base",
+				EnvVar: "BIKO_JIRA_BASE",
+				Usage:  "Specify JIRA Base URL (for self-managed plan)",
+			},
 		},
 		Action: func(c *cli.Context) error {
-			var project, org string
+			var project string
 			if project = c.String("project"); project == "" {
 				return fmt.Errorf("Project for jira not configured pass --project or set BIKO_JIRA_PROJECT")
 			}
-			if org = c.String("org"); org == "" {
-				return fmt.Errorf("Org for jira not configured pass --org or set BIKO_JIRA")
+			baseURL, err := getBaseURL(c)
+			if err != nil {
+				return err
 			}
-			jr := &jr.Provider{
-				Org: org,
+			jr := &jr.Provider{}
+			if jr.BaseURL, err = url.Parse(baseURL); err != nil {
+				return err
 			}
 			return browser.Open(c, jr)
 		},
 	}
+}
+
+func getBaseURL(c *cli.Context) (string, error) {
+	org := c.String("org")
+	base := c.String("base")
+	if org == "" && base == "" {
+		return "", fmt.Errorf("Org and Base for jira not configured pass --org/BIKO_JIRA or --base/BIKO_JIRA_BASE")
+	}
+	var baseURL = fmt.Sprintf("https://%s.atlassian.net", org) // for jira cloud
+	if base != "" {
+		baseURL = base // for self-managed
+	}
+	return baseURL, nil
 }
