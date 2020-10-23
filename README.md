@@ -460,19 +460,15 @@ type Provider interface {
 
 ## Maintainers
 
-<div style="display:flex;flex-direction:row;align-items: flex-start">
-    <img href="https://github.com/KeisukeYamashita" src="./_image/maintainers/keke.png" width="100" style="margin:10px">
-    <img href="https://github.com/sapuri" src="./_image/maintainers/sapuri.png" width="100" style="margin:10px">
-</div>
+[![KeisukeYamashita](https://avatars0.githubusercontent.com/u/23056537?s=120&u=c5d3b68a3af8c1ce35312e75fdb9aa0df1dcfbfe&v=4)](https://github.com/KeisukeYamashita)
+[![sapuri](https://avatars3.githubusercontent.com/u/18478610?s=120&u=997adb161c67b36cffaad898c0f8a92323b74147&v=4)](https://github.com/sapuri)
 
 ## Contributers
-
-<div style="display:flex;flex-direction:row;align-items: flex-start">
-    <img href="https://github.com/KeisukeYamashita" src="./_image/contributors/keke.png" width="100" style="margin:10px">
-    <img href="https://github.com/sapuri" src="./_image/contributors/sapuri.png" width="100" style="margin:10px">
-    <img href="https://github.com/shopetan" src="./_image/contributors/shopetan.png" width="100" style="margin:10px">
-    <img href="https://github.com/micnncim " src="./_image/contributors/micnncim.png" width="100" style="margin:10px">
-</div>
+[![KeisukeYamashita](https://avatars0.githubusercontent.com/u/23056537?s=120&u=c5d3b68a3af8c1ce35312e75fdb9aa0df1dcfbfe&v=4)](https://github.com/KeisukeYamashita)
+[![sapuri](https://avatars3.githubusercontent.com/u/18478610?s=120&u=997adb161c67b36cffaad898c0f8a92323b74147&v=4)](https://github.com/sapuri)
+[![shopetan](https://avatars2.githubusercontent.com/u/5266288?s=120&v=4)](https://github.com/shopetan)
+[![micnncim](https://avatars2.githubusercontent.com/u/21333876?s=120&u=60396941fae4b274d90db1aafa47fd462ef9ad4d&v=4)](https://github.com/micnncim)
+[![hirosassa](https://avatars0.githubusercontent.com/u/423223?s=120&u=92f27ae1540d2edb911d7bd2abfc2c3b59224d84&v=4)](https://github.com/hirosassa)
 
 ## Roadmap
 
