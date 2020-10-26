@@ -60,6 +60,7 @@ func newGCPCmd() cli.Command {
 			newGCPPubSubCmd(),
 			newGCPStorageCmd(),
 			newGCPDataflowCmd(),
+			newGCPKMSCmd(),
 		},
 	}
 }
@@ -401,6 +402,27 @@ func newGCPDataflowCmd() cli.Command {
 		Name:     "dataflow",
 		Category: categoryBigData,
 		Usage:    "Open Cloud Dataflow page",
+		Flags: []cli.Flag{
+			cli.StringFlag{
+				Name:  "project",
+				Usage: "Specify the project to open",
+			},
+		},
+		Action: func(c *cli.Context) error {
+			gcp, err := gcp.GetProvider()
+			if err != nil {
+				return err
+			}
+			return browser.Open(c, gcp)
+		},
+	}
+}
+
+func newGCPKMSCmd() cli.Command {
+	return cli.Command{
+		Name:     "kms",
+		Category: categoryBigData,
+		Usage:    "Open Cloud KMS",
 		Flags: []cli.Flag{
 			cli.StringFlag{
 				Name:  "project",

@@ -25,6 +25,10 @@ import (
 	"github.com/urfave/cli"
 )
 
+const (
+	baseURL = "https://console.cloud.google.com"
+)
+
 var (
 	defaultGoogleSDKConfigPath = os.Getenv("HOME") + "/.config/gcloud/configurations/config_default"
 )
@@ -92,7 +96,6 @@ func (p *Provider) Init(c *cli.Context) error {
 
 // GetTargetURL ...
 func (p *Provider) GetTargetURL() (string, error) {
-	const baseURL = "https://console.cloud.google.com"
 	var err error
 	if p.baseURL, err = url.Parse(baseURL); err != nil {
 		return "", err
@@ -200,6 +203,8 @@ func (p *Provider) addProductPath(product string) {
 		}
 	case "dataflow":
 		p.join(product)
+	case "kms":
+		p.join("security/kms")
 	default:
 		p.join("home/dashboard")
 	}
