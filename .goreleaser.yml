@@ -1,5 +1,5 @@
 builds:
-- main: .
+- main: ./cmd/biko/main.go
   ldflags: 
     - -s -w
     - -X github.com/KeisukeYamashita/biko/cli.Version={{.Tag}}
