@@ -7,7 +7,7 @@
 <br />
 
 [![Go][go-badge]][go]
-![CircleCI](https://circleci.com/gh/KeisukeYamashita/biko.svg?style=svg&circle-token=e4b3002b1fb96c423ed5f75332c3455d88d56b0f)
+![Test](https://github.com/KeisukeYamashita/biko/workflows/Test/badge.svg)
 [![GolangCI][golangci-badge]][golangci]
 [![Go Report Card][go-report-card-badge]][go-report-card]
 [![GoDoc][godoc-badge]][godoc]
@@ -55,16 +55,15 @@
 
 Install by homebrew.
 
-```
-$ brew tap KeisukeYamashita/biko
-$ brew install biko
+```console
+$ brew tap KeisukeYamashita/tap/biko
 ```
 
 ### By source code
 
 Install by source code.
 
-```
+```console
 $ go get github.com/KeisukeYamashita/biko/cmd/biko
 ```
 
@@ -461,15 +460,15 @@ type Provider interface {
 
 ## Maintainers
 
-[![KeisukeYamashita](https://avatars0.githubusercontent.com/u/23056537?s=120&u=c5d3b68a3af8c1ce35312e75fdb9aa0df1dcfbfe&v=4)](https://github.com/KeisukeYamashita)
-[![sapuri](https://avatars3.githubusercontent.com/u/18478610?s=120&u=997adb161c67b36cffaad898c0f8a92323b74147&v=4)](https://github.com/sapuri)
+[![KeisukeYamashita](https://avatars0.githubusercontent.com/u/23056537?s=80&u=c5d3b68a3af8c1ce35312e75fdb9aa0df1dcfbfe&v=4)](https://github.com/KeisukeYamashita)
+[![sapuri](https://avatars3.githubusercontent.com/u/18478610?s=80&u=997adb161c67b36cffaad898c0f8a92323b74147&v=4)](https://github.com/sapuri)
 
 ## Contributers
-[![KeisukeYamashita](https://avatars0.githubusercontent.com/u/23056537?s=120&u=c5d3b68a3af8c1ce35312e75fdb9aa0df1dcfbfe&v=4)](https://github.com/KeisukeYamashita)
-[![sapuri](https://avatars3.githubusercontent.com/u/18478610?s=120&u=997adb161c67b36cffaad898c0f8a92323b74147&v=4)](https://github.com/sapuri)
-[![shopetan](https://avatars2.githubusercontent.com/u/5266288?s=120&v=4)](https://github.com/shopetan)
-[![micnncim](https://avatars2.githubusercontent.com/u/21333876?s=120&u=60396941fae4b274d90db1aafa47fd462ef9ad4d&v=4)](https://github.com/micnncim)
-[![hirosassa](https://avatars0.githubusercontent.com/u/423223?s=120&u=92f27ae1540d2edb911d7bd2abfc2c3b59224d84&v=4)](https://github.com/hirosassa)
+[![KeisukeYamashita](https://avatars0.githubusercontent.com/u/23056537?s=80&u=c5d3b68a3af8c1ce35312e75fdb9aa0df1dcfbfe&v=4)](https://github.com/KeisukeYamashita)
+[![sapuri](https://avatars3.githubusercontent.com/u/18478610?s=80&u=997adb161c67b36cffaad898c0f8a92323b74147&v=4)](https://github.com/sapuri)
+[![shopetan](https://avatars2.githubusercontent.com/u/5266288?s=80&v=4)](https://github.com/shopetan)
+[![micnncim](https://avatars2.githubusercontent.com/u/21333876?s=80&u=60396941fae4b274d90db1aafa47fd462ef9ad4d&v=4)](https://github.com/micnncim)
+[![hirosassa](https://avatars0.githubusercontent.com/u/423223?s=80&u=92f27ae1540d2edb911d7bd2abfc2c3b59224d84&v=4)](https://github.com/hirosassa)
 
 ## Roadmap
 
