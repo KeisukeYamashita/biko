@@ -7,7 +7,7 @@
 <br />
 
 [![Go][go-badge]][go]
-![CircleCI](https://circleci.com/gh/KeisukeYamashita/biko.svg?style=svg&circle-token=e4b3002b1fb96c423ed5f75332c3455d88d56b0f)
+![Test](https://github.com/KeisukeYamashita/biko/workflows/Test/badge.svg)
 [![GolangCI][golangci-badge]][golangci]
 [![Go Report Card][go-report-card-badge]][go-report-card]
 [![GoDoc][godoc-badge]][godoc]
