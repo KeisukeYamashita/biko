@@ -29,7 +29,7 @@ func Run() error {
 // NewCmdRoot will create root command
 func NewCmdRoot() *cli.App {
 	cmd := cli.NewApp()
-	cmd.Version = version
+	cmd.Version = Version
 	cmd.Commands = rootSubCommands()
 	return cmd
 }
