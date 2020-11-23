@@ -21,7 +21,8 @@ import (
 )
 
 const (
-	version = "0.0.13"
+	// Version is injected by goreleaser.
+	Version = ""
 )
 
 func newVersionCmd() cli.Command {
@@ -30,7 +31,7 @@ func newVersionCmd() cli.Command {
 		Usage:   "Show biko version",
 		Aliases: []string{"v"},
 		Action: func(c *cli.Context) error {
-			fmt.Printf("Biko v%s\n", version)
+			fmt.Printf("Biko %s\n", Version)
 			return nil
 		},
 	}
