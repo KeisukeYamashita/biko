@@ -55,16 +55,15 @@
 
 Install by homebrew.
 
-```
-$ brew tap KeisukeYamashita/biko
-$ brew install biko
+```console
+$ brew tap KeisukeYamashita/tap/biko
 ```
 
 ### By source code
 
 Install by source code.
 
-```
+```console
 $ go get github.com/KeisukeYamashita/biko/cmd/biko
 ```
 
