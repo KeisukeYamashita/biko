@@ -12,8 +12,7 @@ brews:
       owner: KeisukeYamashita
       name: homebrew-tap
       token: "{{ .Env.HOMEBREW_TAP_GITHUB_TOKEN }}"
-    url_template: "http://github.com/KeisukeYamashita/biko/releases/{{ .Tag }}/{{ .ArtifactName }}"
-    download_strategy: CurlDownloadStrategy.
+    url_template: "http://github.com/KeisukeYamashita/biko/releases/download/{{ .Tag }}/{{ .ArtifactName }}"
     commit_author:
       name: goreleaserbot
       email: goreleaser@carlosbecker.com
