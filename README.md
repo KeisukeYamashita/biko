@@ -56,7 +56,7 @@
 Install by homebrew.
 
 ```console
-$ brew tap KeisukeYamashita/tap/biko
+$ brew install KeisukeYamashita/tap/biko
 ```
 
 ### By source code
