@@ -16,7 +16,7 @@ brews:
     commit_author:
       name: goreleaserbot
       email: goreleaser@carlosbecker.com
-    folder: homebrew-biko
+    folder: Formula
     description: "CLI tool to jump to your browser directly"
     homepage: "https://github.com/KeisukeYamashita/biko"
     test: |
