@@ -305,7 +305,7 @@ $ biko gcp [product] [flag(s)]
 | Cloud Functions | Go to Cloud Functions page or the functions detail | `functions`, `f` |  `--region, -r`, `--name, -n` |
 | Cloud Run | Go to Cloud Run page or the deployments detail | `run` | `--region, -r`, `--name, -n` |
 | KMS | Go to security's cryptographic keys page | `kms` | - |
-| Kubernetes | Go to GKE page, or the cluster detail | `kubernetes`, `gke` | `--region, -r`, `--name, -n` `--namespace, -n` |
+| Kubernetes | Go to GKE page, or the cluster detail | `kubernetes`, `gke` | `--region, -r`, `--name, -n` `--namespace, -ns` |
 
 **Storage**
 
