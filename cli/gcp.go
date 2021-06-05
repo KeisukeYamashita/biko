@@ -137,8 +137,8 @@ func newGCPGKECmd() cli.Command {
 				Usage: "Name of the cluter",
 			},
 			cli.StringFlag{
-				Name: "namespace, ns",
-				Usage: "Specify the namespaces of workload page to open (you can input multiple namespaces by comma speparated string)",
+				Name: "namespaces, ns",
+				Usage: "Namespaces of workload page to open (you can input multiple namespaces by comma-speparated string)",
 			},
 		},
 		Action: func(c *cli.Context) error {

@@ -148,15 +148,15 @@ func (p *Provider) addProductPath(product string) {
 		}
 	case "kubernetes":
 		p.join(product)
-		var region, name, namespace string
+		var region, name, namespaces string
 		if region = p.GetCtxString("region"); region != "" {
 			p.join(fmt.Sprintf("details/%s", region))
 			if name = p.GetCtxString("name"); name != "" {
 				p.join(name)
 			}
-		} else if namespace = p.GetCtxString("namespace"); namespace != "" {
+		} else if namespaces = p.GetCtxString("namespaces"); namespaces != "" {
 			p.join("workload")
-			p.addGKEPageStateParam(namespace)
+			p.addGKEPageStateParam(namespaces)
 		}
 	case "spanner":
 		p.join(product)
@@ -231,13 +231,13 @@ func (p *Provider) addGKEPageStateParam(namespace string) {
 	return
 }
 
-func constructPageStateParam(namespace string) string {
-	nss := strings.Split(namespace, ",")
-	quotedNSs := make([]string, 0, len(nss))
+func constructPageStateParam(rawNamespaces string) string {
+	nss := strings.Split(rawNamespaces, ",")
+	quotedNamespaces := make([]string, 0, len(nss))
 	for _, s := range nss {
-		quotedNSs = append(quotedNSs, strconv.Quote(s))
+		quotedNamespaces = append(quotedNamespaces, strconv.Quote(s))
 	}
-	return fmt.Sprintf("(\"savedViews\":(\"n\":[%s]))", strings.Join(quotedNSs, ","))
+	return fmt.Sprintf("(\"savedViews\":(\"n\":[%s]))", strings.Join(quotedNamespaces, ","))
 }
 
 // GetCtxString ...
