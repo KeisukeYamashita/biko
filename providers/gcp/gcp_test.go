@@ -17,6 +17,8 @@ package gcp
 import (
 	"reflect"
 	"testing"
+
+	"github.com/stretchr/testify/assert"
 )
 
 const (
@@ -46,5 +48,31 @@ func TestGetSDKConfig(t *testing.T) {
 
 	if !reflect.DeepEqual(conf, want) {
 		t.Fatalf("getSDKConfig failed not deep equal got:%v, want:%v", conf, want)
+	}
+}
+
+func TestConstructPageStateParam(t *testing.T) {
+	tests := map[string]struct {
+		namespace string
+		want      string
+	}{
+		"single namespace": {
+			namespace: "abc",
+			want:      "(\"savedViews\":(\"n\":[\"abc\"]))",
+		},
+		"two namespaces": {
+			namespace: "test1,test2",
+			want:      "(\"savedViews\":(\"n\":[\"test1\",\"test2\"]))",
+		},
+		"three namespaces": {
+			namespace: "test1,test2,test3",
+			want:      "(\"savedViews\":(\"n\":[\"test1\",\"test2\",\"test3\"]))",
+		},
+	}
+
+	for name, tt := range tests {
+		t.Run(name, func(t *testing.T) {
+			assert.Equal(t, tt.want, constructPageStateParam(tt.namespace))
+		})
 	}
 }

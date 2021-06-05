@@ -136,6 +136,10 @@ func newGCPGKECmd() cli.Command {
 				Name:  "name, n",
 				Usage: "Name of the cluter",
 			},
+			cli.StringFlag{
+				Name: "namespaces, ns",
+				Usage: "Namespaces of workload page to open (you can input multiple namespaces by comma-speparated string)",
+			},
 		},
 		Action: func(c *cli.Context) error {
 			gcp, err := gcp.GetProvider()

@@ -19,6 +19,8 @@ import (
 	"net/url"
 	"os"
 	"path"
+	"strconv"
+	"strings"
 
 	"github.com/KeisukeYamashita/biko/alias"
 	"github.com/go-ini/ini"
@@ -137,21 +139,24 @@ func (p *Provider) addProductPath(product string) {
 		p.join(product)
 		var db, table string
 		if db = p.GetCtxString("database"); db != "" {
-			param := url.Values{}
-			param.Add("d", db)
+			q := p.URL.Query()
+			q.Add("d", db)
 			if table = p.GetCtxString("table"); table != "" {
-				param.Add("t", table)
+				q.Add("t", table)
 			}
-			p.URL.RawQuery = param.Encode()
+			p.URL.RawQuery = q.Encode()
 		}
 	case "kubernetes":
 		p.join(product)
-		var region, name string
+		var region, name, namespaces string
 		if region = p.GetCtxString("region"); region != "" {
 			p.join(fmt.Sprintf("details/%s", region))
 			if name = p.GetCtxString("name"); name != "" {
 				p.join(name)
 			}
+		} else if namespaces = p.GetCtxString("namespaces"); namespaces != "" {
+			p.join("workload")
+			p.addGKEPageStateParam(namespaces)
 		}
 	case "spanner":
 		p.join(product)
@@ -213,10 +218,26 @@ func (p *Provider) addProductPath(product string) {
 }
 
 func (p *Provider) addProjectParam() {
-	params := url.Values{}
-	params.Add("project", p.SDKConfig.Core.Project)
-	p.URL.RawQuery = params.Encode()
+	q := p.URL.Query()
+	q.Add("project", p.SDKConfig.Core.Project)
+	p.URL.RawQuery = q.Encode()
 	return
+}
+
+func (p *Provider) addGKEPageStateParam(namespaces string) {
+	q := p.URL.Query()
+	q.Add("pageState", constructPageStateParam(namespaces))
+	p.URL.RawQuery = q.Encode()
+	return
+}
+
+func constructPageStateParam(rawNamespaces string) string {
+	nss := strings.Split(rawNamespaces, ",")
+	quotedNamespaces := make([]string, 0, len(nss))
+	for _, s := range nss {
+		quotedNamespaces = append(quotedNamespaces, strconv.Quote(s))
+	}
+	return fmt.Sprintf("(\"savedViews\":(\"n\":[%s]))", strings.Join(quotedNamespaces, ","))
 }
 
 // GetCtxString ...
