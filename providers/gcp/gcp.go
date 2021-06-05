@@ -224,9 +224,9 @@ func (p *Provider) addProjectParam() {
 	return
 }
 
-func (p *Provider) addGKEPageStateParam(namespace string) {
+func (p *Provider) addGKEPageStateParam(namespaces string) {
 	q := p.URL.Query()
-	q.Add("pageState", constructPageStateParam(namespace))
+	q.Add("pageState", constructPageStateParam(namespaces))
 	p.URL.RawQuery = q.Encode()
 	return
 }
