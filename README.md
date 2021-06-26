@@ -406,14 +406,6 @@ $ biko gw [product] [flag(s)]
 | forms        | Create a new Google Forms  | `forms new`, `fm n`          | -             |
 
 
-If you bump into something you want to lookup when you are using the terminal...
-
-```
-$ biko g s -q "How to configure biko"
-```
-
-Blazing fast.
-
 ### Pagerduty
 
 * If you are using SSO, you need to pass `--org` or configure `BIKO_PAGERDUTY`
