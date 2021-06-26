@@ -13,6 +13,9 @@
 [google]
     [google.alias]
 
+[googleworkspace]
+    [googleworkspace.alias]
+
 [youtube]
     [youtube.alias]
 

@@ -27,17 +27,18 @@ var (
 
 // TomlConfig ...
 type TomlConfig struct {
-	AWS       map[string]interface{} `toml:"aws"`
-	Azure     map[string]interface{} `toml:"azure"`
-	GCP       map[string]interface{} `toml:"gcp"`
-	Datadog   map[string]interface{} `toml:"datadog"`
-	Google    map[string]interface{} `toml:"google"`
-	Youtube   map[string]interface{} `toml:"youtube"`
-	PagerDuty map[string]interface{} `toml:"pagerduty"`
-	Github    map[string]interface{} `toml:"github"`
-	CircleCI  map[string]interface{} `toml:"circleci"`
-	Firebase  map[string]interface{} `toml:"firebase"`
-	JIRA      map[string]interface{} `toml:"jira"`
+	AWS             map[string]interface{} `toml:"aws"`
+	Azure           map[string]interface{} `toml:"azure"`
+	GCP             map[string]interface{} `toml:"gcp"`
+	Datadog         map[string]interface{} `toml:"datadog"`
+	Google          map[string]interface{} `toml:"google"`
+	GoogleWorkspace map[string]interface{} `toml:"googleworkspace"`
+	Youtube         map[string]interface{} `toml:"youtube"`
+	PagerDuty       map[string]interface{} `toml:"pagerduty"`
+	Github          map[string]interface{} `toml:"github"`
+	CircleCI        map[string]interface{} `toml:"circleci"`
+	Firebase        map[string]interface{} `toml:"firebase"`
+	JIRA            map[string]interface{} `toml:"jira"`
 }
 
 // GetConfig ...

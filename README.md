@@ -36,6 +36,7 @@
   - [GCP](#gcp)
   - [Github](#github)
   - [Google](#google)
+  - [GoogleWorkspace](#googleworkspace)
   - [Pagerduty](#pagerduty)
   - [Youtube](#youtube)
 - [(Advanced): Docker image](#advanced-docker-image)
@@ -372,6 +373,37 @@ $ biko g [product] [flag(s)]
 | Product | What | Command | Flags(Optional) | 
 |:----:|:----:|:----:|:----:|
 | Search | Search on Google | `search`, `s` | `--query, -q` |
+
+
+If you bump into something you want to lookup when you are using the terminal...
+
+```
+$ biko g s -q "How to configure biko"
+```
+
+Blazing fast.
+
+### Google Workspace
+
+* Open Google Workspace search from your terminal.
+
+```
+$ biko googleworkspace [product] [flag(s)]
+# or
+$ biko gw [product] [flag(s)]
+```
+
+| Product      | What | Command | Flags(Optional) |
+| :----:       |:----:|:----:|:----:|
+| drive        | Search on Google Drive     | `drive`, `dr`                | `--query, -q` |
+| document     | Search on Google Docs      | `document`, `dc`             | `--query, -q` |
+| document     | Create a new Google Docs   | `document new`, `dc n`       | -             |
+| spreadsheets | Search on Google Sheets    | `spreadsheets`, `ss`         | `--query, -q` |
+| spreadsheets | Create a new Google Sheets | `spreadsheets new`, `ss n`   | -             |
+| presentation | Search on Google Slides    | `presentation`, `pr`         | `--query, -q` |
+| presentation | Create a new Google Slides | `presentation new`, `pr new` | -             |
+| forms        | Search on Google Forms     | `forms`, `fm`                | `--query, -q` |
+| forms        | Create a new Google Forms  | `forms new`, `fm n`          | -             |
 
 
 If you bump into something you want to lookup when you are using the terminal...
