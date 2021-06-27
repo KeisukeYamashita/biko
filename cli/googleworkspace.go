@@ -69,7 +69,7 @@ func newDriveCmd() cli.Command {
 func newDocumentCmd() cli.Command {
 	return cli.Command{
 		Name:    "document",
-		Aliases: []string{"dc"},
+		Aliases: []string{"doc"},
 		Usage:   "Open Google Document page",
 		Flags: []cli.Flag{
 			cli.StringFlag{

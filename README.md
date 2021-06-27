@@ -396,8 +396,8 @@ $ biko gw [product] [flag(s)]
 | Product      | What                       | Command                      | Flags(Optional) |
 | :----:       | :----:                     | :----:                       | :----:        |
 | drive        | Search on Google Drive     | `drive`, `dr`                | `--query, -q` |
-| document     | Search on Google Docs      | `document`, `dc`             | `--query, -q` |
-| document     | Create a new Google Docs   | `document`, `dc`             | `--new, -n`   |
+| document     | Search on Google Docs      | `document`, `doc`             | `--query, -q` |
+| document     | Create a new Google Docs   | `document`, `doc`             | `--new, -n`   |
 | spreadsheets | Search on Google Sheets    | `spreadsheets`, `ss`         | `--query, -q` |
 | spreadsheets | Create a new Google Sheets | `spreadsheets`, `ss`         | `--new, -n`   |
 | presentation | Search on Google Slides    | `presentation`, `pr`         | `--query, -q` |
