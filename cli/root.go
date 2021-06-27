@@ -44,6 +44,7 @@ func rootSubCommands() []cli.Command {
 		newGCPCmd(),
 		newGithubCmd(),
 		newGoogleCmd(),
+		newGoogleWorkspaceCmd(),
 		newJIRACmd(),
 		newPagerDutyCmd(),
 		newVersionCmd(),
