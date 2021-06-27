@@ -393,17 +393,17 @@ $ biko googleworkspace [product] [flag(s)]
 $ biko gw [product] [flag(s)]
 ```
 
-| Product      | What | Command | Flags(Optional) |
-| :----:       |:----:|:----:|:----:|
+| Product      | What                       | Command                      | Flags(Optional) |
+| :----:       | :----:                     | :----:                       | :----:        |
 | drive        | Search on Google Drive     | `drive`, `dr`                | `--query, -q` |
 | document     | Search on Google Docs      | `document`, `dc`             | `--query, -q` |
-| document     | Create a new Google Docs   | `document new`, `dc n`       | -             |
+| document     | Create a new Google Docs   | `document`, `dc`             | `--new, -n`   |
 | spreadsheets | Search on Google Sheets    | `spreadsheets`, `ss`         | `--query, -q` |
-| spreadsheets | Create a new Google Sheets | `spreadsheets new`, `ss n`   | -             |
+| spreadsheets | Create a new Google Sheets | `spreadsheets`, `ss`         | `--new, -n`   |
 | presentation | Search on Google Slides    | `presentation`, `pr`         | `--query, -q` |
-| presentation | Create a new Google Slides | `presentation new`, `pr new` | -             |
+| presentation | Create a new Google Slides | `presentation`, `pr`         | `--new, -n`   |
 | forms        | Search on Google Forms     | `forms`, `fm`                | `--query, -q` |
-| forms        | Create a new Google Forms  | `forms new`, `fm n`          | -             |
+| forms        | Create a new Google Forms  | `forms`, `fm`                | `--new, -n`   |
 
 
 ### Pagerduty

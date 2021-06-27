@@ -17,7 +17,6 @@ package googleworkspace
 import (
 	"net/url"
 	"path"
-	"strings"
 
 	"github.com/KeisukeYamashita/biko/alias"
 	"github.com/urfave/cli"
@@ -59,12 +58,13 @@ func (p *Provider) Init(c *cli.Context) error {
 
 // GetTargetURL ...
 func (p *Provider) GetTargetURL() (string, error) {
-	product := p.Ctx.Command.Name
-	if product == "new" {
+	newFlag := p.GetCtxString("new")
+	if newFlag == "true" {  // HACK: need to fix GetCtxString
 		return p.getNewCmdURL(), nil
 	}
 
 	var baseURL string
+	product := p.Ctx.Command.Name
 	switch product {
 	case drive:
 		baseURL = "https://drive.google.com"
@@ -135,8 +135,8 @@ func (p *Provider) join(additionPath string) {
 }
 
 func (p *Provider) getNewCmdURL() string {
-	parentCmd := strings.Split(p.Ctx.Command.FullName(), " ")[0]
-	switch parentCmd {
+	product := p.Ctx.Command.Name
+	switch product {
 	case document:
 		return "https://document.new"
 	case spreadsheets:
