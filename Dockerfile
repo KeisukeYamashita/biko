@@ -1,5 +1,5 @@
 # Build Go Server Binary
-FROM golang:1.13
+FROM golang:1.16
 LABEL MAINTAINER=KeisukeYamashita
 
 ENV GO111MODULE on
