@@ -482,7 +482,7 @@ Biko is released under the Apache License 2.0.
 
 <!-- badge links -->
 [go]: https://golang.org/dl
-[go-badge]: https://img.shields.io/badge/Go-1.13-blue
+[go-badge]: https://img.shields.io/badge/Go-1.16-blue
 
 [godoc]: https://godoc.org/github.com/KeisukeYamashita/biko
 [godoc-badge]: https://img.shields.io/badge/godoc.org-reference-blue.svg
