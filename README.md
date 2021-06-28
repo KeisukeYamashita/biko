@@ -331,7 +331,7 @@ $ biko gcp [product] [flag(s)]
 
 | Product | What | Command | Flags(Optional) | 
 |:----:|:----:|:----:|:----:|
-| Container Registry | Go to container registry or the container detail | `gcr`                 | `--name, -n`   |
+| Container Registry | Go to container registry or the container detail | `gcr` | `--name, -n`   |
 
 
 **Security**
