@@ -48,19 +48,20 @@ func newGCPCmd() cli.Command {
 		Subcommands: []cli.Command{
 			newGCPGAECmd(),
 			newGCPBQCmd(),
-			newGCPGKECmd(),
-			newGCPSpannerCmd(),
-			newGCPGCRCmd(),
-			newGCPFunctionsCmd(),
 			newGCPCloudRunCmd(),
-			newGCPGCECmd(),
-			newGCPLogsCmd(),
-			newGCPIAMCmd(),
-			newGCPSQLCmd(),
-			newGCPPubSubCmd(),
-			newGCPStorageCmd(),
 			newGCPDataflowCmd(),
+			newGCPFunctionsCmd(),
+			newGCPGCECmd(),
+			newGCPGCRCmd(),
+			newGCPGKECmd(),
+			newGCPIAMCmd(),
+			newGCPLogsCmd(),
 			newGCPKMSCmd(),
+			newGCPPubSubCmd(),
+			newGCPSecretManagerCmd(),
+			newGCPSpannerCmd(),
+			newGCPStorageCmd(),
+			newGCPSQLCmd(),
 		},
 	}
 }
@@ -137,7 +138,7 @@ func newGCPGKECmd() cli.Command {
 				Usage: "Name of the cluter",
 			},
 			cli.StringFlag{
-				Name: "namespaces, ns",
+				Name:  "namespaces, ns",
 				Usage: "Namespaces of workload page to open (you can input multiple namespaces by comma-speparated string)",
 			},
 		},
@@ -172,6 +173,35 @@ func newGCPSpannerCmd() cli.Command {
 			cli.StringFlag{
 				Name:  "table, tb",
 				Usage: "Table name",
+			},
+		},
+		Action: func(c *cli.Context) error {
+			gcp, err := gcp.GetProvider()
+			if err != nil {
+				return err
+			}
+			return browser.Open(c, gcp)
+		},
+	}
+}
+
+func newGCPSecretManagerCmd() cli.Command {
+	return cli.Command{
+		Name:     "secretManager",
+		Usage:    "Open Secret Manager page",
+		Category: categoryStorage,
+		Flags: []cli.Flag{
+			cli.StringFlag{
+				Name:  "project",
+				Usage: "Specify the project to open",
+			},
+			cli.StringFlag{
+				Name:  "secret, s",
+				Usage: "Secret name",
+			},
+			cli.StringFlag{
+				Name:  "version, v",
+				Usage: "Secret version",
 			},
 		},
 		Action: func(c *cli.Context) error {
