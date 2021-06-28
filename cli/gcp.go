@@ -187,7 +187,8 @@ func newGCPSpannerCmd() cli.Command {
 
 func newGCPSecretManagerCmd() cli.Command {
 	return cli.Command{
-		Name:     "secretManager",
+		Name:     "secret-manager",
+		Aliases:  []string{"sm", "secretmanager", "secretManager"},
 		Usage:    "Open Secret Manager page",
 		Category: categoryStorage,
 		Flags: []cli.Flag{
@@ -198,10 +199,6 @@ func newGCPSecretManagerCmd() cli.Command {
 			cli.StringFlag{
 				Name:  "secret, s",
 				Usage: "Secret name",
-			},
-			cli.StringFlag{
-				Name:  "version, v",
-				Usage: "Secret version",
 			},
 		},
 		Action: func(c *cli.Context) error {

@@ -331,8 +331,12 @@ $ biko gcp [product] [flag(s)]
 
 | Product | What | Command | Flags(Optional) | 
 |:----:|:----:|:----:|:----:|
-| Container Registry | Go to container registry or the container detail | `gcr`                 | `--name, -n`                      |
-| Secret Manager     | Go to secret manager's detail                    | `secretmanager`, `sm` | `--secret, -s`, `--version`, `-v` |
+| Container Registry | Go to container registry or the container detail | `gcr`                 | `--name, -n`   |
+
+
+**Security**
+
+| Secret Manager | Go to secret manager's detail | `secret-manager`, `sm`, `secretmanager`, `secretManager` | `--secret, -s` |
 
 
 **Big Data**

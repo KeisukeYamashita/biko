@@ -158,6 +158,12 @@ func (p *Provider) addProductPath(product string) {
 			p.join("workload")
 			p.addGKEPageStateParam(namespaces)
 		}
+	case "secret-manager":
+		p.join(fmt.Sprintf("security/%s", product))
+		var secret string
+		if secret = p.GetCtxString("secret"); secret != "" {
+			p.join(fmt.Sprintf("secret/%s", secret))
+		}
 	case "spanner":
 		p.join(product)
 		var instance, db, scheme string
